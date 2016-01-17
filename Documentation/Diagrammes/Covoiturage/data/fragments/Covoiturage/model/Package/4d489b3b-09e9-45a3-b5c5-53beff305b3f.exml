@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="covoiturage" version="4">
+  <OBJECT>
+    <ID name="covoiturage" mc="Standard.Package" uid="4d489b3b-09e9-45a3-b5c5-53beff305b3f"/>
+    <PID name="Covoiturage" mc="Standard.Project" uid="4a48fcfa-9de6-4aa2-88f0-9226c92017f7"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[covoiturage]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Cas d'utilisation" mc="Standard.Package" uid="3c282121-95e9-43f7-adbd-51580bc953a3"/>
+        <COMPID name="Sequence" mc="Standard.Package" uid="b86693c1-59b6-42c1-bed9-a1fd40ec981a"/>
+        <COMPID name="Classe" mc="Standard.Package" uid="5cb0b03a-2907-410c-b410-ed406e5ae6bb"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

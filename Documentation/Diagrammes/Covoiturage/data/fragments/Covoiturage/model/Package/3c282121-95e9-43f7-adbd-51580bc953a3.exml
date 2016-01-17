@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Cas d'utilisation" version="4">
+  <OBJECT>
+    <ID name="Cas d'utilisation" mc="Standard.Package" uid="3c282121-95e9-43f7-adbd-51580bc953a3"/>
+    <PID name="covoiturage" mc="Standard.Package" uid="4d489b3b-09e9-45a3-b5c5-53beff305b3f"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Cas d'utilisation]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Utilisateur" mc="Standard.Actor" uid="7bd5ad46-badc-4ade-b010-f7b31f9ed6d9"/>
+        <COMPID name="Conducteur" mc="Standard.Actor" uid="b8b1ff25-92f6-4303-9b1f-2bb6c89b3346"/>
+        <COMPID name="Administrateur" mc="Standard.Actor" uid="dbb26f66-e9ab-4085-8bfc-b81a1a98d91d"/>
+        <COMPID name="s'incrire" mc="Standard.UseCase" uid="8a1cf85e-b556-4254-9c24-e265dc847fe3"/>
+        <COMPID name="S'authentifier" mc="Standard.UseCase" uid="3f681a66-4c2a-4c88-a8af-854001d87221"/>
+        <COMPID name="Réserver un covoiturage" mc="Standard.UseCase" uid="8ce0d04c-3266-4a99-85d9-26486532a1bf"/>
+        <COMPID name="Annuler une reservation" mc="Standard.UseCase" uid="b2d311a3-8365-47aa-9ed5-056d194feac6"/>
+        <COMPID name="Créer un covoiturage" mc="Standard.UseCase" uid="c7adf049-96c5-44da-abc3-4ce9ccbc906a"/>
+        <COMPID name="Rechercher un covoiturage" mc="Standard.UseCase" uid="9dbb604e-d124-45e7-be13-e1c281c9477d"/>
+        <COMPID name="Modifier covoiturage" mc="Standard.UseCase" uid="7a522baa-40eb-42d2-9b85-1c7451965c5c"/>
+        <COMPID name="Supprimer covoiturage" mc="Standard.UseCase" uid="10844e11-5bef-4ee1-9acc-2e1136b22285"/>
+        <COMPID name="Valider covoiturage" mc="Standard.UseCase" uid="4668c0cb-2259-46e5-9209-fa1b959f7e70"/>
+        <COMPID name="Supprimer utilisateur" mc="Standard.UseCase" uid="49f5d3e4-3384-4e4f-8cd7-478602c0c814"/>
+        <COMPID name="Modifier compte" mc="Standard.UseCase" uid="48f91259-d54c-4f64-bc40-7e2606b965ef"/>
+        <COMPID name="Supprimer compte" mc="Standard.UseCase" uid="a8ae8f64-306f-405d-89d7-e41cb3c7f09c"/>
+        <COMPID name="Envoyer message" mc="Standard.UseCase" uid="ab4aa164-295a-4641-b8dc-30ded949432a"/>
+        <COMPID name="Passager" mc="Standard.Actor" uid="c7799979-c11a-42e1-a322-065d0a89d4fa"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Covoiturage cas d'utilisation" mc="Standard.UseCaseDiagram" uid="4ac67e31-fb4b-4fb8-8a22-3554e0b91c76"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

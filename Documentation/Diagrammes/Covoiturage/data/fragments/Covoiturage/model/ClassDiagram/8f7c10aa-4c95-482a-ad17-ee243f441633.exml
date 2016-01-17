@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Covoiturage classe" version="4">
+  <OBJECT>
+    <ID name="Covoiturage classe" mc="Standard.ClassDiagram" uid="8f7c10aa-4c95-482a-ad17-ee243f441633"/>
+    <PID name="Classe" mc="Standard.Package" uid="5cb0b03a-2907-410c-b410-ed406e5ae6bb"/>
+    <ATTRIBUTES>
+      <ATT name="UiDataVersion">1</ATT>
+      <ATT name="UiData"><![CDATA[eJztU9tO4zAQ/RXL73Vv4SaFImhQhQi0ahekfULTeNo1OHZlu9D8Pc6lLO2qUVZC7Ms+2R7POXM7E15sUkle0Vih1Tntsg4lF4NwPH/GxBHBvYkSl63wnGqzZKnmKIVmXMDSQMqQC6cNsw6ceGEoMUXlbPlOtk6jdFa8o/JNSQrP2jx9BO3QQTgxeoXGZURB6mNJyPTaReDA/z2CXGOVhFpLSduDsL0F/AGduUwi3SmhV1eCzf0tS7RBVmIb5DcEmwBHvg12vXFTXDSMcu8pKiTBjYvmNz7H4ppfOC5gLd1eke2ynLrCDUpwyH0eez27y03kNbf4zCVYW02CnC5Okm4HoBUkZ0et4LQHLeDdkxZiL+gvgqB73O/Xd9uzuVul31QMc5R7gWfOCLWkgyImkuIgVUfCduFZW5CWeKOGOl1pK5wfxQH6BlTDX0JygzlDLGzexuo4iIiFerHN3a+WkYE3n04MGZpd+fVrN2i7M7zEWyZzBr80O4TfszN/h/onghP8gAqiEYsvf15Pn64uh7ej6fjhPvoaYTRYvc+j+i2aTxII/kvgOyXwYzz56tkf/HoHcTaF1g==]]></ATT>
+      <ATT name="PdeProperties"></ATT>
+      <ATT name="Name"><![CDATA[Covoiturage classe]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Standard.Note" uid="ce30e3fa-6976-4318-88ac-5ca53e775b4a"/>
+          <ATTRIBUTES>
+            <ATT name="Content"></ATT>
+            <ATT name="MimeType"></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Standard.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Covoiturage" version="4">
+  <OBJECT>
+    <ID name="Covoiturage" mc="Standard.AnalystProject" uid="089d2721-face-42b5-b14f-ce28f32102c9"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[Covoiturage]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="PropertyRoot">
+        <COMPID name="Covoiturage" mc="Standard.PropertyContainer" uid="79db0074-a09f-4eea-bb0d-0d660ef552d8"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Covoiturage" version="4">
+  <OBJECT>
+    <ID name="Covoiturage" mc="Standard.DiagramSet" uid="4601ddb9-e827-4d01-a752-ef5cc35be9e8"/>
+    <PID name="Covoiturage" mc="Standard.Project" uid="4a48fcfa-9de6-4aa2-88f0-9226c92017f7"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[Covoiturage]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>
