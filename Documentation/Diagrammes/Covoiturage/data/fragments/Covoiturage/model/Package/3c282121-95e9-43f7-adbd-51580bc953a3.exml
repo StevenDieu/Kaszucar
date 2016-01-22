@@ -31,6 +31,9 @@
         <COMPID name="Supprimer compte" mc="Standard.UseCase" uid="a8ae8f64-306f-405d-89d7-e41cb3c7f09c"/>
         <COMPID name="Envoyer message" mc="Standard.UseCase" uid="ab4aa164-295a-4641-b8dc-30ded949432a"/>
         <COMPID name="Passager" mc="Standard.Actor" uid="c7799979-c11a-42e1-a322-065d0a89d4fa"/>
+        <COMPID name="Noter un passager" mc="Standard.UseCase" uid="a8c14e23-2116-42db-9df9-1a49e86ace9d"/>
+        <COMPID name="Noter un conducteur" mc="Standard.UseCase" uid="cfb17053-8b5e-424e-9e9d-53eaeeae4e11"/>
+        <COMPID name="Gestion des notes et commentaire" mc="Standard.UseCase" uid="3463a659-a2a5-4336-b8af-5577ce6bca4d"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="Covoiturage cas d'utilisation" mc="Standard.UseCaseDiagram" uid="4ac67e31-fb4b-4fb8-8a22-3554e0b91c76"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Réserver un covoiturage" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Noter un passager" version="4">
   <OBJECT>
-    <ID name="Réserver un covoiturage" mc="Standard.UseCase" uid="8ce0d04c-3266-4a99-85d9-26486532a1bf"/>
+    <ID name="Noter un passager" mc="Standard.UseCase" uid="a8c14e23-2116-42db-9df9-1a49e86ace9d"/>
     <PID name="Cas d'utilisation" mc="Standard.Package" uid="3c282121-95e9-43f7-adbd-51580bc953a3"/>
     <ATTRIBUTES>
       <ATT name="IsElementary">false</ATT>
@@ -9,30 +9,13 @@
       <ATT name="IsLeaf">false</ATT>
       <ATT name="IsRoot">false</ATT>
       <ATT name="Visibility">Public</ATT>
-      <ATT name="Name"><![CDATA[Réserver un covoiturage]]></ATT>
+      <ATT name="Name"><![CDATA[Noter un passager]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
-      <COMP relation="Used">
-        <OBJECT>
-          <ID name="UseCaseDependency" mc="Standard.UseCaseDependency" uid="b79b74fe-9e26-4874-89b2-4c0c50696542"/>
-          <ATTRIBUTES>
-            <ATT name="Name"><![CDATA[UseCaseDependency]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Target">
-              <ID name="S'authentifier" mc="Standard.UseCase" uid="3f681a66-4c2a-4c88-a8af-854001d87221"/>
-            </LINK>
-            <LINK relation="Extension">
-              <FOREIGNID name="include" mc="Standard.Stereotype" uid="00000000-0000-9c49-0000-000000000000"/>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-      </COMP>
       <COMP relation="OwnedEnd">
         <OBJECT>
-          <ID name="" mc="Standard.AssociationEnd" uid="5807b134-20f6-4bab-84ba-361812c98288"/>
+          <ID name="" mc="Standard.AssociationEnd" uid="0f321115-4ea5-4f9d-8418-efc6a093249b"/>
           <ATTRIBUTES>
             <ATT name="Aggregation">KindIsAssociation</ATT>
             <ATT name="IsChangeable">true</ATT>
@@ -50,11 +33,11 @@
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Target">
-              <ID name="Rechercher un covoiturage" mc="Standard.UseCase" uid="9dbb604e-d124-45e7-be13-e1c281c9477d"/>
+              <ID name="Créer un covoiturage" mc="Standard.UseCase" uid="c7adf049-96c5-44da-abc3-4ce9ccbc906a"/>
             </LINK>
             <COMP relation="Opposite">
               <OBJECT>
-                <ID name="" mc="Standard.AssociationEnd" uid="458ad822-51e9-4268-8660-8f5245466e94"/>
+                <ID name="" mc="Standard.AssociationEnd" uid="f72bcd4f-5af9-48b7-880b-1d3fcc0ef67f"/>
                 <ATTRIBUTES>
                   <ATT name="Aggregation">KindIsAssociation</ATT>
                   <ATT name="IsChangeable">true</ATT>
@@ -72,11 +55,11 @@
                 </ATTRIBUTES>
                 <DEPENDENCIES>
                   <COMP relation="Opposite">
-                    <COMPID name="" mc="Standard.AssociationEnd" uid="5807b134-20f6-4bab-84ba-361812c98288"/>
+                    <COMPID name="" mc="Standard.AssociationEnd" uid="0f321115-4ea5-4f9d-8418-efc6a093249b"/>
                   </COMP>
                   <COMP relation="Association">
                     <OBJECT>
-                      <ID name="" mc="Standard.Association" uid="0adc6dde-a3f1-4338-8963-2e5af6dca2a7"/>
+                      <ID name="" mc="Standard.Association" uid="e121cac2-60cc-4ec1-b9a4-9ec23402db2e"/>
                       <ATTRIBUTES>
                         <ATT name="Name"></ATT>
                         <ATT name="status">1970354901745664</ATT>
@@ -88,14 +71,14 @@
               </OBJECT>
             </COMP>
             <COMP relation="Association">
-              <COMPID name="" mc="Standard.Association" uid="0adc6dde-a3f1-4338-8963-2e5af6dca2a7"/>
+              <COMPID name="" mc="Standard.Association" uid="e121cac2-60cc-4ec1-b9a4-9ec23402db2e"/>
             </COMP>
           </DEPENDENCIES>
         </OBJECT>
       </COMP>
       <COMP relation="Descriptor">
         <OBJECT>
-          <ID name="" mc="Standard.Note" uid="799ef383-c3e5-4a96-8ae2-e9394c8558e3"/>
+          <ID name="" mc="Standard.Note" uid="979a65c6-5253-4cdd-8026-655044c1d403"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[<p>...</p>
 ]]></ATT>
@@ -110,7 +93,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.Note" uid="13382f80-bbbb-4cbb-8dbb-1a58a791c9e7"/>
+          <ID name="" mc="Standard.Note" uid="196d29bc-6086-4f9e-99f9-70bfa103e692"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[...]]></ATT>
             <ATT name="MimeType"></ATT>
@@ -124,7 +107,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.Note" uid="c3fb504d-075b-4e93-a9b6-cc3dc1396570"/>
+          <ID name="" mc="Standard.Note" uid="073686cb-8cab-4a21-be5a-94a8a199bc98"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[...]]></ATT>
             <ATT name="MimeType"></ATT>
@@ -138,7 +121,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.Note" uid="6a58a61d-bf77-40e4-9ddf-672c465e4fa5"/>
+          <ID name="" mc="Standard.Note" uid="96041291-d7b3-4dc9-91c6-c8c723b29536"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[...]]></ATT>
             <ATT name="MimeType"></ATT>
@@ -152,7 +135,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.Note" uid="1bca25ff-db33-42a4-a3d8-4240c15a951c"/>
+          <ID name="" mc="Standard.Note" uid="7c20b8d6-b725-4bcb-97fd-702547634c38"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[...]]></ATT>
             <ATT name="MimeType"></ATT>
@@ -166,7 +149,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.Note" uid="546978c2-c2f7-477c-acfc-e4c8f77f3b67"/>
+          <ID name="" mc="Standard.Note" uid="d0a1f93c-bbc3-4b09-9c19-daafd499da4b"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[...]]></ATT>
             <ATT name="MimeType"></ATT>
