@@ -17,7 +17,7 @@ public class ResolverMustache {
 	    mustacheViewResolver.setSuffix(".html");
 	    mustacheViewResolver.setCache(false);
 	    mustacheViewResolver.setContentType("text/html;charset=utf-8");
-
+	    
 	    MustacheTemplateLoader mustacheTemplateLoader = new MustacheTemplateLoader();
 	    mustacheTemplateLoader.setResourceLoader(resourceLoader);
 
