@@ -1,9 +1,22 @@
 {{> templates/header}}
 
 <form>
-<h2>Inscription</h2>
+	<h2>Inscription</h2>
+	<input type="radio" name="gender" value="H"> Homme 
+	<input type="radio" name="gender" value="F"> Femme <br/>
+	<input type="text" name="name" placeholder="Prenom" /><br /> 
+	<input type="text" name="lastName" placeholder="Nom" /><br /> 
+	<input type="text" name="email" placeholder="Adresse email" /><br />
+	<input type="password" name="password" placeholder="Mot de passe" /><br /> 
+	<input type="password" name="confirmPassword" placeholder="Confirmation mot de passe" /><br /> 
+	<select id="yearBirth" name="yearBirth"/>
+		<option value="" selected="selected">Année de naissance</option>
+	</select><br />
 
-
+	<input type="checkbox" name="cgv">J'ai lu et j'accepte les <a href="#">conditions d'utilisation du Site et du Service Kazsucar.</a><br/><br/>
+	<input type="submit" value="S'incrire" />
 </form>
+
+<script src="resources/js/signUp.js"></script>
 
 {{> templates/footer}}
