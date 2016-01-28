@@ -1,9 +1,18 @@
 a{
 	text-decoration: none;
 }
+body{
+	margin: 0;
+}
 .size_of_logo{
 	height: 50px;
 	width: 50px;
+}
+.kaszucar{
+    display: inline-block;
+    margin: 0 31%;
+    vertical-align: middle;
+    width: 7%;
 }
 .logo{
 	height: auto;
@@ -12,4 +21,8 @@ a{
 .menu{
 	display: inline-block;
 	vertical-align: middle;
+}
+.header-kaszu{
+	background: #eeeeee;
+	padding: 1%;
 }
