@@ -97,7 +97,7 @@ public class UserService {
 
 	public boolean checkYear18(int yearBirth) {
 		Calendar calendar = Calendar.getInstance();
-		if (yearBirth < (calendar.get(Calendar.YEAR) - 18)) {
+		if (yearBirth <= (calendar.get(Calendar.YEAR) - 18)) {
 			return false;
 		}
 		return true;
