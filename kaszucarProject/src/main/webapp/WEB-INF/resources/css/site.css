@@ -3,10 +3,23 @@ a{
 }
 body{
 	margin: 0;
+	position: relative;
+	overflow: hidden;
 }
 .size_of_logo{
-	height: 50px;
-	width: 50px;
+    border-radius: 56%;
+	height: 35px;
+    margin-right: 1%;
+    width: 35px;
+}
+.facebook:hover{
+	background: #3a579d;
+}
+.twitter:hover{
+	background: #00aced;
+}
+.google:hover{
+	background: #dc4a38;
 }
 .kaszucar{
     display: inline-block;
@@ -23,9 +36,21 @@ body{
 	vertical-align: middle;
 }
 .header-kaszu{
-	background: #eeeeee;
+	background: rgba(238,238,238,0.5);
 	padding: 1%;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 .connexion{
 	margin-right: 3%;
+}
+.img-background{
+	height: 100vh;
+	margin: 0;
+	width: 100%
+}
+.img-background img{
+	height: auto;
+	width: 100%;
 }
