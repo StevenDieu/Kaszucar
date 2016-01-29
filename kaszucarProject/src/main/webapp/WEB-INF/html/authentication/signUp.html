@@ -1,15 +1,17 @@
 {{> templates/header}}
 
-<form>
+<form class="signUp">
 	<h2>Inscription</h2>
-	<input type="radio" name="gender" value="H"> Homme 
+	<span class="errorConnexion"></span><br/>
+	
+	<input type="radio" name="gender"  value="H"> Homme 
 	<input type="radio" name="gender" value="F"> Femme <br/>
-	<input type="text" name="name" placeholder="Prenom" /><br /> 
-	<input type="text" name="lastName" placeholder="Nom" /><br /> 
-	<input type="text" name="email" placeholder="Adresse email" /><br />
-	<input type="password" name="password" placeholder="Mot de passe" /><br /> 
-	<input type="password" name="confirmPassword" placeholder="Confirmation mot de passe" /><br /> 
-	<select id="yearBirth" name="yearBirth"/>
+	<input type="text" class="name" placeholder="Prenom" /><br /> 
+	<input type="text" class="lastName" placeholder="Nom" /><br /> 
+	<input type="text" class="email" placeholder="Adresse email" /><br />
+	<input type="password" class="password" placeholder="Mot de passe" /><br /> 
+	<input type="password" class="confirmPassword" placeholder="Confirmation mot de passe" /><br /> 
+	<select id="yearBirth" class="yearBirth"/>
 		<option value="" selected="selected">Année de naissance</option>
 	</select><br />
 

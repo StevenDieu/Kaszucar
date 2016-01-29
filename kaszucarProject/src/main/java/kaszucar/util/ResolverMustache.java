@@ -1,4 +1,4 @@
-package controller;
+package kaszucar.util;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ResourceLoader;

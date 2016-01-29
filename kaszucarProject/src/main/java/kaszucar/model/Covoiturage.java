@@ -1,4 +1,4 @@
-package Model;
+package kaszucar.model;
 
 import java.security.Timestamp;
 

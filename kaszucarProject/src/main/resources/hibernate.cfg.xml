@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?> <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory> <!-- INFORMATIONS DE CONNEXION A LA BASE DE DONNEES -->
+		<property name="connection.url">jdbc:postgresql://localhost:5432/kaszucar</property>
+		<property name="connection.username">postgres</property>
+		<property name="connection.password">azerty</property>
+		<property name="connection.driver_class">org.postgresql.Driver</property>
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- POOL DE CONNEXION (nombre maximim de connection simultanées) -->
+		<property name="connection.pool_size">1</property> <!-- AFFICHAGE DES REQUETES SQL GENEREES PAR HIBERNATE -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property> <!-- GESTION DE LA BASE DE DONNEES -->
+		<property name="hbm2ddl.auto">update</property> <!-- FICHIERS DE MAPPING -->
+		<property name="hibernate.current_session_context_class">thread</property>
+		<mapping class="kaszucar.model.User" />
+	</session-factory>
+</hibernate-configuration>
