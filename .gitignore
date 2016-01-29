@@ -1,4 +1,4 @@
 .metadata/
 Servers/
 RemoteSystemsTempFiles
-/hibernate.cfg.xml
+kaszucarProject/src/main/resources/hibernate.cfg.xml
