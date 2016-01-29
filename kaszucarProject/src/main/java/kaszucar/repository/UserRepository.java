@@ -10,11 +10,13 @@ import org.springframework.stereotype.Repository;
 import kaszucar.model.User;
 import kaszucar.util.HibernateUtil;
 
+@SuppressWarnings("unchecked")
 @Repository
 public class UserRepository {
 	
 	Session openSession = HibernateUtil.getSessionFactory().openSession();
 
+	
 	public List<User> getUserByEmailAndPwd(String email, String password) {
 		Criteria cr = openSession.createCriteria(User.class);
 		cr.add(Restrictions.eq("email_adress", email));
