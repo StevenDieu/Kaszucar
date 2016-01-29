@@ -1,3 +1,29 @@
+@font-face {
+    font-family: 'icomoon';
+    src:    url('../fonts/icomoon.eot?5j3kit');
+    src:    url('../fonts/icomoon.eot?5j3kit#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?5j3kit') format('truetype'),
+        url('../fonts/icomoon.woff?5j3kit') format('woff'),
+        url('../fonts/icomoon.svg?5j3kit#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 a {
 	text-decoration: none;
 }
@@ -10,9 +36,9 @@ body {
 
 .size_of_logo {
 	border-radius: 56%;
-	height: 35px;
-	margin-right: 1%;
-	width: 35px;
+	height: 40px;
+	margin-right: 3%;
+	width: 40px;
 }
 
 .facebook:hover {
@@ -28,21 +54,13 @@ body {
 }
 
 .kaszucar {
-	display: inline-block;
-	margin: 0 28% 0 31%;
-	vertical-align: middle;
-	width: 7%;
+	margin: 0;
+	text-align: center;
 }
 
 .logo {
 	height: auto;
 	width: 80px;
-}
-
-.menu {
-	color: #000;
-	display: inline-block;
-	vertical-align: middle;
 }
 
 .header-kaszu {
@@ -53,26 +71,62 @@ body {
 
 .connexion, .inscription {
 	background: black;
-	color: #8fb5c4;
 	border-radius: 5%;
-	padding: 0.5% 1%;
+	color: #8fb5c4;
+	padding: 1.5% 2%;
 }
 
 .connexion {
+	margin-left: 50%;
 	margin-right: 3%;
 }
 
 .img-background {
-	position: absolute;
-	top: 0; position : absolute;
-	z-index: -1;
 	height: 100vh;
 	margin: 0;
-	width: 100%;
 	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -1;
 }
 
 .img-background img {
 	height: auto;
 	width: 100%;
+}
+.reseaux-sociaux, .center-logo, .conn-insc{
+	display: inline-block;
+	vertical-align: middle;
+	width: 33%;
+}
+.formulaire, .submitSearch{
+    border-radius: 5%;
+	color: #888888;
+	display: inline-block;
+    font-size: 1.5em;
+    height: 2em;
+    margin: 27% 2.8% 0;
+    vertical-align: middle;
+    width: 14%;
+}
+.input-formulaire{
+	border-radius: 5px;
+    border: none;
+    height: 1.9em;
+}
+
+.submitSearch{
+	background: #3fb34f;
+	border: none;
+	color: #fff;
+}
+
+.icon-calendar:before {
+    content: "\e900";
+}
+.icon-radio-checked:before {
+    content: "\e901";
+}
+.icon-radio-unchecked:before {
+    content: "\e902";
 }
