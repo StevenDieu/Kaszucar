@@ -1,6 +1,8 @@
 package kaszucar.service;
 
 import java.security.MessageDigest;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,14 +30,11 @@ public class UserService {
 			return false;
 		}
 	}
-	
 
-	public void register(String gender, String name, String lastName, String email, String password, int yearBirth, HttpServletRequest request) {
+	public void register(String gender, String name, String lastName, String email, String password, int yearBirth,
+			HttpServletRequest request) {
 		UR.insertUser(gender, name, lastName, email, sha256(password), yearBirth, getIpAdresse(request));
 	}
-
-	
-	
 
 	public boolean checkEmail(String email) {
 		List<User> users = UR.getUserByEmail(email);
@@ -82,8 +81,6 @@ public class UserService {
 			throw new RuntimeException(ex);
 		}
 	}
-	
-	
 
 	/**
 	 * Get ip address of user
@@ -99,6 +96,12 @@ public class UserService {
 		return ipAddress;
 	}
 
-
+	public boolean checkYear18(int yearBirth) {
+		Calendar calendar = Calendar.getInstance();
+		if (yearBirth < (calendar.get(Calendar.YEAR) - 18)) {
+			return false;
+		}
+		return true;
+	}
 
 }

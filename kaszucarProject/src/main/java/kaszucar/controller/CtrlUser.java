@@ -61,22 +61,27 @@ public class CtrlUser {
 		String password = request.getParameter("password");
 		String sYearBirth = request.getParameter("yearBirth");
 		String cgv = request.getParameter("cgv");
-		
-		if(!Util.convertToInt(sYearBirth)){
+
+		if (!Util.convertToInt(sYearBirth)) {
 			return "{\"statut\": \"nok\",\"message\":  \"L'année doit être un chiffre.\"}";
 		}
+
 		int yearBirth = Integer.parseInt(sYearBirth);
 
 		if (request.getSession().getAttribute("boolConnexion") != null) {
 			return "{\"statut\": \"ok\"}";
+		} else if (password.length() < 6 || password.length() > 54) {
+			return "{\"statut\": \"nok\",\"message\":  \"Votre mot de passe doit contenir entre 6 et 54 charactères.\"}";
+		} else if (US.checkYear18(yearBirth)) {
+			return "{\"statut\": \"nok\",\"message\":  \"Vous devez avoir au moins de 18 ans.\"}";
 		} else if (gender == "" || name == "" || lastName == "" || email == "" || password == "" || sYearBirth == "" || cgv == "") {
 			return "{\"statut\": \"nok\",\"message\":  \"Tout les champs sont obligatoires.\"}";
 		} else if (!US.isEmailAdress(email)) {
 			return "{\"statut\": \"nok\",\"message\":  \"L'adresse email n'est pas valide.\"}";
 		} else if (US.checkEmail(email)) {
 			return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email est déja utilisé.\"}";
-		} 
-		
+		}
+
 		US.register(gender, name, lastName, email, password, yearBirth, request);
 		return "{\"statut\": \"ok\"}";
 

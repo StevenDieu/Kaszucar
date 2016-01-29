@@ -1,27 +1,38 @@
 var boolProgress = true;
 
-function signIn(){
-	if ($(".email").val() !== "" && $(".pwd").val() !== "") {
-		boolProgress = false;
-		var self = this;
+function signIn() {
+	if (boolProgress) {
+		if ($(".email").val() !== "" && $(".pwd").val() !== "") {
+			boolProgress = false;
+			var self = this;
 			$.ajax({
-				type : "post",
-				url : "ajaxConnexion",
-				data : "email=" + $(".email").val() + "&pwd=" + $(".pwd").val(),
-				success : function(t) {
-					t = JSON.parse(t);
-					if (t.statut == "ok") {
-						
-					} else if (t.statut == "nok") {
-						$(".errorConnexion").html(t.message);
-					}
-					self.boolProgress = true;
+			type : "post",
+			url : "ajaxConnexion",
+			data : "email=" + $(".email").val() + "&pwd=" + $(".pwd").val(),
+			success : function(t) {
+				t = JSON.parse(t);
+				if (t.statut == "ok") {
+
+				} else if (t.statut == "nok") {
+					$(".errorConnexion").html(t.message);
 				}
+				self.boolProgress = true;
+			}
 			});
-	}else{
-		$(".errorConnexion").html("Aucun champ ne doit \352tre vide.");
+		} else {
+			$(".errorConnexion").html("Aucun champ ne doit \352tre vide.");
+		}
 	}
 	return false;
+}
+
+function isAdressMail(email) {
+	var reg = new RegExp('^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$', 'i');
+	if (reg.test(email)) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 $(document).ready(function() {

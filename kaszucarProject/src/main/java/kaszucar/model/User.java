@@ -7,51 +7,49 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "users")
 public class User {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_users;
-	
+
 	@Column(name = "name", length = 255)
 	private String name;
-	
+
 	@Column(name = "last_name", length = 255)
 	private String last_name;
-	
+
 	@Column(name = "phoneNumber")
 	private int phoneNumber;
-	
+
 	@Column(name = "email_adress", length = 255)
 	private String email_adress;
-	
+
 	@Column(name = "password", length = 255)
 	private String password;
-	
+
 	@Column(name = "ip_adress")
 	private String ip_adress;
-	
+
 	@Column(name = "id_adress")
 	private String id_adress;
-	
+
 	@Column(name = "genre")
 	private String genre;
-	
+
 	@Column(name = "year_of_birth")
 	private int year_of_birth;
-	
+
 	@Column(name = "description", length = 500)
 	private String description;
-	
+
 	@Column(name = "url_picture", length = 1024)
 	private String url_picture;
-	
-	public User(){
-		
+
+	public User() {
+
 	}
 
 	public User(String name, String last_name, String email_adress, String password,
