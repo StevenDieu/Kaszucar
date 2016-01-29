@@ -43,5 +43,13 @@ $(document).ready(function() {
 			signIn();
 		}
 	});
+	
+	$(".proposition").on("change", function(){
+		if($(".proposition").val() == "search"){
+			$(".submitSearch").val("Rechercher")
+		}else{
+			$(".submitSearch").val("Proposer")
+		}
+	})
 
 });

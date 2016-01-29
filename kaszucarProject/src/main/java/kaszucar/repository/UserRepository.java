@@ -19,14 +19,14 @@ public class UserRepository {
 	
 	public List<User> getUserByEmailAndPwd(String email, String password) {
 		Criteria cr = openSession.createCriteria(User.class);
-		cr.add(Restrictions.eq("email_adress", email));
+		cr.add(Restrictions.eq("emailAdress", email));
 		cr.add(Restrictions.eq("password", password));
 		return cr.list();
 	}
 	
 	public List<User> getUserByEmail(String email) {
 		Criteria cr = openSession.createCriteria(User.class);
-		cr.add(Restrictions.eq("email_adress", email));
+		cr.add(Restrictions.eq("emailAdress", email));
 		return cr.list();
 	}
 

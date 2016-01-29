@@ -1,10 +1,24 @@
-
-{{> templates/header}}
+ {{> templates/header}}
 
 
 <figure class="img-background">
-	<img alt="La route" src="resources/img/route4.jpeg" height="819" width="1024">
+	<img alt="La route" src="resources/img/route4.jpeg" height="819"
+		width="1024">
 </figure>
+
+<form>
+
+	<select class="proposition">
+		<option value="search">Je cherche</option>
+		<option value="propose">Je propose</option>
+	</select>
+
+	<input type="text" placeholder="De"/>
+	<input type="text" placeholder="A" />
 	
+	<input type="text" placeholder="Date" />
+	
+	<input type="submit" class="submitSearch" value="Rechercher"/>  
+</form>
+
 {{> templates/footer}}
-	
