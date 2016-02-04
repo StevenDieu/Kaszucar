@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kaszucar.model.Users;
 import kaszucar.service.UserService;
 import kaszucar.util.Util;
 
@@ -42,9 +43,13 @@ public class CtrlUser {
 			return "{\"statut\": \"nok\",\"message\":  \"Tout les champs sont obligatoires.\"}";
 		} else if (!US.checkEmail(email)) {
 			return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email n'existe pas.\"}";
-		} else if (!US.connexion(email, password, request)) {
+		}
+		Users user = US.connexion(email, password);
+		if (user == null) {
 			return "{\"statut\": \"nok\",\"message\":  \"Le mot de passe est incorrect.\"}";
 		}
+
+		request.getSession().setAttribute("User", user);
 
 		return "{\"statut\": \"ok\"}";
 
@@ -62,11 +67,11 @@ public class CtrlUser {
 		String sYearBirth = request.getParameter("yearBirth");
 		String cgv = request.getParameter("cgv");
 
-		if (!Util.convertToInt(sYearBirth)) {
+		if (!Util.convertToShort(sYearBirth)) {
 			return "{\"statut\": \"nok\",\"message\":  \"L'année doit être un chiffre.\"}";
 		}
 
-		int yearBirth = Integer.parseInt(sYearBirth);
+		short yearBirth = Short.parseShort(sYearBirth);
 
 		if (request.getSession().getAttribute("boolConnexion") != null) {
 			return "{\"statut\": \"ok\"}";
@@ -82,7 +87,9 @@ public class CtrlUser {
 			return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email est déja utilisé.\"}";
 		}
 
-		US.register(gender, name, lastName, email, password, yearBirth, request);
+		Users user = US.register(gender, name, lastName, email, password, yearBirth);
+		request.getSession().setAttribute("User", user);
+
 		return "{\"statut\": \"ok\"}";
 
 	}

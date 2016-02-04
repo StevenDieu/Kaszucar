@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kaszucar.model.User;
+import kaszucar.model.Users;
 import kaszucar.repository.UserRepository;
 
 @Service
@@ -20,23 +20,30 @@ public class UserService {
 	@Autowired
 	private UserRepository UR;
 
-	public boolean connexion(String email, String password, HttpServletRequest request) {
-		List<User> users = UR.getUserByEmailAndPwd(email, sha256(password));
+	public Users connexion(String email, String password) {
+		List<Users> users = UR.getUserByEmailAndPwd(email, sha256(password));
 		if (users.size() == 1) {
-			request.getSession().setAttribute("user", users.get(0));
-			return true;
+			return users.get(0);
 		} else {
-			return false;
+			return null;
 		}
 	}
 
-	public void register(String gender, String name, String lastName, String email, String password, int yearBirth,
-			HttpServletRequest request) {
-		UR.insertUser(gender, name, lastName, email, sha256(password), yearBirth, getIpAdresse(request));
+	public Users register(String gender, String name, String lastName, String emailAdress, String password, short yearOfBirth) {
+		Users user = new Users();
+		user.setGenre(gender);
+		user.setName(name);
+		user.setLastName(lastName);
+		user.setEmailAdress(emailAdress);
+		user.setPassword(sha256(password));
+		user.setYearOfBirth(yearOfBirth);
+		UR.insertUser(user);
+		
+		return user;
 	}
 
 	public boolean checkEmail(String email) {
-		List<User> users = UR.getUserByEmail(email);
+		List<Users> users = UR.getUserByEmail(email);
 		if (users.size() == 1) {
 			return true;
 		} else {

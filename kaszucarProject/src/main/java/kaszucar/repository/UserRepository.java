@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import kaszucar.model.User;
+import kaszucar.model.Users;
 import kaszucar.util.HibernateUtil;
 
 @SuppressWarnings("unchecked")
@@ -17,26 +17,24 @@ public class UserRepository {
 	Session openSession = HibernateUtil.getSessionFactory().openSession();
 
 	
-	public List<User> getUserByEmailAndPwd(String email, String password) {
-		Criteria cr = openSession.createCriteria(User.class);
+	public List<Users> getUserByEmailAndPwd(String email, String password) {
+		Criteria cr = openSession.createCriteria(Users.class);
 		cr.add(Restrictions.eq("emailAdress", email));
 		cr.add(Restrictions.eq("password", password));
 		return cr.list();
 	}
 	
-	public List<User> getUserByEmail(String email) {
-		Criteria cr = openSession.createCriteria(User.class);
+	public List<Users> getUserByEmail(String email) {
+		Criteria cr = openSession.createCriteria(Users.class);
 		cr.add(Restrictions.eq("emailAdress", email));
 		return cr.list();
 	}
 
-	public void insertUser(String gender, String name, String lastName, String email, String password, int yearBirth, String ipAdress) {
+	public void insertUser(Users users) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        
-        User user = new User(name,lastName,email,password,ipAdress,gender,yearBirth);
-         
-        session.save(user);
+                 
+        session.save(users);
  
         session.getTransaction().commit();
         HibernateUtil.shutdown();
