@@ -15,6 +15,10 @@ import javax.persistence.Table;
 @Table(name = "city_stop", schema = "public")
 public class CityStop implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private CityStopId id;
 
 	public CityStop() {

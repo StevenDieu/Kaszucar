@@ -35,7 +35,7 @@ public class CtrlUser {
 		String email = request.getParameter("email");
 		String password = request.getParameter("pwd");
 
-		if (request.getSession().getAttribute("boolConnexion") != null) {
+		if (request.getSession().getAttribute("User") != null) {
 			return "{\"statut\": \"ok\"}";
 		} else if (!US.isEmailAdress(email)) {
 			return "{\"statut\": \"nok\",\"message\":  \"L'adresse email n'est pas valide.\"}";
@@ -73,7 +73,7 @@ public class CtrlUser {
 
 		short yearBirth = Short.parseShort(sYearBirth);
 
-		if (request.getSession().getAttribute("boolConnexion") != null) {
+		if (request.getSession().getAttribute("User") != null) {
 			return "{\"statut\": \"ok\"}";
 		} else if (password.length() < 6 || password.length() > 54) {
 			return "{\"statut\": \"nok\",\"message\":  \"Votre mot de passe doit contenir entre 6 et 54 charactères.\"}";

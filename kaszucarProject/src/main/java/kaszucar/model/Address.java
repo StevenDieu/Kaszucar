@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "address", schema = "public")
 public class Address implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idAddress;
 	private String address;
 	private String complementAddress;

@@ -1,23 +1,19 @@
- {{> templates/header}}
+{{> templates/header}}
 
 
-<figure class="img-background">
-	<img alt="La route" src="resources/img/route4.jpeg" height="819"
-		width="1024">
-</figure>
-
-<form class="mon-formulaire">
-	<select class="proposition formulaire">
-		<option class="chercher" value="search">Je cherche</option>
-		<option class="proposer" value="propose">Je propose</option>
-	</select>
-
-	<input class="input-formulaire formulaire icon-radio-checked" type="text" placeholder="De"/>
-	<input class="input-formulaire formulaire icon-radio-unchecked" type="text" placeholder="A" />
+<div class="img-background">
+	<form class="mon-formulaire">
+		<select class="proposition formulaire">
+			<option class="chercher" value="search">Je cherche</option>
+			<option class="proposer" value="propose">Je propose</option>
+		</select>
 	
-	<input class="input-formulaire formulaire icon-calendar" type="text" placeholder="Date" />
-	
-	<input type="submit" class="submitSearch" value="Rechercher"/>  
-</form>
-
+		<input class="input-formulaire formulaire icon-radio-checked" type="text" placeholder="De"/>
+		<input class="input-formulaire formulaire icon-radio-unchecked" type="text" placeholder="A" />
+		
+		<input class="input-formulaire formulaire icon-calendar" type="text" placeholder="Date" />
+		
+		<input type="submit" class="submitSearch" value="Rechercher"/>  
+	</form>
+</div>
 {{> templates/footer}}

@@ -15,6 +15,10 @@ import javax.persistence.Table;
 @Table(name = "opinion", schema = "public")
 public class Opinion implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private OpinionId id;
 	private String description;
 	private short score;

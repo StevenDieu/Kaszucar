@@ -10,6 +10,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class OpinionId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idOpinion;
 	private int idUsersFrom;
 	private int idUsersTo;

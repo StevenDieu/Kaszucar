@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "city", schema = "public")
 public class City implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idCity;
 	private String name;
 	private String tagName;

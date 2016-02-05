@@ -3,6 +3,7 @@ package kaszucar.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -10,6 +11,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CtrlHome {
+	
+	/**
+	 * Redirect a page
+	 * 
+	 * @param url
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/*")
+	public String redirection() {
+		return "404";
+	}
 
 	@RequestMapping(value = "/")
 	public ModelAndView index(HttpServletRequest request) {
