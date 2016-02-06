@@ -103,18 +103,19 @@ body {
 	border-radius: 5%;
 	color: #888888;
 	display: inline-block;
-	font-size: 1.5em;
-	height: 2em;
-	margin: 27% 2.8% 0;
+	font-size: 1.3em;
+	height: 1.5em;
+	margin: 35% 2.8% 0;
 	vertical-align: middle;
-	width: 14%;
+	width: 13.8%;
 	
 }
 
 .input-formulaire {
 	border-radius: 5px;
 	border: none;
-	height: 1.9em;
+	height: 1.4em;
+	padding-left: 0.5%;
 }
 
 .submitSearch {
@@ -124,18 +125,65 @@ body {
 	color: #fff;
 }
 
-.icon-calendar:before {
-	content: "\e900";
+.icon-calendar::-webkit-input-placeholder::before { 
+	color: #333333;
+	content:'\e900'; 
+	margin-right: 0.5%;
+}
+.icon-calendar::-moz-placeholder::before  { 
+	color: #333333;
+	content:'\e900'; 
+	margin-right: 0.5%;
+} /* firefox 19+ */
+.icon-calendar:-ms-input-placeholder::before  { 
+	color: #333333;
+	content:'\e900'; 
+	margin-right: 0.5%;
+} /* ie */
+.icon-calendar:-moz-placeholder::before  { 
+	color: #333333;
+	content:'\e900'; 
+	margin-right: 0.5%;
 }
 
-.icon-radio-checked:before {
-	content: "\e901";
+.icon-radio-checked::-webkit-input-placeholder::before { 
+	color: #3fb34f;
+	content:'\e901'; 
+	margin-right: 0.5%;
+}
+.icon-radio-checked::-moz-placeholder::before  { 
+	color: #3fb34f;
+	content:'\e901'; 
+	margin-right: 0.5%;
+} /* firefox 19+ */
+.icon-radio-checked:-ms-input-placeholder::before  { 
+	color: #3fb34f;
+	content:'\e901'; 
+	margin-right: 0.5%;
+} /* ie */
+.icon-radio-checked:-moz-placeholder::before  { 
+	color: #3fb34f;
+	content:'\e901'; 
+	margin-right: 0.5%;
 }
 
-.icon-radio-unchecked:before {
-	content: "\e902";
+.icon-radio-unchecked::-webkit-input-placeholder::before { 
+	color: #f90000;
+	content:'\e902';
+	margin-right: 0.5%; 
 }
-
-.clearBoth{
-	clear: both;
+.icon-radio-unchecked::-moz-placeholder::before  { 
+	color: #f90000;
+	content:'\e902'; 
+	margin-right: 0.5%;
+} /* firefox 19+ */
+.icon-radio-unchecked:-ms-input-placeholder::before  { 
+	color: #f90000;
+	content:'\e902'; 
+	margin-right: 0.5%;
+} /* ie */
+.icon-radio-unchecked:-moz-placeholder::before  { 
+	color: #f90000;
+	content:'\e902'; 
+	margin-right: 0.5%;
 }
