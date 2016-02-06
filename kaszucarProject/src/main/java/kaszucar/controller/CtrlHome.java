@@ -8,25 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.trimou.Mustache;
+import org.trimou.engine.MustacheEngine;
+import org.trimou.engine.MustacheEngineBuilder;
 
 @Controller
 public class CtrlHome {
 	
-	/**
-	 * Redirect a page
-	 * 
-	 * @param url
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value = "/*")
-	public String redirection() {
-		return "404";
-	}
-
 	@RequestMapping(value = "/")
 	public ModelAndView index(HttpServletRequest request) {
 
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
 
