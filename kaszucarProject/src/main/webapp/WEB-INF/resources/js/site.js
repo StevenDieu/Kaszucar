@@ -37,18 +37,21 @@ function isAdressMail(email) {
 
 $(document).ready(function() {
 
+
 	$('.singnIn').on('submit', function(e) {
 		e.preventDefault();
 		if (boolProgress) {
 			signIn();
 		}
 	});
-	
-	$(".proposition").on("change", function(){
-		if($(".proposition").val() == "search"){
+
+	$(".proposition").on("change", function() {
+		if ($(".proposition").val() == "search") {
 			$(".submitSearch").val("Rechercher")
-		}else{
+			$(".mon-formulaire").attr("action", "rechercher-un-covoiturage");
+		} else {
 			$(".submitSearch").val("Proposer")
+			$(".mon-formulaire").attr("action", "proposer-un-covoiturage");
 		}
 	})
 

@@ -1,0 +1,33 @@
+{{> templates/header}}
+<div class="clearBoth"></div>
+<div class="content">
+
+	<div class="bloc-map-left">
+		<div id="title">Itinéraire</div>
+
+		<div id="right-panel">
+			<div>
+				Lieu de départ :
+					<input type="text" id="start" placeholder="Lieu de départ : Lille, Paris" /> <br> 
+				Lieu d'arrivé :
+					<input type="text" id="end" placeholder="Lieu de d'arrivé : Lille, Paris" /> <br> 
+				Lieu de passage :
+				<input type="text" id="waypoints" placeholder="Lieu de passage : Lille, Paris" /> <button class="addCity button">+</button><br> 
+				<div class="blocWaypoitsCity">
+				
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bloc-map-right">
+		<div id="title">Itinéraire sur carte</div>
+
+		<div id="map"></div>
+	</div>
+
+	<div class="clearBoth"></div>
+</div>
+<script src="resources/js/localisation.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyUpuWlYPq5bobSZhH7TF5b-uzbelvgEM&signed_in=true&callback=initMap&libraries=places" async defer></script>
+
+{{> templates/footer}}
