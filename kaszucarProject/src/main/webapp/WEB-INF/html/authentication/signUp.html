@@ -1,25 +1,23 @@
 {{> templates/header}}
 <div class="clearBoth"></div>
-
-<form class="signUp">
-	<h2>Inscription</h2>
-	<span class="errorConnexion"></span><br/>
-	
-	<input type="radio" name="gender"  value="H"> Homme 
-	<input type="radio" name="gender" value="F"> Femme <br/>
-	<input type="text" class="name" placeholder="Prenom" /><br /> 
-	<input type="text" class="lastName" placeholder="Nom" /><br /> 
-	<input type="text" class="email" placeholder="Adresse email" /><br />
-	<input type="password" class="password" placeholder="Mot de passe" /><br /> 
-	<input type="password" class="confirmPassword" placeholder="Confirmation mot de passe" /><br /> 
-	<select id="yearBirth" class="yearBirth">
-		<option value="" selected="selected">Ann&eacute;e de naissance</option>
-	</select><br />
-
-	<input type="checkbox" class="cgv">J'ai lu et j'accepte les <a href="#">conditions g&eacute;n&eacute;rales d'utilisation du Site et du Service Kazsucar.</a><br/><br/>
-	<input type="submit" value="S'incrire" />
-</form>
-
+<div class=background-singup>
+	<form class="signUp">
+		<h2>Inscription</h2>
+		<span class="errorConnexion"></span><br/>
+		<input type="radio" name="gender"  value="H"> Homme 
+		<input type="radio" name="gender" value="F"> Femme <br/>
+		<input type="text" class="name input-formulaire formulaireInsc" placeholder="Prenom" /><br /> 
+		<input type="text" class="lastName input-formulaire formulaireInsc" placeholder="Nom" /><br /> 
+		<input type="text" class="email input-formulaire formulaireInsc" placeholder="Adresse email" /><br />
+		<input type="password" class="password input-formulaire formulaireInsc" placeholder="Mot de passe" /><br /> 
+		<input type="password" class="confirmPassword input-formulaire formulaireInsc" placeholder="Confirmation mot de passe" /><br /> 
+		<select id="yearBirth" class="yearBirth input-formulaire formulaireInsc">
+			<option value="" selected="selected">Ann&eacute;e de naissance</option>
+		</select><br />
+		<input type="checkbox" class="cgv">J'ai lu et j'accepte les <a href="#">conditions g&eacute;n&eacute;rales d'utilisation du Site et du Service Kazsucar.</a><br/><br/>
+		<input type="submit" class="formulaireInsc submitSearch" value="S'incrire" />
+	</form>
+</div>
 <script src="resources/js/signUp.js"></script>
 
 {{> templates/footer}}

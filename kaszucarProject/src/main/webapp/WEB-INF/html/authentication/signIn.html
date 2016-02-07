@@ -1,17 +1,15 @@
 {{> templates/header}}
 <div class="clearBoth"></div>
-<form class="singnIn" name="singnIn">
-	
-	<h2>Connexion</h2>
-	<span class="errorConnexion"></span><br/>
-	
-	<input type="text" name="email" class="email" placeholder="Adresse email" /><br/>
-	<input type="password" name="password" class="pwd" placeholder="Mot de passe" /><br/>
-	<input type="checkbox" name="rememberMe">Se souvenir de moi<br/>
-	<input type="submit" placeholder="Se connecter" /><br/>
-	<a href="mot-de-passe-oublie">Mot de passe oubli&eacute;?</a><br/>
-	<a href="inscription">Pas encore inscrit ?</a>
-
-</form>
-
+<div class="background-singin">
+	<form class="singnIn" name="singnIn">
+		<h2>Connexion</h2>
+		<span class="errorConnexion"></span><br/>
+		<input type="text" name="email" class="email input-formulaire formulaireInsc" placeholder="Adresse email" /><br/>
+		<input type="password" name="password" class="pwd input-formulaire formulaireInsc" placeholder="Mot de passe" /><br/>
+		<input type="checkbox" name="rememberMe">Se souvenir de moi<br/>
+		<input type="submit" class="formulaireInsc submitSearch" placeholder="Se connecter" /><br/>
+		<a href="mot-de-passe-oublie">Mot de passe oubli&eacute;?</a><br/>
+		<a href="inscription">Pas encore inscrit ?</a>
+	</form>
+</div>
 {{> templates/footer}}

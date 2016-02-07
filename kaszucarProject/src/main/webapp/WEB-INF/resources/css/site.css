@@ -24,6 +24,7 @@
 }
 
 a {
+	color: #000;
 	text-decoration: none;
 }
 
@@ -53,8 +54,7 @@ body {
 }
 
 .kaszucar {
-	margin: 0;
-	text-align: center;
+	margin: 0 0 0 38%;
 }
 
 .logo {
@@ -67,7 +67,7 @@ body {
 	padding: 1%;
 	width: 100%;
     float: left;
-    }
+}
 
 .connexion, .inscription {
 	background: black;
@@ -83,14 +83,30 @@ body {
 
 .img-background {
 	background: url("../img/route4.jpeg");
-	-webkit-background-size: cover;
 	background-size: cover;
 	height: 100vh;
+	-webkit-background-size: cover;
 }
 
-.img-background img {
+.img-background img, .background-singin img, .background-singup img{
 	height: auto;
 	width: 100%;
+}
+
+.background-singin{
+	background: url("../img/route4.jpeg");
+	background-size: cover;
+	height: 100vh;
+	margin-top: -10.5%;
+	-webkit-background-size: cover;
+}
+
+.background-singup{
+	background: url("../img/route4.jpeg");
+	background-size: cover;
+	height: 100vh;
+	margin-top: -10.5%;
+	-webkit-background-size: cover;
 }
 
 .reseaux-sociaux, .center-logo, .conn-insc {
@@ -107,8 +123,23 @@ body {
 	height: 1.5em;
 	margin: 35% 2.8% 0;
 	vertical-align: middle;
-	width: 13.8%;
+	width: 13.7%;
 	
+}
+
+.formulaireInsc{
+	border-radius: 5%;
+	color: #888888;
+	display: inline-block;
+	font-size: 1em;
+	height: 1.5em;
+	margin: 2%;
+	vertical-align: middle;
+	width: 87%;
+}
+
+#yearBirth{
+	width: 87.6%;
 }
 
 .input-formulaire {
@@ -186,4 +217,35 @@ body {
 	color: #f90000;
 	content:'\e902'; 
 	margin-right: 0.5%;
+}
+
+.clearBoth{
+	clear: both;
+}
+
+.signUp, .singnIn{
+	font-size: 1.3em;
+	margin: 0 auto;
+	text-align: center;
+	width: 26%;
+}
+
+.signUp h2, .singnIn h2{
+	font-size: 1em;
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+	.connexion {
+	    margin-left: 30%;
+	}
+	.background-singin, .background-singup {
+	    margin-top: -12.5%;
+	}
+	.reseaux-sociaux, .center-logo, .conn-insc {
+		width: 32%;
+	}
+	.formulaire, .submitSearch {
+	    font-size: 14px;
+	    width: 13.6%;
+	}
 }
