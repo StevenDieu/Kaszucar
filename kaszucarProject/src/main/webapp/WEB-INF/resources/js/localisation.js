@@ -19,16 +19,11 @@ function initMap() {
 
 	directionsDisplay.setMap(map);
 
-	autoComplete(document.getElementById('start'));
-	autoComplete(document.getElementById('waypoints'));
-
-	autoComplete(document.getElementById('end'));
-
-	$("#start").focusout(function() {
+	$("#from").focusout(function() {
 		chooseMethod()
 	})
 
-	$("#end").focusout(function() {
+	$("#to").focusout(function() {
 		chooseMethod()
 	})
 }
@@ -60,8 +55,8 @@ function calculateAndDisplayRoute() {
 	});
 
 	directionsService.route({
-	origin : $("#start").val(),
-	destination : $("#end").val(),
+	origin : $("#from").val(),
+	destination : $("#to").val(),
 	waypoints : waypts,
 	optimizeWaypoints : true,
 	travelMode : google.maps.TravelMode.DRIVING
@@ -95,8 +90,8 @@ function geocodeAddress(address) {
 }
 
 function chooseMethod() {
-	var start = $("#start").val();
-	var end = $("#end").val();
+	var start = $("#from").val();
+	var end = $("#to").val();
 
 	if (start !== "" && end === "") {
 		geocodeAddress(start);
@@ -112,7 +107,7 @@ function addCity() {
 	if (newWaypoints !== "") {
 		var start = $("#start").val();
 		var end = $("#end").val();
-		$(".blocWaypoitsCity").append('<div class="newWaypoints"><span class="thisWaipoints">' + newWaypoints + '</span><button class="removeNewWaypoints button-red">x</button></div>')
+		$(".blocWaypoitsCity").append('<div class="newWaypoints"><span class="thisWaipoints">' + newWaypoints + '</span><input type="hidden" name="waypoints[]" value="' + newWaypoints + '" /><button class="removeNewWaypoints button-red">x</button></div>')
 		if (start !== "" && end !== "") {
 			calculateAndDisplayRoute()
 		}
@@ -126,9 +121,3 @@ function addCity() {
 		});
 	}
 }
-
-$(document).ready(function() {
-	$(".addCity").on("click", function() {
-		addCity();
-	});
-});

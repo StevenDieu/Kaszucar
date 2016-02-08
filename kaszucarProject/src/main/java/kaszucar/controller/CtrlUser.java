@@ -68,7 +68,7 @@ public class CtrlUser {
 		String cgv = request.getParameter("cgv");
 
 		if (!Util.convertToShort(sYearBirth)) {
-			return "{\"statut\": \"nok\",\"message\":  \"L'année doit être un chiffre.\"}";
+			return "{\"statut\": \"nok\",\"message\":  \"L'annÃ©e doit Ãªtre un chiffre.\"}";
 		}
 
 		short yearBirth = Short.parseShort(sYearBirth);
@@ -76,7 +76,7 @@ public class CtrlUser {
 		if (request.getSession().getAttribute("User") != null) {
 			return "{\"statut\": \"ok\"}";
 		} else if (password.length() < 6 || password.length() > 54) {
-			return "{\"statut\": \"nok\",\"message\":  \"Votre mot de passe doit contenir entre 6 et 54 charactères.\"}";
+			return "{\"statut\": \"nok\",\"message\":  \"Votre mot de passe doit contenir entre 6 et 54 charactÃ¨res.\"}";
 		} else if (US.checkYear18(yearBirth)) {
 			return "{\"statut\": \"nok\",\"message\":  \"Vous devez avoir au moins de 18 ans.\"}";
 		} else if (gender == "" || name == "" || lastName == "" || email == "" || password == "" || sYearBirth == "" || cgv == "") {
@@ -84,7 +84,7 @@ public class CtrlUser {
 		} else if (!US.isEmailAdress(email)) {
 			return "{\"statut\": \"nok\",\"message\":  \"L'adresse email n'est pas valide.\"}";
 		} else if (US.checkEmail(email)) {
-			return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email est déja utilisé.\"}";
+			return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email est dÃ©ja utilisÃ©.\"}";
 		}
 
 		Users user = US.register(gender, name, lastName, email, password, yearBirth);

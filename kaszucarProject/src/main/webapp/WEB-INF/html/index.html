@@ -5,12 +5,18 @@
 			<option class="chercher" value="search">Je cherche</option>
 			<option class="proposer" value="propose">Je propose</option>
 		</select>
-		<input class="input-formulaire formulaire icon-radio-checked" type="text" placeholder="De"/>
-		<input class="input-formulaire formulaire icon-radio-unchecked" type="text" placeholder="A" />
+		<input class="input-formulaire formulaire icon-radio-checked" id="from" name="from" type="text" placeholder="De"/>
+		<input class="input-formulaire formulaire icon-radio-unchecked" id="to" name="to" type="text" placeholder="A" />
 		
 		<input class="input-formulaire formulaire icon-calendar" type="text" placeholder="Date" />
 		
 		<input type="submit" class="submitSearch" value="Rechercher"/>  
 	</form>
 </div>
+
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyUpuWlYPq5bobSZhH7TF5b-uzbelvgEM&signed_in=true&libraries=places"
+	async defer></script>
+<script src="resources/js/localisation.js"></script>
+
 {{> templates/footer}}

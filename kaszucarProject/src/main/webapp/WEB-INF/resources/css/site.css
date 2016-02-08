@@ -248,43 +248,44 @@ html, body {
 	height: 100%;
 }
 
-#right-panel {
+.right-panel {
 	line-height: 30px;
 	padding-left: 10px;
 }
 
-#right-panel {
+.right-panel {
 	margin: 10px;
 	border-width: 2px;
-	width: 100%;
-	float: left;
+	width: 88%;
 	text-align: left;
+}
+
+.heigt-map {
+	height: 426px;
 }
 
 .bloc-map-right {
 	max-width: 350px;
-	height: 426px;
 	width: 100%;
 	padding: 16px;
 	border: 1px solid #DCDCDC;
 	float: right;
-	margin: 30px 30px 20px 0px;
+	margin: 20px 30px 0px 0px;
 	padding: 16px;
 }
 
 .bloc-map-left {
 	max-width: 496px;
-	min-height: 426px;
 	width: 100%;
 	padding: 16px;
 	border: 1px solid #DCDCDC;
 	float: left;
-	margin: 30px 0px 20px 30px;
+	margin: 20px 0px 0px 30px;
 }
 
 .content {
 	max-width: 1000px;
-	width: 100%;
+	width: 99%;
 	margin: 0 auto;
 	border-left: 1px solid #DCDCDC;
 	border-right: 1px solid #DCDCDC;
@@ -294,6 +295,11 @@ html, body {
 	padding: 0px 15px 10px;
 	border-bottom: 1px solid #DCDCDC;
 	margin-bottom: 17px;
+}
+
+.textarea-100{
+	width: 100%;
+	resize:vertical;
 }
 
 .button {
@@ -363,7 +369,8 @@ html, body {
 	background: -ms-linear-gradient(top, #d66565, #9c3e3e);
 	background: -o-linear-gradient(top, #d66565, #9c3e3e);
 	background-image: -ms-linear-gradient(top, #d66565 0%, #9c3e3e 100%);
-	padding: 0px 4px; margin-top : -1px;
+	padding: 0px 4px;
+	margin-top: -1px;
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
 	border-radius: 30px;
@@ -410,6 +417,10 @@ html, body {
 	color: #fff;
 }
 
+.hide {
+	display:none;
+}
+
 @media only screen and (min-device-width : 768px) and (max-device-width
 	: 1024px) {
 	.connexion {
@@ -424,5 +435,34 @@ html, body {
 	.formulaire, .submitSearch {
 		font-size: 14px;
 		width: 13.6%;
+	}
+}
+
+@media only screen and (max-width : 984px) {
+	.content {
+		border: none;
+	}
+	#map {
+		margin: 0 auto;
+	}
+	.bloc-map-right {
+		max-width: 496px;
+		float: none;
+		margin: 30px auto 20px auto;
+		padding: 16px 0px;
+	}
+	.bloc-map-left {
+		padding: 16px 0px;
+		float: none;
+		margin: 30px auto 20px auto;
+	}
+}
+
+@media only screen and (max-width : 496px) {
+	.bloc-map-right {
+		margin-left: -1px;
+	}
+	.bloc-map-left {
+		margin-left: -1px;
 	}
 }
