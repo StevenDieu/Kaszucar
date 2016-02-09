@@ -39,9 +39,24 @@ function isAdressMail(email) {
 	}
 }
 
+function resizeFormHome(){
+	var tailleEcran = window.innerHeight + $(".header-kaszu").height();
+	var hauteurMoyen = $(".form-search-home").css({"margin-top":(tailleEcran / 2 - ($(".form-search-home").height() / 2))})
+}
+
 $(document).ready(function() {
+	
+	
 
 	$(window).load(function() {
+		$( window ).resize(function() {
+			resizeFormHome();
+		});
+
+		if($(".form-search-home").size() >= 1){
+			resizeFormHome();
+		}
+		
 		if (document.getElementById('from') !== null) {
 			autoComplete(document.getElementById('from'));
 

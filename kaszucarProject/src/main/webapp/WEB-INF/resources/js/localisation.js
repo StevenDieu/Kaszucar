@@ -102,22 +102,3 @@ function chooseMethod() {
 	}
 }
 
-function addCity() {
-	var newWaypoints = $("#waypoints").val();
-	if (newWaypoints !== "") {
-		var start = $("#start").val();
-		var end = $("#end").val();
-		$(".blocWaypoitsCity").append('<div class="newWaypoints"><span class="thisWaipoints">' + newWaypoints + '</span><input type="hidden" name="waypoints[]" value="' + newWaypoints + '" /><button class="removeNewWaypoints button-red">x</button></div>')
-		if (start !== "" && end !== "") {
-			calculateAndDisplayRoute()
-		}
-		$(".removeNewWaypoints").off("click");
-		$(".removeNewWaypoints").on("click", function() {
-			$(this).parent().remove();
-
-			if (start !== "" && end !== "") {
-				calculateAndDisplayRoute()
-			}
-		});
-	}
-}

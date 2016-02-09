@@ -1,16 +1,25 @@
 {{> templates/header}}
 <div class="img-background">
-	<form action="rechercher-un-covoiturage" class="mon-formulaire">
+	<form action="rechercher-un-covoiturage" class="form-search-home">
 		<select class="proposition formulaire">
 			<option class="chercher" value="search">Je cherche</option>
 			<option class="proposer" value="propose">Je propose</option>
 		</select>
-		<input class="input-formulaire formulaire icon-radio-checked" id="from" name="from" type="text" placeholder="De"/>
-		<input class="input-formulaire formulaire icon-radio-unchecked" id="to" name="to" type="text" placeholder="A" />
+		<div class="blockInput">
+		<i class="glyph icon-radio-checked" aria-hidden="true"></i>
+		<input class="input-formulaire formulaire" id="from" name="from" type="text" placeholder="De"/>
+		</div>
 		
-		<input class="input-formulaire formulaire icon-calendar" type="text" placeholder="Date" />
+		<div class="blockInput">
+		<i class="glyph icon-radio-unchecked" aria-hidden="true"></i>
+		<input class="input-formulaire formulaire" id="to" name="to" type="text" placeholder="A" />
+		</div>
 		
-		<input type="submit" class="submitSearch" value="Rechercher"/>  
+		<div class="blockInput">
+		<i class="glyph icon-calendar" aria-hidden="true"></i>
+		<input class="input-formulaire formulaire" type="date" placeholder="Date" />
+		</div>
+		<input type="submit" class="submitSearch" value="Rechercher" />  
 	</form>
 </div>
 
