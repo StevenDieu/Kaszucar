@@ -20,20 +20,6 @@ function initMap() {
 	directionsDisplay.setMap(map);
 }
 
-function autoComplete(input) {
-
-	if (input !== undefined) {
-
-		var options = {
-		types : [ '(cities)' ],
-		componentRestrictions : {
-			country : 'fr'
-		}
-		};
-		autocomplete = new google.maps.places.Autocomplete(input, options);
-	}
-}
-
 function calculateAndDisplayRoute() {
 
 	initMap();
@@ -94,3 +80,39 @@ function chooseMethod() {
 	}
 }
 
+function dontSubmitFormWithGoogle(idInput) {
+	if (document.getElementById(idInput) !== null) {
+		$('#' + idInput).keydown(function(e) {
+			if (e.which == 13 && $('.pac-container:visible').length) return false;
+		});
+	}
+}
+
+function autoComplete(idInput) {
+	if (document.getElementById(idInput) !== null) {
+		input = document.getElementById(idInput);
+
+		var options = {
+		types : [ '(cities)' ],
+		componentRestrictions : {
+			country : 'fr'
+		}
+		};
+		autocomplete = new google.maps.places.Autocomplete(input, options);
+
+	}
+
+}
+
+$(document).ready(function() {
+
+	$(window).load(function() {
+		dontSubmitFormWithGoogle('from');
+		dontSubmitFormWithGoogle('waypoints');
+		dontSubmitFormWithGoogle('to');
+
+		autoComplete('from');
+		autoComplete('waypoints');
+		autoComplete('to');
+	});
+})

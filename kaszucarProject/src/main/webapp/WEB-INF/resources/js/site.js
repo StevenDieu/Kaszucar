@@ -37,19 +37,6 @@ function isAdressMail(email) {
 
 $(document).ready(function() {
 
-	$(window).load(function() {
-		if (document.getElementById('from') !== null) {
-			autoComplete(document.getElementById('from'));
-		}
-		if (document.getElementById('waypoints') !== null) {
-			autoComplete(document.getElementById('waypoints'));
-		}
-		if (document.getElementById('to') !== null) {
-			autoComplete(document.getElementById('to'));
-		}
-
-	});
-
 	$('.singnIn').on('submit', function(e) {
 		e.preventDefault();
 		if (boolProgress) {
@@ -66,5 +53,8 @@ $(document).ready(function() {
 			$(".form-search-home").attr("action", "proposer-un-covoiturage");
 		}
 	})
+
+
+
 
 });
