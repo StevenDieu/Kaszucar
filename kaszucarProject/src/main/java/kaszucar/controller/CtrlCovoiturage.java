@@ -19,23 +19,9 @@ public class CtrlCovoiturage {
 		String date = request.getParameter("date");
 
 		Map<String, Object> infoCovoit = new HashMap<String, Object>();
-		if (from != null) {
-			infoCovoit.put("from", from);
-		} else {
-			infoCovoit.put("from", "");
-		}
-
-		if (to != null) {
-			infoCovoit.put("to", to);
-		} else {
-			infoCovoit.put("to", "");
-		}
-
-		if (date != null) {
-			infoCovoit.put("date", date);
-		} else {
-			infoCovoit.put("date", "");
-		}
+		infoCovoit.put("from", from);
+		infoCovoit.put("to", to);
+		infoCovoit.put("date", date);
 
 		return new ModelAndView("covoiturage/proposeCovoit", infoCovoit);
 	}
