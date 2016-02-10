@@ -5,22 +5,20 @@ function signIn() {
 		if ($(".email").val() !== "" && $(".pwd").val() !== "") {
 			boolProgress = false;
 			var self = this;
-			$
-					.ajax({
-						type : "post",
-						url : "ajaxConnexion",
-						data : "email=" + $(".email").val() + "&pwd="
-								+ $(".pwd").val(),
-						success : function(t) {
-							t = JSON.parse(t);
-							if (t.statut == "ok") {
+			$.ajax({
+			type : "post",
+			url : "ajaxConnexion",
+			data : "email=" + $(".email").val() + "&pwd=" + $(".pwd").val(),
+			success : function(t) {
+				t = JSON.parse(t);
+				if (t.statut == "ok") {
 
-							} else if (t.statut == "nok") {
-								$(".errorConnexion").html(t.message);
-							}
-							self.boolProgress = true;
-						}
-					});
+				} else if (t.statut == "nok") {
+					$(".errorConnexion").html(t.message);
+				}
+				self.boolProgress = true;
+			}
+			});
 		} else {
 			$(".errorConnexion").html("Aucun champ ne doit \352tre vide.");
 		}
@@ -29,9 +27,7 @@ function signIn() {
 }
 
 function isAdressMail(email) {
-	var reg = new RegExp(
-			'^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$',
-			'i');
+	var reg = new RegExp('^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$', 'i');
 	if (reg.test(email)) {
 		return true;
 	} else {
@@ -39,27 +35,11 @@ function isAdressMail(email) {
 	}
 }
 
-function resizeFormHome(){
-	var tailleEcran = window.innerHeight + $(".header-kaszu").height();
-	var hauteurMoyen = $(".form-search-home").css({"margin-top":(tailleEcran / 2 - ($(".form-search-home").height() / 2))})
-}
-
 $(document).ready(function() {
-	
-	
 
 	$(window).load(function() {
-		$( window ).resize(function() {
-			resizeFormHome();
-		});
-
-		if($(".form-search-home").size() >= 1){
-			resizeFormHome();
-		}
-		
 		if (document.getElementById('from') !== null) {
 			autoComplete(document.getElementById('from'));
-
 		}
 		if (document.getElementById('waypoints') !== null) {
 			autoComplete(document.getElementById('waypoints'));
@@ -80,10 +60,10 @@ $(document).ready(function() {
 	$(".proposition").on("change", function() {
 		if ($(".proposition").val() == "search") {
 			$(".submitSearch").val("Rechercher")
-			$(".mon-formulaire").attr("action", "rechercher-un-covoiturage");
+			$(".form-search-home").attr("action", "rechercher-un-covoiturage");
 		} else {
 			$(".submitSearch").val("Proposer")
-			$(".mon-formulaire").attr("action", "proposer-un-covoiturage");
+			$(".form-search-home").attr("action", "proposer-un-covoiturage");
 		}
 	})
 

@@ -18,14 +18,6 @@ function initMap() {
 	});
 
 	directionsDisplay.setMap(map);
-
-	$("#from").focusout(function() {
-		chooseMethod()
-	})
-
-	$("#to").focusout(function() {
-		chooseMethod()
-	})
 }
 
 function autoComplete(input) {

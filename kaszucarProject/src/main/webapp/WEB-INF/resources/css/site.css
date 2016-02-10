@@ -36,7 +36,7 @@
 
 i[class^="icon-"], i[class*="icon-"] {
 	position: absolute;
-		margin: 8px 0 0 7px;
+	margin: 8px 0 0 7px;
 	font-size: 19px;
 }
 
@@ -140,6 +140,7 @@ body {
 	position: absolute;
 	left: 0;
 	right: 0;
+	top: 50%;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -466,5 +467,4 @@ html, body {
 		width: 100%;
 		margin-right: 0px;
 	}
-
 }
