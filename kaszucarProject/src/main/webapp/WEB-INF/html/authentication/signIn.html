@@ -3,6 +3,7 @@
 	<form class="singnIn" name="singnIn" method="post">
 		<h2>Connexion</h2>
 		<span class="errorConnexion"></span><br/>
+		<input type="hidden" class="redirect" value="{{redirect}}" />
 		<input type="text" name="email" class="email input-formulaire formulaireInsc" placeholder="Adresse email" /><br/>
 		<input type="password" name="password" class="pwd input-formulaire formulaireInsc" placeholder="Mot de passe" /><br/>
 		<input type="checkbox" name="rememberMe">Se souvenir de moi<br/>

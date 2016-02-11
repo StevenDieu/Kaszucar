@@ -12,7 +12,9 @@ function signIn() {
 			success : function(t) {
 				t = JSON.parse(t);
 				if (t.statut == "ok") {
-
+					if($(".redirect").val() != ""){
+						window.location.replace($(".redirect").val());
+					}
 				} else if (t.statut == "nok") {
 					$(".errorConnexion").html(t.message);
 				}

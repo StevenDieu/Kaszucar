@@ -176,9 +176,12 @@ body {
 	border: none;
 	height: 1.8em;
 	width: 210px;
-	padding-left: 30px;
 	padding-bottom: 5px;
 	padding-top: 2px;
+}
+
+.blockInput .input-formulaire {
+	padding-left: 30px;
 }
 
 .submitSearch {
@@ -460,6 +463,8 @@ html, body {
 	.input-formulaire {
 		width: 92%;
 		margin-right: 0px;
+	}
+	.blockInput .input-formulaire {
 		padding-left: 8%;
 	}
 	.submitSearch {

@@ -1,100 +1,103 @@
 {{> templates/header}}
 <div class="clearBoth"></div>
-<div class="content">
-	<div class="bloc-map-left">
-		<div id="title">Itinéraire</div>
-		<div class="right-panel">
-			<div>
-				Lieu de départ
-				<br />
-				<input type="text" id="from" name="cityFrom" placeholder="Lieu de départ : Lille, Paris" value="{{from}}" />
-				<br />
-				Lieu d'arrivé
-				<br />
-				<input type="text" id="to" name="cityTo" placeholder="Lieu de d'arrivé : Lille, Paris" value="{{to}}" />
-				<br />
-				Lieu de passage
-				<br />
-				<input type="text" id="waypoints" placeholder="Lieu de passage : Lille, Paris" />
-				<br />
-				<a class="addCity button">Ajouter</a>
-				<br />
-				<div class="blocWaypoitsCity"></div>
+<form action="ajouter-un-covoiturage" method="post">
+	<div class="content">
+		<div class="bloc-map-left">
+			<div id="title">Itinéraire</div>
+			<div class="right-panel">
+				<div>
+					Lieu de départ
+					<br />
+					<input type="text" id="from" name="cityFrom" placeholder="Lieu de départ : Lille, Paris" value="{{from}}" />
+					<br />
+					Lieu d'arrivé
+					<br />
+					<input type="text" id="to" name="cityTo" placeholder="Lieu de d'arrivé : Lille, Paris" value="{{to}}" />
+					<br />
+					Lieu de passage
+					<br />
+					<input type="text" id="waypoints" placeholder="Lieu de passage : Lille, Paris" />
+					<br />
+					<a class="addCity button">Ajouter</a>
+					<br />
+					<div class="blocWaypoitsCity"></div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="bloc-map-right heigt-map">
-		<div id="title">Itinéraire sur carte</div>
-		<div id="map"></div>
-	</div>
-	<div class="bloc-map-left">
-		<div id="title">Date et heure</div>
-		<div class="right-panel">
-			Date aller
-			<br />
-			<input type="date" name="dateFirstTrip" placeholder="" value="{{date}}" />
-			<br />
-			<br />
-			<input type="checkbox" class="goReturn" name="goReturn">
-			Aller-retour ?
-			<br />
-			<div class="hide blocDateReturn">
-				Date retour
+		<div class="bloc-map-right heigt-map">
+			<div id="title">Itinéraire sur carte</div>
+			<div id="map"></div>
+		</div>
+		<div class="bloc-map-left">
+			<div id="title">Date et heure</div>
+			<div class="right-panel">
+				Date aller
 				<br />
-				<input type="date" name="dateReturnTrip" placeholder="" />
+				<input type="date" name="dateFirstTrip" placeholder="" value="{{date}}" />
 				<br />
+				<br />
+				<input type="checkbox" class="goReturn" name="goReturn">
+				Aller-retour ?
+				<br />
+				<div class="hide blocDateReturn">
+					Date retour
+					<br />
+					<input type="date" name="dateReturnTrip" placeholder="" />
+					<br />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="bloc-map-right">
-		<div id="title">Coût du trajet</div>
-		<div class="right-panel">
-			<input type="number" name="price" placeholder="Prix">
-			€
+		<div class="bloc-map-right">
+			<div id="title">Coût du trajet</div>
+			<div class="right-panel">
+				<input type="number" name="price" placeholder="Prix">
+				€
+			</div>
 		</div>
-	</div>
-	<div class="bloc-map-left">
-		<div id="title">Description du trajet</div>
-		<div class="right-panel">
-			<textarea class="textarea-100" name="description" rows="6"></textarea>
-			Bagage :
-			<br />
-			<input type="radio" name="sizeOfLuggage" value="little">
-			petite
-			<input type="radio" name="sizeOfLuggage" value="medium">
-			moyen
-			<input type="radio" name="sizeOfLuggage" value="large">
-			gros
-			<br />
-			Option :
-			<br />
-			<input type="checkbox" name="smoking" value="smoking">
-			Fumeur
-			<input type="checkbox" name="annimals" value="annimals">
-			Annimaux
-			<input type="checkbox" name="muscis" value="muscis">
-			Musique
-			<input type="checkbox" name="detour" value="detour">
-			Detour
-			<input type="checkbox" name="food" value="food">
-			Food
+		<div class="bloc-map-left">
+			<div id="title">Description du trajet</div>
+			<div class="right-panel">
+				<textarea class="textarea-100" name="description" rows="6"></textarea>
+				Bagage :
+				<br />
+				<input type="radio" name="sizeOfLuggage" value="little">
+				petite
+				<input type="radio" name="sizeOfLuggage" value="medium">
+				moyen
+				<input type="radio" name="sizeOfLuggage" value="large">
+				gros
+				<br />
+				Option :
+				<br />
+				<input type="checkbox" name="smoking" value="smoking">
+				Fumeur
+				<input type="checkbox" name="annimals" value="annimals">
+				Annimaux
+				<input type="checkbox" name="muscis" value="muscis">
+				Musique
+				<input type="checkbox" name="detour" value="detour">
+				Detour
+				<input type="checkbox" name="food" value="food">
+				Food
+			</div>
 		</div>
-	</div>
-	<div class="bloc-map-right">
-		<div id="title">Nombre de places dans la voiture</div>
-		<div class="right-panel">
-			<input type="number" name="sitNumber" placeholder="Nombre de place">
+		<div class="bloc-map-right">
+			<div id="title">Nombre de places dans la voiture</div>
+			<div class="right-panel">
+				<input type="number" name="sitNumber" placeholder="Nombre de place">
+			</div>
 		</div>
-	</div>
-	<div class="bloc-map-right">
-		<div class="right-panel">
-			<input type="checkbox" name="cgv" value="cgv">
-			J'ai lu et accepté les <a href="#">CGU</a> et je certifie être en possession d'un permis de conduire et d'une assurance en cours de validité.
+		<div class="bloc-map-right">
+			<div class="right-panel">
+				<input type="checkbox" name="cgv" value="cgv">
+				J'ai lu et accepté les <a href="#">CGU</a> et je certifie être en possession d'un permis de conduire et d'une assurance en cours de validité.
+			</div>
 		</div>
+		<div class="clearBoth"></div>
+		<input type="submit" value="Finaliser le trajet" />
 	</div>
-	<div class="clearBoth"></div>
-	<input type="submit" value="Finaliser le trajet" />
-</div>
+</form>
+
 <script src="resources/js/covoiturage/proposeCovoit.js"></script>
 <script src="resources/js/localisation.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyUpuWlYPq5bobSZhH7TF5b-uzbelvgEM&signed_in=true&callback=initMap&libraries=places" async defer></script>

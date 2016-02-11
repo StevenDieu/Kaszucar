@@ -14,7 +14,6 @@ public class CtrlHome {
 
 	@RequestMapping(value = "/")
 	public ModelAndView index(HttpServletRequest request) {
-		Map<String, Object> infoCovoit = new HashMap<String, Object>();
-		return new ModelAndView("index", infoCovoit);
+		return new ModelAndView("index");
 	}
 }

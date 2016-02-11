@@ -14,14 +14,16 @@ public class CtrlCovoiturage {
 
 	@RequestMapping(value = "/proposer-un-covoiturage")
 	public ModelAndView proposeCovoit(HttpServletRequest request) {
-		String from = request.getParameter("from");
-		String to = request.getParameter("to");
-		String date = request.getParameter("date");
-
 		Map<String, Object> infoCovoit = new HashMap<String, Object>();
-		infoCovoit.put("from", from);
-		infoCovoit.put("to", to);
-		infoCovoit.put("date", date);
+		infoCovoit.put("from", request.getParameter("from"));
+		infoCovoit.put("to", request.getParameter("to"));
+		infoCovoit.put("date", request.getParameter("date"));
+
+		if (request.getSession().getAttribute("User") == null) {
+			Map<String, Object> infoRedirect = new HashMap<String, Object>();
+			infoRedirect.put("redirect", "proposer-un-covoiturage");
+			return new ModelAndView("redirect:connexion", infoRedirect);
+		}
 
 		return new ModelAndView("covoiturage/proposeCovoit", infoCovoit);
 	}
@@ -29,5 +31,12 @@ public class CtrlCovoiturage {
 	@RequestMapping(value = "/rechercher-un-covoiturage")
 	public String searchCovoit(HttpServletRequest request) {
 		return "covoiturage/searchCovoit";
+	}
+
+	@RequestMapping(value = "/ajouter-un-covoiturage")
+	public ModelAndView addCovoit(HttpServletRequest request) {
+
+		return new ModelAndView("covoiturage/finalizationAddCovoit");
+
 	}
 }
