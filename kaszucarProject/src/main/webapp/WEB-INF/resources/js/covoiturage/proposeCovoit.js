@@ -1,19 +1,25 @@
 function addCity() {
 	var newWaypoints = $("#waypoints").val();
 	if (newWaypoints !== "" && $(".newWaypoints").size() < 6) {
-		var start = $("#start").val();
-		var end = $("#end").val();
-		$(".blocWaypoitsCity").append('<div class="newWaypoints"><span class="thisWaipoints">' + newWaypoints + '</span><input type="hidden" name="waypoints[]" value="' + newWaypoints + '" /> <a class="removeNewWaypoints button-red">Supprimer</a></div>')
-		if (start !== "" && end !== "") {
-			chooseMethod()
+
+		var exitFunction = false;
+		$('.cityWaypoints').each(function() {
+			if ($(this).text() === $("#waypoints").val()) {
+				exitFunction = true;
+			}
+		});
+		
+		if(exitFunction === true){
+			return false;
 		}
+		
+		$(".blocWaypoitsCity").append('<div class="newWaypoints"><span class="cityWaypoints">' + newWaypoints + '</span><input type="hidden" name="waypoints[]" value="' + newWaypoints + '" /> <a class="removeNewWaypoints button-red">Supprimer</a></div>')
+		chooseMethod();
+		$("#waypoints").val("");
 		$(".removeNewWaypoints").off("click");
 		$(".removeNewWaypoints").on("click", function() {
 			$(this).parent().remove();
-
-			if (start !== "" && end !== "") {
-				chooseMethod()
-			}
+			chooseMethod();
 		});
 	}
 }

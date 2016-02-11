@@ -29,7 +29,7 @@ public class UserService {
 		}
 	}
 
-	public Users register(String gender, String name, String lastName, String emailAdress, String password, short yearOfBirth) {
+	public Users register(String gender, String name, String lastName, String emailAdress, String password, short yearOfBirth, String ipAdress) {
 		Users user = new Users();
 		user.setGenre(gender);
 		user.setName(name);
@@ -37,6 +37,7 @@ public class UserService {
 		user.setEmailAdress(emailAdress);
 		user.setPassword(sha256(password));
 		user.setYearOfBirth(yearOfBirth);
+		user.setIpAddress(ipAdress);
 		UR.insertUser(user);
 		
 		return user;

@@ -25,7 +25,7 @@ function calculateAndDisplayRoute() {
 	initMap();
 
 	var waypts = [];
-	$('.thisWaipoints').each(function() {
+	$('.cityWaypoints').each(function() {
 		waypts.push({
 		location : $(this).text(),
 		stopover : true

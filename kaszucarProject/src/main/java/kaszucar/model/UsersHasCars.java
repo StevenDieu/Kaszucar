@@ -1,5 +1,5 @@
 package kaszucar.model;
-// Generated 4 févr. 2016 18:26:01 by Hibernate Tools 4.3.1.Final
+// Generated 11 fï¿½vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -15,10 +15,6 @@ import javax.persistence.Table;
 @Table(name = "users_has_cars", schema = "public")
 public class UsersHasCars implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private UsersHasCarsId id;
 
 	public UsersHasCars() {

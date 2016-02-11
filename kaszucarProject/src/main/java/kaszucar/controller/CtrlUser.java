@@ -87,7 +87,7 @@ public class CtrlUser {
 			return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email est déja utilisé.\"}";
 		}
 
-		Users user = US.register(gender, name, lastName, email, password, yearBirth);
+		Users user = US.register(gender, name, lastName, email, password, yearBirth, US.getIpAdresse(request));
 		request.getSession().setAttribute("User", user);
 
 		return "{\"statut\": \"ok\"}";

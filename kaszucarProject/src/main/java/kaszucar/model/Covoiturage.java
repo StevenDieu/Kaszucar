@@ -1,5 +1,5 @@
 package kaszucar.model;
-// Generated 4 févr. 2016 18:26:01 by Hibernate Tools 4.3.1.Final
+// Generated 11 fï¿½vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import javax.persistence.AttributeOverride;
@@ -18,15 +18,11 @@ import javax.persistence.TemporalType;
 @Table(name = "covoiturage", schema = "public")
 public class Covoiturage implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private CovoiturageId id;
 	private Date dateFirstTrip;
 	private Date dateReturnTrip;
-	private int idCityFrom;
-	private int idCityTo;
+	private String cityFrom;
+	private String cityTo;
 	private String description;
 	private short price;
 	private Integer idCars;
@@ -36,22 +32,22 @@ public class Covoiturage implements java.io.Serializable {
 	public Covoiturage() {
 	}
 
-	public Covoiturage(CovoiturageId id, Date dateReturnTrip, int idCityFrom, int idCityTo, short price, short sitNumber, String sizeOfLuggage) {
+	public Covoiturage(CovoiturageId id, Date dateReturnTrip, String cityFrom, String cityTo, short price, short sitNumber, String sizeOfLuggage) {
 		this.id = id;
 		this.dateReturnTrip = dateReturnTrip;
-		this.idCityFrom = idCityFrom;
-		this.idCityTo = idCityTo;
+		this.cityFrom = cityFrom;
+		this.cityTo = cityTo;
 		this.price = price;
 		this.sitNumber = sitNumber;
 		this.sizeOfLuggage = sizeOfLuggage;
 	}
 
-	public Covoiturage(CovoiturageId id, Date dateFirstTrip, Date dateReturnTrip, int idCityFrom, int idCityTo, String description, short price, Integer idCars, short sitNumber, String sizeOfLuggage) {
+	public Covoiturage(CovoiturageId id, Date dateFirstTrip, Date dateReturnTrip, String cityFrom, String cityTo, String description, short price, Integer idCars, short sitNumber, String sizeOfLuggage) {
 		this.id = id;
 		this.dateFirstTrip = dateFirstTrip;
 		this.dateReturnTrip = dateReturnTrip;
-		this.idCityFrom = idCityFrom;
-		this.idCityTo = idCityTo;
+		this.cityFrom = cityFrom;
+		this.cityTo = cityTo;
 		this.description = description;
 		this.price = price;
 		this.idCars = idCars;
@@ -73,7 +69,7 @@ public class Covoiturage implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "date_first_trip", length = 13)
+	@Column(name = "date_first_trip", nullable = false, length = 13)
 	public Date getDateFirstTrip() {
 		return this.dateFirstTrip;
 	}
@@ -83,7 +79,7 @@ public class Covoiturage implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "date_return_trip", nullable = false, length = 13)
+	@Column(name = "date_return_trip", length = 13)
 	public Date getDateReturnTrip() {
 		return this.dateReturnTrip;
 	}
@@ -92,22 +88,22 @@ public class Covoiturage implements java.io.Serializable {
 		this.dateReturnTrip = dateReturnTrip;
 	}
 
-	@Column(name = "id_city_from", nullable = false)
-	public int getIdCityFrom() {
-		return this.idCityFrom;
+	@Column(name = "city_from", nullable = false)
+	public String getCityFrom() {
+		return this.cityFrom;
 	}
 
-	public void setIdCityFrom(int idCityFrom) {
-		this.idCityFrom = idCityFrom;
+	public void setCityFrom(String cityFrom) {
+		this.cityFrom = cityFrom;
 	}
 
-	@Column(name = "id_city_to", nullable = false)
-	public int getIdCityTo() {
-		return this.idCityTo;
+	@Column(name = "city_to", nullable = false)
+	public String getCityTo() {
+		return this.cityTo;
 	}
 
-	public void setIdCityTo(int idCityTo) {
-		this.idCityTo = idCityTo;
+	public void setCityTo(String cityTo) {
+		this.cityTo = cityTo;
 	}
 
 	@Column(name = "description", length = 500)

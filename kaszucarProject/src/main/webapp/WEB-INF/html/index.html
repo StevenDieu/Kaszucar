@@ -1,31 +1,29 @@
 {{> templates/header}}
 <div class="img-background">
-	<form action="rechercher-un-covoiturage" class="form-search-home"  method="post">
+	<form action="rechercher-un-covoiturage" class="form-search-home" method="post">
 		<select class="proposition formulaire">
 			<option class="chercher" value="search">Je cherche</option>
 			<option class="proposer" value="propose">Je propose</option>
 		</select>
 		<div class="blockInput">
-		<i class="glyph icon-radio-checked" aria-hidden="true"></i>
-		<input class="input-formulaire formulaire" id="from" name="from" type="text" placeholder="De" autocomplete="off"/>
+			<i class="glyph icon-radio-checked" aria-hidden="true"></i>
+			<input class="input-formulaire formulaire" id="from" name="from" type="text" placeholder="De" autocomplete="off" />
 		</div>
-		
+
 		<div class="blockInput">
-		<i class="glyph icon-radio-unchecked" aria-hidden="true"></i>
-		<input class="input-formulaire formulaire" id="to" name="to" type="text" placeholder="A" autocomplete="off"/>
+			<i class="glyph icon-radio-unchecked" aria-hidden="true"></i>
+			<input class="input-formulaire formulaire" id="to" name="to" type="text" placeholder="A" autocomplete="off" />
 		</div>
-		
+
 		<div class="blockInput">
-		<i class="glyph icon-calendar" aria-hidden="true"></i>
-		<input class="input-formulaire formulaire" name="date" type="date" placeholder="Date" autocomplete="off"/>
+			<i class="glyph icon-calendar" aria-hidden="true"></i>
+			<input class="input-formulaire formulaire" name="date" type="date" placeholder="Date" autocomplete="off" />
 		</div>
-		<input type="submit" class="submitSearch" value="Rechercher" />  
+		<input type="submit" class="submitSearch" value="Rechercher" />
 	</form>
 </div>
 
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyUpuWlYPq5bobSZhH7TF5b-uzbelvgEM&signed_in=true&libraries=places"
-	async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyUpuWlYPq5bobSZhH7TF5b-uzbelvgEM&signed_in=true&libraries=places" async defer></script>
 <script src="resources/js/localisation.js"></script>
 
 {{> templates/footer}}
