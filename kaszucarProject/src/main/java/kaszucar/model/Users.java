@@ -13,7 +13,10 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "users", schema = "public", uniqueConstraints = { @UniqueConstraint(columnNames = "email_adress"), @UniqueConstraint(columnNames = "phone_number") })
 public class Users implements java.io.Serializable {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idUsers;
 	private String name;
 	private String lastName;

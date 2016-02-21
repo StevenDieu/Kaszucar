@@ -14,7 +14,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users_has_covoiturage", schema = "public")
 public class UsersHasCovoiturage implements java.io.Serializable {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private UsersHasCovoiturageId id;
 
 	public UsersHasCovoiturage() {

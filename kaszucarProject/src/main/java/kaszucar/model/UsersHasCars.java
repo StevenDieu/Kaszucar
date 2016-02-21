@@ -14,7 +14,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users_has_cars", schema = "public")
 public class UsersHasCars implements java.io.Serializable {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private UsersHasCarsId id;
 
 	public UsersHasCars() {

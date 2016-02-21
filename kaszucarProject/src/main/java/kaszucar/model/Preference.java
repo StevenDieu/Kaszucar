@@ -12,7 +12,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "preference", schema = "public")
 public class Preference implements java.io.Serializable {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idPreference;
 	private Boolean smoking;
 	private Boolean animals;

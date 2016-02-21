@@ -17,7 +17,10 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "covoiturage", schema = "public")
 public class Covoiturage implements java.io.Serializable {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private CovoiturageId id;
 	private Date dateFirstTrip;
 	private Date dateReturnTrip;

@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "cars", schema = "public")
 public class Cars implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idCars;
 	private String brand;
 	private String model;
