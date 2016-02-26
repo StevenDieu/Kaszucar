@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS covoiturage (
   sit_number smallint NOT NULL,
   size_of_luggage VARCHAR(255) NOT NULL,
   id_preference INT NOT NULL,
-  PRIMARY KEY (id_covoiturage, id_preference));
+  PRIMARY KEY (id_covoiturage));
 
 
 CREATE INDEX fk_covoiturage_cars1_idx ON covoiturage (id_cars ASC);
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS users_has_covoiturage (
   id_users_has_covoiturage SERIAL NOT NULL,
   users_id_users INT NOT NULL,
   covoiturage_id_covoiturage INT NOT NULL,
-  PRIMARY KEY (id_users_has_covoiturage, users_id_users, covoiturage_id_covoiturage));
+  PRIMARY KEY (id_users_has_covoiturage));
 
 
 CREATE INDEX fk_users_has_covoiturage_covoiturage1_idx ON users_has_covoiturage (covoiturage_id_covoiturage ASC);
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS users_has_cars (
   id_users_has_carl SERIAL NOT NULL,
   id_cars INT NOT NULL,
   id_users INT NOT NULL,
-  PRIMARY KEY (id_users_has_carl, id_cars, id_users));
+  PRIMARY KEY (id_users_has_carl));
 
 
 CREATE INDEX fk_users_has_cars_cars1_idx ON users_has_cars (id_cars ASC);
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS opinion (
   id_users_to INT NOT NULL,
   description VARCHAR(255) NULL,
   score smallint NOT NULL,
-  PRIMARY KEY (id_opinion, id_users_from, id_users_to));
+  PRIMARY KEY (id_opinion));
 
 
 CREATE INDEX fk_opinion_users1_idx ON opinion (id_users_from ASC);

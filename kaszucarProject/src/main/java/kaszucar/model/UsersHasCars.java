@@ -1,11 +1,15 @@
 package kaszucar.model;
-// Generated 11 f�vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
+// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -14,31 +18,49 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users_has_cars", schema = "public")
 public class UsersHasCars implements java.io.Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private UsersHasCarsId id;
+
+	private int idUsersHasCarl;
+	private Cars cars;
+	private Users users;
 
 	public UsersHasCars() {
 	}
 
-	public UsersHasCars(UsersHasCarsId id) {
-		this.id = id;
+	public UsersHasCars(int idUsersHasCarl, Cars cars, Users users) {
+		this.idUsersHasCarl = idUsersHasCarl;
+		this.cars = cars;
+		this.users = users;
 	}
 
-	@EmbeddedId
-
-	@AttributeOverrides({
-			@AttributeOverride(name = "idUsersHasCarl", column = @Column(name = "id_users_has_carl", nullable = false) ),
-			@AttributeOverride(name = "idCars", column = @Column(name = "id_cars", nullable = false) ),
-			@AttributeOverride(name = "idUsers", column = @Column(name = "id_users", nullable = false) ) })
-	public UsersHasCarsId getId() {
-		return this.id;
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id_users_has_carl", unique = true, nullable = false)
+	public int getIdUsersHasCarl() {
+		return this.idUsersHasCarl;
 	}
 
-	public void setId(UsersHasCarsId id) {
-		this.id = id;
+	public void setIdUsersHasCarl(int idUsersHasCarl) {
+		this.idUsersHasCarl = idUsersHasCarl;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_cars", nullable = false)
+	public Cars getCars() {
+		return this.cars;
+	}
+
+	public void setCars(Cars cars) {
+		this.cars = cars;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_users", nullable = false)
+	public Users getUsers() {
+		return this.users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 
 }

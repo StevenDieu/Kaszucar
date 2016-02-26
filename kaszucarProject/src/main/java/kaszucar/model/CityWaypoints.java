@@ -1,9 +1,15 @@
 package kaszucar.model;
-// Generated 11 f�vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
+// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -12,32 +18,29 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "city_waypoints", schema = "public")
 public class CityWaypoints implements java.io.Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	private int idCityStop;
-	private int idCovoiturage;
+	private Covoiturage covoiturage;
 	private String cityWaypoints;
-	private Short orderWaypoints;
+	private Integer orderWaypoints;
 
 	public CityWaypoints() {
 	}
 
-	public CityWaypoints(int idCityStop, int idCovoiturage) {
+	public CityWaypoints(int idCityStop, Covoiturage covoiturage) {
 		this.idCityStop = idCityStop;
-		this.idCovoiturage = idCovoiturage;
+		this.covoiturage = covoiturage;
 	}
 
-	public CityWaypoints(int idCityStop, int idCovoiturage, String cityWaypoints, Short orderWaypoints) {
+	public CityWaypoints(int idCityStop, Covoiturage covoiturage, String cityWaypoints, Integer orderWaypoints) {
 		this.idCityStop = idCityStop;
-		this.idCovoiturage = idCovoiturage;
+		this.covoiturage = covoiturage;
 		this.cityWaypoints = cityWaypoints;
 		this.orderWaypoints = orderWaypoints;
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id_city_stop", unique = true, nullable = false)
 	public int getIdCityStop() {
 		return this.idCityStop;
@@ -47,13 +50,14 @@ public class CityWaypoints implements java.io.Serializable {
 		this.idCityStop = idCityStop;
 	}
 
-	@Column(name = "id_covoiturage", nullable = false)
-	public int getIdCovoiturage() {
-		return this.idCovoiturage;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_covoiturage", nullable = false)
+	public Covoiturage getCovoiturage() {
+		return this.covoiturage;
 	}
 
-	public void setIdCovoiturage(int idCovoiturage) {
-		this.idCovoiturage = idCovoiturage;
+	public void setCovoiturage(Covoiturage covoiturage) {
+		this.covoiturage = covoiturage;
 	}
 
 	@Column(name = "city_waypoints")
@@ -66,11 +70,11 @@ public class CityWaypoints implements java.io.Serializable {
 	}
 
 	@Column(name = "order_waypoints")
-	public Short getOrderWaypoints() {
+	public Integer getOrderWaypoints() {
 		return this.orderWaypoints;
 	}
 
-	public void setOrderWaypoints(Short orderWaypoints) {
+	public void setOrderWaypoints(Integer orderWaypoints) {
 		this.orderWaypoints = orderWaypoints;
 	}
 

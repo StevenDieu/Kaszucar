@@ -1,11 +1,15 @@
 package kaszucar.model;
-// Generated 11 f�vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
+// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -14,40 +18,60 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "opinion", schema = "public")
 public class Opinion implements java.io.Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private OpinionId id;
+
+	private int idOpinion;
+	private Users usersByIdUsersTo;
+	private Users usersByIdUsersFrom;
 	private String description;
-	private short score;
+	private int score;
 
 	public Opinion() {
 	}
 
-	public Opinion(OpinionId id, short score) {
-		this.id = id;
+	public Opinion(int idOpinion, Users usersByIdUsersTo, Users usersByIdUsersFrom, int score) {
+		this.idOpinion = idOpinion;
+		this.usersByIdUsersTo = usersByIdUsersTo;
+		this.usersByIdUsersFrom = usersByIdUsersFrom;
 		this.score = score;
 	}
 
-	public Opinion(OpinionId id, String description, short score) {
-		this.id = id;
+	public Opinion(int idOpinion, Users usersByIdUsersTo, Users usersByIdUsersFrom, String description, int score) {
+		this.idOpinion = idOpinion;
+		this.usersByIdUsersTo = usersByIdUsersTo;
+		this.usersByIdUsersFrom = usersByIdUsersFrom;
 		this.description = description;
 		this.score = score;
 	}
 
-	@EmbeddedId
-
-	@AttributeOverrides({
-			@AttributeOverride(name = "idOpinion", column = @Column(name = "id_opinion", nullable = false) ),
-			@AttributeOverride(name = "idUsersFrom", column = @Column(name = "id_users_from", nullable = false) ),
-			@AttributeOverride(name = "idUsersTo", column = @Column(name = "id_users_to", nullable = false) ) })
-	public OpinionId getId() {
-		return this.id;
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id_opinion", unique = true, nullable = false)
+	public int getIdOpinion() {
+		return this.idOpinion;
 	}
 
-	public void setId(OpinionId id) {
-		this.id = id;
+	public void setIdOpinion(int idOpinion) {
+		this.idOpinion = idOpinion;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_users_to", nullable = false)
+	public Users getUsersByIdUsersTo() {
+		return this.usersByIdUsersTo;
+	}
+
+	public void setUsersByIdUsersTo(Users usersByIdUsersTo) {
+		this.usersByIdUsersTo = usersByIdUsersTo;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_users_from", nullable = false)
+	public Users getUsersByIdUsersFrom() {
+		return this.usersByIdUsersFrom;
+	}
+
+	public void setUsersByIdUsersFrom(Users usersByIdUsersFrom) {
+		this.usersByIdUsersFrom = usersByIdUsersFrom;
 	}
 
 	@Column(name = "description")
@@ -60,11 +84,11 @@ public class Opinion implements java.io.Serializable {
 	}
 
 	@Column(name = "score", nullable = false)
-	public short getScore() {
+	public int getScore() {
 		return this.score;
 	}
 
-	public void setScore(short score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 

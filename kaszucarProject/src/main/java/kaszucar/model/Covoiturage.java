@@ -1,12 +1,19 @@
 package kaszucar.model;
-// Generated 11 f�vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
+// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.Date;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,27 +24,29 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "covoiturage", schema = "public")
 public class Covoiturage implements java.io.Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private CovoiturageId id;
+
+	private int idCovoiturage;
+	private Cars cars;
+	private Preference preference;
 	private Date dateFirstTrip;
 	private Date dateReturnTrip;
 	private String cityFrom;
 	private String cityTo;
 	private String description;
-	private short price;
-	private Integer idCars;
-	private short sitNumber;
+	private int price;
+	private int sitNumber;
 	private String sizeOfLuggage;
+	private Set<UsersHasCovoiturage> usersHasCovoiturages = new HashSet<UsersHasCovoiturage>(0);
+	private Set<CityWaypoints> cityWaypointses = new HashSet<CityWaypoints>(0);
 
 	public Covoiturage() {
 	}
 
-	public Covoiturage(CovoiturageId id, Date dateReturnTrip, String cityFrom, String cityTo, short price, short sitNumber, String sizeOfLuggage) {
-		this.id = id;
-		this.dateReturnTrip = dateReturnTrip;
+	public Covoiturage(int idCovoiturage, Cars cars, Preference preference, Date dateFirstTrip, String cityFrom, String cityTo, int price, int sitNumber, String sizeOfLuggage) {
+		this.idCovoiturage = idCovoiturage;
+		this.cars = cars;
+		this.preference = preference;
+		this.dateFirstTrip = dateFirstTrip;
 		this.cityFrom = cityFrom;
 		this.cityTo = cityTo;
 		this.price = price;
@@ -45,30 +54,51 @@ public class Covoiturage implements java.io.Serializable {
 		this.sizeOfLuggage = sizeOfLuggage;
 	}
 
-	public Covoiturage(CovoiturageId id, Date dateFirstTrip, Date dateReturnTrip, String cityFrom, String cityTo, String description, short price, Integer idCars, short sitNumber, String sizeOfLuggage) {
-		this.id = id;
+	public Covoiturage(int idCovoiturage, Cars cars, Preference preference, Date dateFirstTrip, Date dateReturnTrip, String cityFrom, String cityTo, String description, int price, int sitNumber, String sizeOfLuggage, Set<UsersHasCovoiturage> usersHasCovoiturages, Set<CityWaypoints> cityWaypointses) {
+		this.idCovoiturage = idCovoiturage;
+		this.cars = cars;
+		this.preference = preference;
 		this.dateFirstTrip = dateFirstTrip;
 		this.dateReturnTrip = dateReturnTrip;
 		this.cityFrom = cityFrom;
 		this.cityTo = cityTo;
 		this.description = description;
 		this.price = price;
-		this.idCars = idCars;
 		this.sitNumber = sitNumber;
 		this.sizeOfLuggage = sizeOfLuggage;
+		this.usersHasCovoiturages = usersHasCovoiturages;
+		this.cityWaypointses = cityWaypointses;
 	}
 
-	@EmbeddedId
-
-	@AttributeOverrides({
-			@AttributeOverride(name = "idCovoiturage", column = @Column(name = "id_covoiturage", nullable = false) ),
-			@AttributeOverride(name = "idPreference", column = @Column(name = "id_preference", nullable = false) ) })
-	public CovoiturageId getId() {
-		return this.id;
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id_covoiturage", unique = true, nullable = false)
+	public int getIdCovoiturage() {
+		return this.idCovoiturage;
 	}
 
-	public void setId(CovoiturageId id) {
-		this.id = id;
+	public void setIdCovoiturage(int idCovoiturage) {
+		this.idCovoiturage = idCovoiturage;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_cars", nullable = false)
+	public Cars getCars() {
+		return this.cars;
+	}
+
+	public void setCars(Cars cars) {
+		this.cars = cars;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "preference_id_preference", nullable = false)
+	public Preference getPreference() {
+		return this.preference;
+	}
+
+	public void setPreference(Preference preference) {
+		this.preference = preference;
 	}
 
 	@Temporal(TemporalType.DATE)
@@ -119,29 +149,20 @@ public class Covoiturage implements java.io.Serializable {
 	}
 
 	@Column(name = "price", nullable = false)
-	public short getPrice() {
+	public int getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(short price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	@Column(name = "id_cars")
-	public Integer getIdCars() {
-		return this.idCars;
-	}
-
-	public void setIdCars(Integer idCars) {
-		this.idCars = idCars;
-	}
-
 	@Column(name = "sit_number", nullable = false)
-	public short getSitNumber() {
+	public int getSitNumber() {
 		return this.sitNumber;
 	}
 
-	public void setSitNumber(short sitNumber) {
+	public void setSitNumber(int sitNumber) {
 		this.sitNumber = sitNumber;
 	}
 
@@ -152,6 +173,24 @@ public class Covoiturage implements java.io.Serializable {
 
 	public void setSizeOfLuggage(String sizeOfLuggage) {
 		this.sizeOfLuggage = sizeOfLuggage;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "covoiturage")
+	public Set<UsersHasCovoiturage> getUsersHasCovoiturages() {
+		return this.usersHasCovoiturages;
+	}
+
+	public void setUsersHasCovoiturages(Set<UsersHasCovoiturage> usersHasCovoiturages) {
+		this.usersHasCovoiturages = usersHasCovoiturages;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "covoiturage")
+	public Set<CityWaypoints> getCityWaypointses() {
+		return this.cityWaypointses;
+	}
+
+	public void setCityWaypointses(Set<CityWaypoints> cityWaypointses) {
+		this.cityWaypointses = cityWaypointses;
 	}
 
 }

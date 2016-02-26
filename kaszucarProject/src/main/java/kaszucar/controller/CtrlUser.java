@@ -42,7 +42,7 @@ public class CtrlUser {
 		String password = request.getParameter("pwd");
 
 		if (request.getSession().getAttribute("User") != null) {
-			return "{\"statut\": \"ok\"}";
+			return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
 		} else if (!US.isEmailAdress(email)) {
 			return "{\"statut\": \"nok\",\"message\":  \"L'adresse email n'est pas valide.\"}";
 		} else if (email == "" || password == "") {
@@ -58,7 +58,7 @@ public class CtrlUser {
 		request.getSession().setAttribute("User", user);
 		
 
-		return "{\"statut\": \"ok\"}";
+		return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
 
 	}
 
@@ -81,7 +81,7 @@ public class CtrlUser {
 		short yearBirth = Short.parseShort(sYearBirth);
 
 		if (request.getSession().getAttribute("User") != null) {
-			return "{\"statut\": \"ok\"}";
+			return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
 		} else if (password.length() < 6 || password.length() > 54) {
 			return "{\"statut\": \"nok\",\"message\":  \"Votre mot de passe doit contenir entre 6 et 54 charactères.\"}";
 		} else if (US.checkYear18(yearBirth)) {
@@ -97,7 +97,7 @@ public class CtrlUser {
 		Users user = US.register(gender, name, lastName, email, password, yearBirth, US.getIpAdresse(request));
 		request.getSession().setAttribute("User", user);
 
-		return "{\"statut\": \"ok\"}";
+		return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
 	}
 	
 	@RequestMapping(value = "/ajaxDisconnect", method = RequestMethod.POST)

@@ -1,6 +1,8 @@
 var boolProgress = true;
 
 function signIn() {
+	$(".errorConnexion").html("");
+
 	if (boolProgress) {
 		if ($(".email").val() !== "" && $(".pwd").val() !== "") {
 			boolProgress = false;
@@ -15,6 +17,8 @@ function signIn() {
 					if($(".redirect").val() != ""){
 						window.location.replace($(".redirect").val());
 					}
+					window.location.replace(t.redirect);
+
 				} else if (t.statut == "nok") {
 					$(".errorConnexion").html(t.message);
 				}

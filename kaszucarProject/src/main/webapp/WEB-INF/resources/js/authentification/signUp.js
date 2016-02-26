@@ -13,7 +13,7 @@ function setYearHtml() {
 
 function signUp() {
 	var gender = $('input[name=gender]:checked').val()
-
+	$(".errorConnexion").html("");
 	if (boolProgress) {
 		if (gender !== undefined && $(".lastName").val() !== "" && $(".email").val() !== "" && $(".password").val() !== "" && $(".yearBirth").val() !== "") {
 			if ($(".password").val() === $(".confirmPassword").val()) {
@@ -29,7 +29,7 @@ function signUp() {
 							success : function(t) {
 								t = JSON.parse(t);
 								if (t.statut == "ok") {
-
+									window.location.replace(t.redirect);
 								} else if (t.statut == "nok") {
 									$(".errorConnexion").html(t.message);
 								}

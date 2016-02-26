@@ -1,9 +1,18 @@
 package kaszucar.model;
-// Generated 11 f�vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
+// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -13,55 +22,59 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "users", schema = "public", uniqueConstraints = { @UniqueConstraint(columnNames = "email_adress"), @UniqueConstraint(columnNames = "phone_number") })
 public class Users implements java.io.Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	private int idUsers;
+	private Address address;
 	private String name;
 	private String lastName;
-	private Short phoneNumber;
+	private Integer phoneNumber;
 	private String emailAdress;
 	private String password;
 	private String ipAddress;
-	private int idAddress;
 	private String genre;
-	private short yearOfBirth;
+	private int yearOfBirth;
 	private String description;
 	private String urlPicture;
+	private Set<Opinion> opinionsForIdUsersTo = new HashSet<Opinion>(0);
+	private Set<UsersHasCovoiturage> usersHasCovoiturages = new HashSet<UsersHasCovoiturage>(0);
+	private Set<Opinion> opinionsForIdUsersFrom = new HashSet<Opinion>(0);
+	private Set<UsersHasCars> usersHasCarses = new HashSet<UsersHasCars>(0);
 
 	public Users() {
 	}
 
-	public Users(int idUsers, String name, String lastName, String emailAdress, String password, String ipAddress, int idAddress, String genre, short yearOfBirth) {
+	public Users(int idUsers, String name, String lastName, String emailAdress, String password, String ipAddress, String genre, int yearOfBirth) {
 		this.idUsers = idUsers;
 		this.name = name;
 		this.lastName = lastName;
 		this.emailAdress = emailAdress;
 		this.password = password;
 		this.ipAddress = ipAddress;
-		this.idAddress = idAddress;
 		this.genre = genre;
 		this.yearOfBirth = yearOfBirth;
 	}
 
-	public Users(int idUsers, String name, String lastName, Short phoneNumber, String emailAdress, String password, String ipAddress, int idAddress, String genre, short yearOfBirth, String description, String urlPicture) {
+	public Users(int idUsers, Address address, String name, String lastName, Integer phoneNumber, String emailAdress, String password, String ipAddress, String genre, int yearOfBirth, String description, String urlPicture, Set<Opinion> opinionsForIdUsersTo, Set<UsersHasCovoiturage> usersHasCovoiturages, Set<Opinion> opinionsForIdUsersFrom, Set<UsersHasCars> usersHasCarses) {
 		this.idUsers = idUsers;
+		this.address = address;
 		this.name = name;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
 		this.emailAdress = emailAdress;
 		this.password = password;
 		this.ipAddress = ipAddress;
-		this.idAddress = idAddress;
 		this.genre = genre;
 		this.yearOfBirth = yearOfBirth;
 		this.description = description;
 		this.urlPicture = urlPicture;
+		this.opinionsForIdUsersTo = opinionsForIdUsersTo;
+		this.usersHasCovoiturages = usersHasCovoiturages;
+		this.opinionsForIdUsersFrom = opinionsForIdUsersFrom;
+		this.usersHasCarses = usersHasCarses;
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id_users", unique = true, nullable = false)
 	public int getIdUsers() {
 		return this.idUsers;
@@ -69,6 +82,16 @@ public class Users implements java.io.Serializable {
 
 	public void setIdUsers(int idUsers) {
 		this.idUsers = idUsers;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_address")
+	public Address getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Column(name = "name", nullable = false)
@@ -90,11 +113,11 @@ public class Users implements java.io.Serializable {
 	}
 
 	@Column(name = "phone_number", unique = true)
-	public Short getPhoneNumber() {
+	public Integer getPhoneNumber() {
 		return this.phoneNumber;
 	}
 
-	public void setPhoneNumber(Short phoneNumber) {
+	public void setPhoneNumber(Integer phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -125,15 +148,6 @@ public class Users implements java.io.Serializable {
 		this.ipAddress = ipAddress;
 	}
 
-	@Column(name = "id_address", nullable = false)
-	public int getIdAddress() {
-		return this.idAddress;
-	}
-
-	public void setIdAddress(int idAddress) {
-		this.idAddress = idAddress;
-	}
-
 	@Column(name = "genre", nullable = false, length = 3)
 	public String getGenre() {
 		return this.genre;
@@ -144,11 +158,11 @@ public class Users implements java.io.Serializable {
 	}
 
 	@Column(name = "year_of_birth", nullable = false)
-	public short getYearOfBirth() {
+	public int getYearOfBirth() {
 		return this.yearOfBirth;
 	}
 
-	public void setYearOfBirth(short yearOfBirth) {
+	public void setYearOfBirth(int yearOfBirth) {
 		this.yearOfBirth = yearOfBirth;
 	}
 
@@ -168,6 +182,42 @@ public class Users implements java.io.Serializable {
 
 	public void setUrlPicture(String urlPicture) {
 		this.urlPicture = urlPicture;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usersByIdUsersTo")
+	public Set<Opinion> getOpinionsForIdUsersTo() {
+		return this.opinionsForIdUsersTo;
+	}
+
+	public void setOpinionsForIdUsersTo(Set<Opinion> opinionsForIdUsersTo) {
+		this.opinionsForIdUsersTo = opinionsForIdUsersTo;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+	public Set<UsersHasCovoiturage> getUsersHasCovoiturages() {
+		return this.usersHasCovoiturages;
+	}
+
+	public void setUsersHasCovoiturages(Set<UsersHasCovoiturage> usersHasCovoiturages) {
+		this.usersHasCovoiturages = usersHasCovoiturages;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usersByIdUsersFrom")
+	public Set<Opinion> getOpinionsForIdUsersFrom() {
+		return this.opinionsForIdUsersFrom;
+	}
+
+	public void setOpinionsForIdUsersFrom(Set<Opinion> opinionsForIdUsersFrom) {
+		this.opinionsForIdUsersFrom = opinionsForIdUsersFrom;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+	public Set<UsersHasCars> getUsersHasCarses() {
+		return this.usersHasCarses;
+	}
+
+	public void setUsersHasCarses(Set<UsersHasCars> usersHasCarses) {
+		this.usersHasCarses = usersHasCarses;
 	}
 
 }

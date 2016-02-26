@@ -1,9 +1,16 @@
 package kaszucar.model;
-// Generated 11 f�vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
+// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -13,15 +20,12 @@ import javax.persistence.Table;
 @Table(name = "address", schema = "public")
 public class Address implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private int idAddress;
 	private String address;
 	private String complementAddress;
-	private Short postalCode;
+	private Integer postalCode;
 	private String country;
+	private Set<Users> userses = new HashSet<Users>(0);
 
 	public Address() {
 	}
@@ -30,16 +34,17 @@ public class Address implements java.io.Serializable {
 		this.idAddress = idAddress;
 	}
 
-	public Address(int idAddress, String address, String complementAddress, Short postalCode, String country) {
+	public Address(int idAddress, String address, String complementAddress, Integer postalCode, String country, Set<Users> userses) {
 		this.idAddress = idAddress;
 		this.address = address;
 		this.complementAddress = complementAddress;
 		this.postalCode = postalCode;
 		this.country = country;
+		this.userses = userses;
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id_address", unique = true, nullable = false)
 	public int getIdAddress() {
 		return this.idAddress;
@@ -68,11 +73,11 @@ public class Address implements java.io.Serializable {
 	}
 
 	@Column(name = "postal_code")
-	public Short getPostalCode() {
+	public Integer getPostalCode() {
 		return this.postalCode;
 	}
 
-	public void setPostalCode(Short postalCode) {
+	public void setPostalCode(Integer postalCode) {
 		this.postalCode = postalCode;
 	}
 
@@ -83,6 +88,15 @@ public class Address implements java.io.Serializable {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
+	public Set<Users> getUserses() {
+		return this.userses;
+	}
+
+	public void setUserses(Set<Users> userses) {
+		this.userses = userses;
 	}
 
 }

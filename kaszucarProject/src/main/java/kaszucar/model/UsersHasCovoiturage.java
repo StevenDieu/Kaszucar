@@ -1,11 +1,15 @@
 package kaszucar.model;
-// Generated 11 f�vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
+// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -14,31 +18,49 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users_has_covoiturage", schema = "public")
 public class UsersHasCovoiturage implements java.io.Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private UsersHasCovoiturageId id;
+
+	private int idUsersHasCovoiturage;
+	private Covoiturage covoiturage;
+	private Users users;
 
 	public UsersHasCovoiturage() {
 	}
 
-	public UsersHasCovoiturage(UsersHasCovoiturageId id) {
-		this.id = id;
+	public UsersHasCovoiturage(int idUsersHasCovoiturage, Covoiturage covoiturage, Users users) {
+		this.idUsersHasCovoiturage = idUsersHasCovoiturage;
+		this.covoiturage = covoiturage;
+		this.users = users;
 	}
 
-	@EmbeddedId
-
-	@AttributeOverrides({
-			@AttributeOverride(name = "idUsersHasCovoiturage", column = @Column(name = "id_users_has_covoiturage", nullable = false) ),
-			@AttributeOverride(name = "usersIdUsers", column = @Column(name = "users_id_users", nullable = false) ),
-			@AttributeOverride(name = "covoiturageIdCovoiturage", column = @Column(name = "covoiturage_id_covoiturage", nullable = false) ) })
-	public UsersHasCovoiturageId getId() {
-		return this.id;
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id_users_has_covoiturage", unique = true, nullable = false)
+	public int getIdUsersHasCovoiturage() {
+		return this.idUsersHasCovoiturage;
 	}
 
-	public void setId(UsersHasCovoiturageId id) {
-		this.id = id;
+	public void setIdUsersHasCovoiturage(int idUsersHasCovoiturage) {
+		this.idUsersHasCovoiturage = idUsersHasCovoiturage;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_covoiturage", nullable = false)
+	public Covoiturage getCovoiturage() {
+		return this.covoiturage;
+	}
+
+	public void setCovoiturage(Covoiturage covoiturage) {
+		this.covoiturage = covoiturage;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_users", nullable = false)
+	public Users getUsers() {
+		return this.users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 
 }

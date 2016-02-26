@@ -1,9 +1,16 @@
 package kaszucar.model;
-// Generated 11 f�vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
+// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -13,15 +20,13 @@ import javax.persistence.Table;
 @Table(name = "cars", schema = "public")
 public class Cars implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private int idCars;
 	private String brand;
 	private String model;
 	private String comfort;
 	private String color;
+	private Set<Covoiturage> covoiturages = new HashSet<Covoiturage>(0);
+	private Set<UsersHasCars> usersHasCarses = new HashSet<UsersHasCars>(0);
 
 	public Cars() {
 	}
@@ -32,16 +37,18 @@ public class Cars implements java.io.Serializable {
 		this.model = model;
 	}
 
-	public Cars(int idCars, String brand, String model, String comfort, String color) {
+	public Cars(int idCars, String brand, String model, String comfort, String color, Set<Covoiturage> covoiturages, Set<UsersHasCars> usersHasCarses) {
 		this.idCars = idCars;
 		this.brand = brand;
 		this.model = model;
 		this.comfort = comfort;
 		this.color = color;
+		this.covoiturages = covoiturages;
+		this.usersHasCarses = usersHasCarses;
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id_cars", unique = true, nullable = false)
 	public int getIdCars() {
 		return this.idCars;
@@ -85,6 +92,24 @@ public class Cars implements java.io.Serializable {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cars")
+	public Set<Covoiturage> getCovoiturages() {
+		return this.covoiturages;
+	}
+
+	public void setCovoiturages(Set<Covoiturage> covoiturages) {
+		this.covoiturages = covoiturages;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cars")
+	public Set<UsersHasCars> getUsersHasCarses() {
+		return this.usersHasCarses;
+	}
+
+	public void setUsersHasCarses(Set<UsersHasCars> usersHasCarses) {
+		this.usersHasCarses = usersHasCarses;
 	}
 
 }

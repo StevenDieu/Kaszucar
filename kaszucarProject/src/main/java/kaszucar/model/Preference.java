@@ -1,9 +1,16 @@
 package kaszucar.model;
-// Generated 11 f�vr. 2016 09:50:26 by Hibernate Tools 4.3.1.Final
+// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -12,16 +19,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "preference", schema = "public")
 public class Preference implements java.io.Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	private int idPreference;
 	private Boolean smoking;
 	private Boolean animals;
 	private Boolean musics;
 	private Boolean detour;
 	private Boolean food;
+	private Set<Covoiturage> covoiturages = new HashSet<Covoiturage>(0);
 
 	public Preference() {
 	}
@@ -30,17 +35,18 @@ public class Preference implements java.io.Serializable {
 		this.idPreference = idPreference;
 	}
 
-	public Preference(int idPreference, Boolean smoking, Boolean animals, Boolean musics, Boolean detour, Boolean food) {
+	public Preference(int idPreference, Boolean smoking, Boolean animals, Boolean musics, Boolean detour, Boolean food, Set<Covoiturage> covoiturages) {
 		this.idPreference = idPreference;
 		this.smoking = smoking;
 		this.animals = animals;
 		this.musics = musics;
 		this.detour = detour;
 		this.food = food;
+		this.covoiturages = covoiturages;
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id_preference", unique = true, nullable = false)
 	public int getIdPreference() {
 		return this.idPreference;
@@ -93,6 +99,15 @@ public class Preference implements java.io.Serializable {
 
 	public void setFood(Boolean food) {
 		this.food = food;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "preference")
+	public Set<Covoiturage> getCovoiturages() {
+		return this.covoiturages;
+	}
+
+	public void setCovoiturages(Set<Covoiturage> covoiturages) {
+		this.covoiturages = covoiturages;
 	}
 
 }
