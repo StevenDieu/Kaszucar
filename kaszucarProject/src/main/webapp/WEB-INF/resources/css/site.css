@@ -74,8 +74,8 @@ body {
 	background: #dc4a38;
 }
 
-.kaszucar {
-	margin: 0 0 0 38%;
+.center-logo {
+	text-align: center;
 }
 
 .logo {
@@ -83,11 +83,29 @@ body {
 	width: 80px;
 }
 
-.header-kaszu {
+.reseaux-sociaux, .center-logo, .conn-insc{
+	line-height: 70px;
+}
+    
+#header-kaszu {
 	background: rgba(238, 238, 238, 0.5);
-	padding: 1%;
-	width: 98%;
 	float: left;
+	height: 107px;
+	margin: 0;
+	padding: 1%;
+	width: 100%;
+}
+
+#header-kaszu .col-md-4{
+	float: left;
+    min-height: 1px;
+	padding: 0;	
+    position: relative;
+    width: 33.33333333%;
+}
+
+.conn-insc{
+	text-align: right;
 }
 
 .connexion, .inscription {
@@ -98,7 +116,6 @@ body {
 }
 
 .connexion {
-	margin-left: 50%;
 	margin-right: 3%;
 }
 
@@ -126,12 +143,6 @@ body {
 	margin-top: -17px;
 	-webkit-background-size: cover;
 	background-attachment: fixed;
-}
-
-.reseaux-sociaux, .center-logo, .conn-insc {
-	display: inline-block;
-	vertical-align: middle;
-	width: 33%;
 }
 
 .form-search-home {
