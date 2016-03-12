@@ -24,6 +24,9 @@ public class CtrlUser {
 
 	@RequestMapping(value = "/inscription")
 	public String signUp(HttpServletRequest request) {
+		if (request.getSession().getAttribute("User") != null) {
+			return "redirect:/";
+		}
 		return "authentication/signUp";
 	}
 
@@ -31,6 +34,11 @@ public class CtrlUser {
 	public ModelAndView signIn(HttpServletRequest request) {
 		Map<String, Object> infoCovoit = new HashMap<String, Object>();
 		infoCovoit.put("redirect", request.getParameter("redirect"));
+
+		if (request.getSession().getAttribute("User") != null) {
+			return new ModelAndView("redirect:/");
+		}
+
 		return new ModelAndView("authentication/signIn", infoCovoit);
 	}
 
@@ -50,13 +58,14 @@ public class CtrlUser {
 		} else if (!US.checkEmail(email)) {
 			return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email n'existe pas.\"}";
 		}
+		
 		Users user = US.connexion(email, password);
+		
 		if (user == null) {
 			return "{\"statut\": \"nok\",\"message\":  \"Le mot de passe est incorrect.\"}";
 		}
 
 		request.getSession().setAttribute("User", user);
-		
 
 		return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
 
@@ -99,7 +108,7 @@ public class CtrlUser {
 
 		return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
 	}
-	
+
 	@RequestMapping(value = "/ajaxDisconnect", method = RequestMethod.POST)
 	public void ajaxDisconnect(HttpServletRequest request) {
 		request.getSession().setAttribute("User", null);
