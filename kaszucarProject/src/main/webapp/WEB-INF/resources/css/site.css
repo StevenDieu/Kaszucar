@@ -49,10 +49,13 @@ a {
 	text-decoration: none;
 }
 
-body {
+html, body {
 	font-family: 'dinpro';
+	height: 100%;
 	margin: 0;
+	padding: 0;
 	position: relative;
+	padding: 0;
 }
 
 .size_of_logo {
@@ -83,10 +86,10 @@ body {
 	width: 80px;
 }
 
-.reseaux-sociaux, .center-logo, .conn-insc{
+.reseaux-sociaux, .center-logo, .conn-insc {
 	line-height: 70px;
 }
-    
+
 #header-kaszu {
 	background: rgba(238, 238, 238, 0.5);
 	float: left;
@@ -96,15 +99,15 @@ body {
 	width: 100%;
 }
 
-#header-kaszu .col-md-4{
+#header-kaszu .col-md-4 {
 	float: left;
-    min-height: 1px;
-	padding: 0;	
-    position: relative;
-    width: 33.33333333%;
+	min-height: 1px;
+	padding: 0;
+	position: relative;
+	width: 33.33333333%;
 }
 
-.conn-insc{
+.conn-insc {
 	text-align: right;
 }
 
@@ -127,20 +130,11 @@ body {
 	background-attachment: fixed;
 }
 
-.background-singin {
+.background-singin, .background-singup {
 	background: url("../img/route4.jpeg");
 	background-size: cover;
 	min-height: 100%;
-	margin-top: -17px;
-	-webkit-background-size: cover;
-	background-attachment: fixed;
-}
-
-.background-singup {
-	background: url("../img/route4.jpeg");
-	background-size: cover;
-	min-height: 100%;
-	margin-top: -17px;
+	margin-top: -20px;
 	-webkit-background-size: cover;
 	background-attachment: fixed;
 }
@@ -306,12 +300,6 @@ body {
 	font-size: 1em;
 }
 
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
 #map {
 	max-width: 350px;
 	max-height: 380px;
@@ -319,90 +307,17 @@ html, body {
 	height: 100%;
 }
 
-.right-panel {
-	line-height: 30px;
-	padding-left: 10px;
-}
-
-.right-panel {
-	margin: 10px;
-	border-width: 2px;
-	width: 88%;
-	text-align: left;
-}
-
 .heigt-map {
-	height: 426px;
+	height: 380px;
 }
 
-.bloc-map-right {
-	max-width: 350px;
-	width: 100%;
-	padding: 16px;
-	border: 1px solid #DCDCDC;
-	float: right;
-	margin: 20px 30px 0px 0px;
-	padding: 16px;
-}
 
-.bloc-map-left {
-	max-width: 496px;
-	width: 100%;
-	padding: 16px;
-	border: 1px solid #DCDCDC;
+.left {
 	float: left;
-	margin: 20px 0px 0px 30px;
 }
 
-.content {
-	max-width: 1000px;
-	width: 99%;
-	margin: 0 auto;
-	border-left: 1px solid #DCDCDC;
-	border-right: 1px solid #DCDCDC;
-}
-
-#title {
-	padding: 0px 15px 10px;
-	border-bottom: 1px solid #DCDCDC;
-	margin-bottom: 17px;
-}
-
-.textarea-100 {
-	width: 100%;
-	resize: vertical;
-}
-
-.button {
-	background: #65a9d7;
-	color: #FFFFFF;
-	padding: 2px 6px;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-.button:hover {
-	
-}
-
-.button:active {
-	
-}
-
-.button-red {
-	background: #F75448;
-	color: #FFFFFF;
-	padding: 2px 6px;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-.button-red:hover {
-	
-}
-
-.button-red:active {
-	
+.right {
+	float: right !important;
 }
 
 .blockInput {
@@ -413,6 +328,21 @@ html, body {
 .hide {
 	display: none;
 }
+
+.alert-danger-font {
+	color: #a94442 !important;
+	border-color: #ebccd1
+}
+
+.blocWaypoitsCity{
+	margin-top: 15px;
+}
+
+.container-margin{
+	margin-top: 15px;
+}
+
+
 
 @media only screen and (min-device-width : 768px) and (max-device-width
 	: 1024px) {
@@ -431,32 +361,20 @@ html, body {
 	}
 }
 
-@media only screen and (max-width : 984px) {
-	.content {
-		border: none;
-	}
+@media only screen and (max-width : 992px) {
 	#map {
 		margin: 0 auto;
 	}
-	.bloc-map-right {
-		max-width: 496px;
+	.left {
 		float: none;
-		margin: 30px auto 20px auto;
-		padding: 16px 0px;
 	}
-	.bloc-map-left {
-		padding: 16px 0px;
-		float: none;
-		margin: 30px auto 20px auto;
+	
+	.right {
+		float: none !important;
 	}
-}
-
-@media only screen and (max-width : 496px) {
-	.bloc-map-right {
-		margin-left: -1px;
-	}
-	.bloc-map-left {
-		margin-left: -1px;
+	
+	.btn{
+	width: 100%
 	}
 	.size_of_logo{
 		height: 25px;

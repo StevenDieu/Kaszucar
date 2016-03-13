@@ -8,12 +8,13 @@ function addCity() {
 				exitFunction = true;
 			}
 		});
-		
-		if(exitFunction === true){
+
+		if (exitFunction === true) {
+			showTest(".messageErrorWaypoints", "Ce lieu de passage est déja dans la liste")
 			return false;
 		}
-		
-		$(".blocWaypoitsCity").append('<div class="newWaypoints"><span class="cityWaypoints">' + newWaypoints + '</span><input type="hidden" name="waypoints[]" value="' + newWaypoints + '" /> <a class="removeNewWaypoints button-red">Supprimer</a></div>')
+
+		$(".blocWaypoitsCity").append('<div class="newWaypoints"><label class="cityWaypoints">' + newWaypoints + '</span><input type="hidden" name="waypoints[]" value="' + newWaypoints + '" /> <button type="button" class="btn btn-danger btn-xs removeNewWaypoints">Supprimer</button></label></div>')
 		chooseMethod();
 		$("#waypoints").val("");
 		$(".removeNewWaypoints").off("click");
@@ -21,6 +22,8 @@ function addCity() {
 			$(this).parent().remove();
 			chooseMethod();
 		});
+	} else {
+		showTest(".messageErrorWaypoints", "Aucun lieu de passage saisi.")
 	}
 }
 

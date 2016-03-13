@@ -1,100 +1,225 @@
 {{> templates/header}}
 <div class="clearBoth"></div>
 <form action="ajouter-un-covoiturage" method="post">
-	<div class="content">
-		<div class="bloc-map-left">
-			<div id="title">Itinéraire</div>
-			<div class="right-panel">
-				<div>
-					Lieu de départ
-					<br />
-					<input type="text" id="from" name="cityFrom" placeholder="Lieu de départ : Lille, Paris" value="{{from}}" />
-					<br />
-					Lieu d'arrivé
-					<br />
-					<input type="text" id="to" name="cityTo" placeholder="Lieu de d'arrivé : Lille, Paris" value="{{to}}" />
-					<br />
-					Lieu de passage
-					<br />
-					<input type="text" id="waypoints" placeholder="Lieu de passage : Lille, Paris" />
-					<br />
-					<a class="addCity button">Ajouter</a>
-					<br />
-					<div class="blocWaypoitsCity"></div>
+	<div class="container container-margin">
+		<div class="col-md-8 left">
+			<div class="panel panel-default">
+				<div class="panel-heading">Itinéraire</div>
+				<div class="panel-body">
+					<div>
+						<div class="form-group">
+							<label>Lieu de départ *</label>
+							<input type="text" id="from" class="form-control" name="cityFrom" placeholder="Lieu de départ : Lille, Paris..." value="{{from}}" />
+						</div>
+						<div class="form-group">
+							<label>Lieu d'arrivé *</label>
+							<input type="text" id="to" class="form-control" name="cityTo" placeholder="Lieu de d'arrivé : Lille, Paris..." value="{{to}}" />
+						</div>
+						<div class="form-group">
+							<label>Lieu de passage</label>
+							<input type="text" id="waypoints" class="form-control" placeholder="Lieu de passage : Lille, Paris..." />
+							<p class="help-block alert-danger-font messageErrorWaypoints"></p>
+						</div>
+
+						<a class="btn btn-success addCity">Ajouter lieu de passage</a>
+
+						<div class="blocWaypoitsCity"></div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="bloc-map-right heigt-map">
-			<div id="title">Itinéraire sur carte</div>
-			<div id="map"></div>
-		</div>
-		<div class="bloc-map-left">
-			<div id="title">Date et heure</div>
-			<div class="right-panel">
-				Date aller
-				<br />
-				<input type="date" name="dateFirstTrip" placeholder="" value="{{date}}" />
-				<br />
-				<br />
-				<input type="checkbox" class="goReturn" name="goReturn">
-				Aller-retour ?
-				<br />
-				<div class="hide blocDateReturn">
-					Date retour
-					<br />
-					<input type="date" name="dateReturnTrip" placeholder="" />
-					<br />
+		<div class="col-md-4 right">
+			<div class="panel panel-default">
+				<div class="panel-heading">Itinéraire sur carte</div>
+				<div class="panel-body">
+					<div class="heigt-map">
+						<div id="map"></div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="bloc-map-right">
-			<div id="title">Coût du trajet</div>
-			<div class="right-panel">
-				<input type="number" name="price" placeholder="Prix">
-				€
+		<div class="col-md-8 left">
+			<div class="panel panel-default">
+				<div class="panel-heading">Date et heure</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label>Date aller *</label>
+						<input type="date" class="form-control" name="dateFirstTrip" value="{{date}}" />
+					</div>
+
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" class="goReturn" name="goReturn">
+							Aller-retour ?
+						</label>
+					</div>
+
+					<div class="form-group hide blocDateReturn">
+						<label>Date retour</label>
+						<input type="date" class="form-control" name="dateReturnTrip" />
+					</div>
+
+				</div>
 			</div>
 		</div>
-		<div class="bloc-map-left">
-			<div id="title">Description du trajet</div>
-			<div class="right-panel">
-				<textarea class="textarea-100" name="description" rows="6"></textarea>
-				Bagage :
-				<br />
-				<input type="radio" name="sizeOfLuggage" value="little">
-				petite
-				<input type="radio" name="sizeOfLuggage" value="medium">
-				moyen
-				<input type="radio" name="sizeOfLuggage" value="large">
-				gros
-				<br />
-				Option :
-				<br />
-				<input type="checkbox" name="smoking" value="smoking">
-				Fumeur
-				<input type="checkbox" name="annimals" value="annimals">
-				Annimaux
-				<input type="checkbox" name="muscis" value="muscis">
-				Musique
-				<input type="checkbox" name="detour" value="detour">
-				Detour
-				<input type="checkbox" name="food" value="food">
-				Food
+		<div class="col-md-4 right">
+			<div class="panel panel-default">
+				<div class="panel-heading">Coût du trajet</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label>Prix *</label>
+						<div class="input-group">
+							<input type="number" name="price" class="form-control" placeholder="Prix">
+							<div class="input-group-addon">€</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="bloc-map-right">
-			<div id="title">Nombre de places dans la voiture</div>
-			<div class="right-panel">
-				<input type="number" name="sitNumber" placeholder="Nombre de place">
+
+
+		<div class="col-md-8 left">
+			<div class="panel panel-default">
+				<div class="panel-heading">Description du trajet</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<textarea placeholder="Petite description du voyage ? " class="form-control" name="description" rows="6"></textarea>
+					</div>
+					<div class="form-group">
+						<label>Bagage *</label>
+						<label class="radio-inline">
+							<input type="radio" name="sizeOfLuggage" value="little">
+							Petit
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="sizeOfLuggage" value="medium">
+							Moyen
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="sizeOfLuggage" value="large">
+							Gros
+						</label>
+					</div>
+
+					<div class="form-group">
+						<label>Option</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="smoking" value="smoking">
+							Fumeur
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="annimals" value="annimals">
+							Annimaux
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="muscis" value="muscis">
+							Musique
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="detour" value="detour">
+							Detour
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="food" value="food">
+							Food
+						</label>
+					</div>
+
+				</div>
 			</div>
 		</div>
-		<div class="bloc-map-right">
-			<div class="right-panel">
-				<input type="checkbox" name="cgv" value="cgv">
-				J'ai lu et accepté les <a href="#">CGU</a> et je certifie être en possession d'un permis de conduire et d'une assurance en cours de validité.
+
+		<div class="col-md-4 right">
+			<div class="panel panel-default">
+				<div class="panel-heading">Nombre de places dans la voiture</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label>Places *</label>
+						<input type="number" class="form-control" name="sitNumber" placeholder="Nombre de place">
+					</div>
+				</div>
 			</div>
 		</div>
+
+		<div class="col-md-4 right">
+			<div class="panel panel-default">
+				<div class="panel-heading">Véhicule</div>
+				<div class="panel-body">
+
+					<div class="form-group">
+						<label>Véhicule enregistrer</label>
+						<select class="form-control">
+							<option value="-1">Choisir un véhicule enregistrer</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Marque *</label>
+						<input type="text" class="form-control" name="">
+					</div>
+					<div class="form-group">
+						<label>Modèle *</label>
+						<input type="text" class="form-control" name="">
+					</div>
+					<div class="form-group">
+						<label>Confort *</label>
+						<select class="form-control">
+							<option value="BASIC">Basique</option>
+							<option value="NORMAL" selected="selected">Normal</option>
+							<option value="COMFORT">Confort</option>
+							<option value="LUXE">Luxe</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Couleur *</label>
+						<select class="form-control">
+							<option value="000000">noir</option>
+							<option value="0000FF">bleu</option>
+							<option value="008040">vert foncé</option>
+							<option value="00FF00">vert</option>
+							<option value="336699">bleu foncé</option>
+							<option value="808080">gris foncé</option>
+							<option value="8F13B9">violet</option>
+							<option value="996633">marron</option>
+							<option value="9B0004">bordeaux</option>
+							<option value="B7FDB5">vert clair</option>
+							<option value="BBBBFD">bleu clair</option>
+							<option value="C0C0C0">gris clair</option>
+							<option value="DDC2FE">mauve</option>
+							<option value="FF0000">rouge</option>
+							<option value="FF04FF">rose</option>
+							<option value="FFAD5B">orange</option>
+							<option value="FFFF80">jaune</option>
+							<option value="FFFFFF">blanc</option>
+							<option value="A0A0A0">gris métallisé</option>
+							<option value="988800">doré</option>
+							<option value="F5F5DC">beige</option>
+						</select>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-md-8 left">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="cgv" value="cgv">
+							J'ai lu et accepté les
+							<a href="#">CGU</a>
+							et je certifie être en possession d'un permis de conduire et d'une assurance en cours de validité. *
+						</label>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
 		<div class="clearBoth"></div>
-		<input type="submit" value="Finaliser le trajet" />
+		<input type="submit" class="btn btn-primary" value="Finaliser le trajet" />
 	</div>
 </form>
 

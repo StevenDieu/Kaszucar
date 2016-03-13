@@ -1,4 +1,11 @@
 var boolProgress = true;
+var setTimeoutText;
+
+function showTest(classMessage,text){
+	clearTimeout(setTimeoutText); 
+	$(classMessage).text(text).fadeIn();
+	setTimeoutText = setTimeout(function() { $(classMessage).text(text).fadeOut(); }, 5000); 
+}
 
 function signIn() {
 	$(".errorConnexion").html("");
@@ -16,6 +23,7 @@ function signIn() {
 				if (t.statut == "ok") {
 					if($(".redirect").val() != ""){
 						window.location.replace($(".redirect").val());
+						return;
 					}
 					window.location.replace(t.redirect);
 
