@@ -458,6 +458,25 @@ html, body {
 	.bloc-map-left {
 		margin-left: -1px;
 	}
+	.size_of_logo{
+		height: 25px;
+		margin-top: 12px;
+		width: 25px;
+	}
+	.connexion, .inscription{
+		background: black;
+	    border-radius: 5%;
+	    color: #8fb5c4;
+		display: block;
+	    line-height: 25px;
+	    margin: 10px 0 10px 18px;
+	    padding: 1.5% 2%;
+	    text-align: center;
+	    width: 85px;
+	}
+	#header-kaszu .center-logo{
+		line-height: 94px;
+	}
 }
 
 @media only screen and (max-width : 723px) {
