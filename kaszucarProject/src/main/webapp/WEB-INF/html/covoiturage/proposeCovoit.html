@@ -8,16 +8,22 @@
 				<div class="panel-body">
 					<div>
 						<div class="form-group">
-							<label>Lieu de départ *</label>
-							<input type="text" id="from" class="form-control" name="cityFrom" placeholder="Lieu de départ : Lille, Paris..." value="{{from}}" />
+							<label class="control-label">Lieu de départ *</label>
+							<div class="form-label">
+								<input type="text" id="from" class="form-control required" name="cityFrom" autocomplete="off" placeholder="Lieu de départ : Lille, Paris..." value="{{from}}" />
+							</div>
+							<p class="help-block"></p>
 						</div>
 						<div class="form-group">
-							<label>Lieu d'arrivé *</label>
-							<input type="text" id="to" class="form-control" name="cityTo" placeholder="Lieu de d'arrivé : Lille, Paris..." value="{{to}}" />
+							<label class="control-label">Lieu d'arrivé *</label>
+							<div class="form-label">
+								<input type="text" id="to" class="form-control required" name="cityTo" autocomplete="off" placeholder="Lieu de d'arrivé : Lille, Paris..." value="{{to}}" />
+							</div>
+							<p class="help-block"></p>
 						</div>
 						<div class="form-group">
-							<label>Lieu de passage</label>
-							<input type="text" id="waypoints" class="form-control" placeholder="Lieu de passage : Lille, Paris..." />
+							<label class="control-label">Lieu de passage</label>
+							<input type="text" id="waypoints" class="form-control" autocomplete="off" placeholder="Lieu de passage : Lille, Paris..." />
 							<p class="help-block alert-danger-font messageErrorWaypoints"></p>
 						</div>
 
@@ -43,19 +49,22 @@
 				<div class="panel-heading">Date et heure</div>
 				<div class="panel-body">
 					<div class="form-group">
-						<label>Date aller *</label>
-						<input type="date" class="form-control" name="dateFirstTrip" value="{{date}}" />
+						<label class="control-label">Date aller *</label>
+						<div class="form-label">
+							<input type="date" class="form-control required" name="dateFirstTrip" value="{{date}}" />
+						</div>
+						<p class="help-block"></p>
 					</div>
 
 					<div class="checkbox">
-						<label>
+						<label class="control-label">
 							<input type="checkbox" class="goReturn" name="goReturn">
 							Aller-retour ?
 						</label>
 					</div>
 
 					<div class="form-group hide blocDateReturn">
-						<label>Date retour</label>
+						<label class="control-label">Date retour</label>
 						<input type="date" class="form-control" name="dateReturnTrip" />
 					</div>
 
@@ -67,11 +76,12 @@
 				<div class="panel-heading">Coût du trajet</div>
 				<div class="panel-body">
 					<div class="form-group">
-						<label>Prix *</label>
+						<label class="control-label">Prix *</label>
 						<div class="input-group">
-							<input type="number" name="price" class="form-control" placeholder="Prix">
+							<input type="text" name="price" class="form-control required price" placeholder="Prix">
 							<div class="input-group-addon">€</div>
 						</div>
+						<p class="help-block"></p>
 					</div>
 				</div>
 			</div>
@@ -86,40 +96,41 @@
 						<textarea placeholder="Petite description du voyage ? " class="form-control" name="description" rows="6"></textarea>
 					</div>
 					<div class="form-group">
-						<label>Bagage *</label>
-						<label class="radio-inline">
-							<input type="radio" name="sizeOfLuggage" value="little">
+						<label class="control-label">Bagage *</label>
+						<label class="form-group radio-inline ">
+							<input type="radio" name="sizeOfLuggage" value="little" checked>
 							Petit
 						</label>
-						<label class="radio-inline">
+						<label class="form-group radio-inline">
 							<input type="radio" name="sizeOfLuggage" value="medium">
 							Moyen
 						</label>
-						<label class="radio-inline">
+						<label class="form-group radio-inline">
 							<input type="radio" name="sizeOfLuggage" value="large">
 							Gros
 						</label>
+						<p class="help-block"></p>
 					</div>
 
 					<div class="form-group">
-						<label>Option</label>
-						<label class="checkbox-inline">
+						<label class="control-label">Option</label>
+						<label class="form-group checkbox-inline">
 							<input type="checkbox" name="smoking" value="smoking">
 							Fumeur
 						</label>
-						<label class="checkbox-inline">
+						<label class="form-group checkbox-inline">
 							<input type="checkbox" name="annimals" value="annimals">
 							Annimaux
 						</label>
-						<label class="checkbox-inline">
+						<label class="form-group checkbox-inline">
 							<input type="checkbox" name="muscis" value="muscis">
 							Musique
 						</label>
-						<label class="checkbox-inline">
+						<label class="form-group checkbox-inline">
 							<input type="checkbox" name="detour" value="detour">
 							Detour
 						</label>
-						<label class="checkbox-inline">
+						<label class="form-group checkbox-inline">
 							<input type="checkbox" name="food" value="food">
 							Food
 						</label>
@@ -134,8 +145,13 @@
 				<div class="panel-heading">Nombre de places dans la voiture</div>
 				<div class="panel-body">
 					<div class="form-group">
-						<label>Places *</label>
-						<input type="number" class="form-control" name="sitNumber" placeholder="Nombre de place">
+						<label class="control-label">Places *</label>
+						<div class="form-label">
+							<input type="text" class="form-control required place" name="sitNumber" placeholder="Nombre de place" value="1">
+							<button class="btn btn-default minus" type="button">-</button>
+							<button class="btn btn-default plus" type="button">+</button>
+						</div>
+						<p class="help-block"></p>
 					</div>
 				</div>
 			</div>
@@ -148,53 +164,72 @@
 
 					<div class="form-group">
 						<label>Véhicule enregistrer</label>
-						<select class="form-control">
-							<option value="-1">Choisir un véhicule enregistrer</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label>Marque *</label>
-						<input type="text" class="form-control" name="">
-					</div>
-					<div class="form-group">
-						<label>Modèle *</label>
-						<input type="text" class="form-control" name="">
-					</div>
-					<div class="form-group">
-						<label>Confort *</label>
-						<select class="form-control">
-							<option value="BASIC">Basique</option>
-							<option value="NORMAL" selected="selected">Normal</option>
-							<option value="COMFORT">Confort</option>
-							<option value="LUXE">Luxe</option>
+						<select name="chooseCar" class="form-control chooseCar">
+							<option value="-1 ">Créer un nouveau véhicule</option>
+							{{#cars}}
+							<option value="{{idCars}}" data-brand="{{brand}}" data-model="{{model}}" data-comfort="{{comfort}}" data-color="{{color}}">{{brand}} : {{model}}</option>
+							{{/cars}}
 						</select>
 					</div>
 
+
 					<div class="form-group">
-						<label>Couleur *</label>
-						<select class="form-control">
-							<option value="000000">noir</option>
-							<option value="0000FF">bleu</option>
-							<option value="008040">vert foncé</option>
-							<option value="00FF00">vert</option>
-							<option value="336699">bleu foncé</option>
-							<option value="808080">gris foncé</option>
-							<option value="8F13B9">violet</option>
-							<option value="996633">marron</option>
-							<option value="9B0004">bordeaux</option>
-							<option value="B7FDB5">vert clair</option>
-							<option value="BBBBFD">bleu clair</option>
-							<option value="C0C0C0">gris clair</option>
-							<option value="DDC2FE">mauve</option>
-							<option value="FF0000">rouge</option>
-							<option value="FF04FF">rose</option>
-							<option value="FFAD5B">orange</option>
-							<option value="FFFF80">jaune</option>
-							<option value="FFFFFF">blanc</option>
-							<option value="A0A0A0">gris métallisé</option>
-							<option value="988800">doré</option>
-							<option value="F5F5DC">beige</option>
-						</select>
+						<label class="control-label">Marque *</label>
+						<div class="form-label">
+
+							<input type="text" class="form-control brand required" name="brand">
+						</div>
+						<p class="help-block"></p>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Modèle *</label>
+						<div class="form-label">
+
+							<input type="text" class="form-control model required" name="model">
+						</div>
+						<p class="help-block"></p>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Confort *</label>
+						<div class="form-label">
+							<select class="form-control comfort required" name="comfort">
+								<option value="BASIC">Basique</option>
+								<option value="NORMAL" selected="selected">Normal</option>
+								<option value="COMFORT">Confort</option>
+								<option value="LUXE">Luxe</option>
+							</select>
+						</div>
+						<p class="help-block"></p>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label">Couleur *</label>
+						<div class="form-label">
+							<select class="form-control color required" name="color">
+								<option value="noir">noir</option>
+								<option value="bleu">bleu</option>
+								<option value="vertf">vert foncé</option>
+								<option value="vert">vert</option>
+								<option value="bleuf">bleu foncé</option>
+								<option value="grisf">gris foncé</option>
+								<option value="violet">violet</option>
+								<option value="marron">marron</option>
+								<option value="bordeaux">bordeaux</option>
+								<option value="vertc">vert clair</option>
+								<option value="bleuc">bleu clair</option>
+								<option value="grisc">gris clair</option>
+								<option value="mauve">mauve</option>
+								<option value="rouge">rouge</option>
+								<option value="rose">rose</option>
+								<option value="orange">orange</option>
+								<option value="jaune">jaune</option>
+								<option value="blanc">blanc</option>
+								<option value="grism">gris métallisé</option>
+								<option value="dore">doré</option>
+								<option value="beige">beige</option>
+							</select>
+						</div>
+						<p class="help-block"></p>
 					</div>
 
 				</div>
@@ -206,12 +241,13 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<div class="checkbox">
-						<label>
-							<input type="checkbox" name="cgv" value="cgv">
+						<label class="control-label">
+							<input type="checkbox" name="cgv" class="required" value="cgv">
 							J'ai lu et accepté les
 							<a href="#">CGU</a>
 							et je certifie être en possession d'un permis de conduire et d'une assurance en cours de validité. *
 						</label>
+						<p class="help-block"></p>
 					</div>
 
 				</div>
@@ -219,7 +255,12 @@
 		</div>
 
 		<div class="clearBoth"></div>
-		<input type="submit" class="btn btn-primary" value="Finaliser le trajet" />
+		* Tout les champs sont obligatoires
+		<br />
+		<br />
+		<div class="form-group">
+			<input type="submit" class="btn btn-primary" value="Finaliser le trajet" />
+		</div>
 	</div>
 </form>
 

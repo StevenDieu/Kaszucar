@@ -48,8 +48,8 @@ CREATE TABLE IF NOT EXISTS cars (
   id_cars INT NOT NULL,
   brand VARCHAR(255) NOT NULL,
   model VARCHAR(255) NOT NULL,
-  comfort VARCHAR(45) NULL,
-  color VARCHAR(45) NULL,
+  comfort VARCHAR(45) NOT NULL,
+  color VARCHAR(45) NOT NULL,
   PRIMARY KEY (id_cars));
 
 

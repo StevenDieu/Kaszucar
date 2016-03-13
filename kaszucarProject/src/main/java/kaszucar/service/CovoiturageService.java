@@ -1,12 +1,6 @@
 package kaszucar.service;
 
-import org.hibernate.Session;
 
-import kaszucar.util.HibernateUtil;
+public interface CovoiturageService {
 
-public class CovoiturageService {
-	Session openSession = HibernateUtil.getSessionFactory().openSession();
-
-	
-	
 }
