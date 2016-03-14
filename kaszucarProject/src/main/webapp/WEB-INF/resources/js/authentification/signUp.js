@@ -48,8 +48,6 @@ function signUp() {
 			} else {
 				$(".errorConnexion").html("Les mots de passe ne sont pas identiques.");
 			}
-		} else {
-			$(".errorConnexion").html("Aucun champ ne doit \352tre vide.");
 		}
 
 	}
@@ -57,9 +55,30 @@ function signUp() {
 	return false;
 }
 
+function placeSignUp() {
+	var valueDefaultHeigth = ((window.innerHeight / 2) - ($(".signUp")
+			.height() / 2))
+			+ ($("header").height() / 2) + 20;
+	var headerHeight = $("header").height() + 20;
+	if (valueDefaultHeigth <= headerHeight) {
+		$(".signUp").css({
+			"top" : headerHeight + 'px'
+		});
+	} else {
+		$(".signUp").css({
+			"top" : valueDefaultHeigth + 'px'
+		});
+	}
+}
+
 $(document).ready(function() {
 	setYearHtml();
 
+	placeSignUp();
+	$(window).resize(function() {
+		placeSignUp();
+	});
+	$(".signUp").fadeIn( "slow" );
 	$('.signUp').on('submit', function(e) {
 		e.preventDefault();
 		if (boolProgress) {

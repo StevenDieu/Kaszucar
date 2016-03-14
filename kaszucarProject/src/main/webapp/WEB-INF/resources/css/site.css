@@ -134,7 +134,6 @@ html, body {
 	background: url("../img/route4.jpeg");
 	background-size: cover;
 	min-height: 100%;
-	margin-top: -20px;
 	-webkit-background-size: cover;
 	background-attachment: fixed;
 }
@@ -290,10 +289,13 @@ html, body {
 }
 
 .signUp, .singnIn {
-	font-size: 1.3em;
-	margin: 0 auto;
-	text-align: center;
-	width: 26%;
+	display: none;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 476px;
 }
 
 .signUp h2, .singnIn h2 {
