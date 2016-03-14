@@ -1,5 +1,7 @@
 package kaszucar.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.text.Normalizer;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +52,7 @@ public class CtrlCovoiturage {
   }
 
   @RequestMapping(value = "/ajouter-un-covoiturage", method = RequestMethod.POST)
-  public ModelAndView addCovoit(HttpServletRequest request) {
+  public ModelAndView addCovoit(HttpServletRequest request) throws UnsupportedEncodingException {
     Users user = (Users) request.getSession().getAttribute("User");
 
     if (user == null) {
@@ -58,10 +60,11 @@ public class CtrlCovoiturage {
       infoRedirect.put("redirect", "proposer-un-covoiturage");
       return new ModelAndView("redirect:connexion", infoRedirect);
     }
+    request.setCharacterEncoding("UTF-8");
 
     String cityFrom = (String) request.getParameter("cityFrom");
     String cityTo = (String) request.getParameter("cityTo");
-    String waypointsString = (String) request.getParameter("waypoints");
+    String[] waypointsString = request.getParameterValues("waypoints[]");
     String dateFirstTripString = (String) request.getParameter("dateFirstTrip");
     String hoursFirstTrip = (String) request.getParameter("hoursFirstTrip");
     String minFirstTrip = (String) request.getParameter("minFirstTrip");
