@@ -290,12 +290,12 @@ html, body {
 
 .signUp, .singnIn {
 	display: none;
-    margin: 0 auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 476px;
+	margin: 0 auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+	max-width: 476px;
 }
 
 .signUp h2, .singnIn h2 {
@@ -354,8 +354,12 @@ html, body {
 	margin-top: 7px;
 }
 
-.panelSign{
-	margin-bottom: 0!important;
+.panelSign {
+	margin-bottom: 0 !important;
+}
+
+.textarea-100 {
+	width: 100% !important;
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width
@@ -375,7 +379,13 @@ html, body {
 	}
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width : 1200px) {
+	.plus {
+		width: 48% ;
+	}
+}
+
+@media only screen and (max-width : 991px) {
 	#map {
 		margin: 0 auto;
 	}

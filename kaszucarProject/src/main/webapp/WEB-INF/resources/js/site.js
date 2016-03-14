@@ -1,5 +1,6 @@
 var boolProgress = true;
 var setTimeoutText;
+var error = false;
 
 function showTest(classMessage, text) {
 	clearTimeout(setTimeoutText);
@@ -38,6 +39,10 @@ $(document).ready(function() {
 
 	$("form").on("submit", function() {
 
+		if(error){
+			return false;
+		}
+		
 		var mess_required = "Ce champ est obligatoire.";
 		var mess_prix = "Ce champ doit être un prix et supérieur à 4 €.";
 

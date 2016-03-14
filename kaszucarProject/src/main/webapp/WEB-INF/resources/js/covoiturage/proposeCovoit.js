@@ -1,3 +1,5 @@
+var errorMaps;
+
 function addCity() {
 	var newWaypoints = $("#waypoints").val();
 	if (newWaypoints !== "" && $(".newWaypoints").size() < 6) {
