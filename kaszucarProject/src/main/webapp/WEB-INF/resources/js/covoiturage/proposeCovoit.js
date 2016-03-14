@@ -72,6 +72,22 @@ function testNumber() {
 	}
 }
 
+function showDateRetun() {
+	if ($(".goReturn").is(':checked')) {
+		$(".blocDateReturn").show();
+		$(".dateReturnTrip").addClass("required");
+		$(".hoursReturnTrip").addClass("required");
+		$(".minReturnTrip").addClass("required");
+
+	} else {
+		$(".blocDateReturn").hide();
+		$(".dateReturnTrip").removeClass("required");
+		$(".hoursReturnTrip").removeClass("required");
+		$(".minReturnTrip").removeClass("required");
+
+	}
+}
+
 $(document).ready(function() {
 	$(window).load(function() {
 		if ($("#from").val != "" || $("#to").val != "") {
@@ -79,24 +95,14 @@ $(document).ready(function() {
 		}
 	});
 
+	initialiseInputCar()
 	$(".chooseCar").on("change", function() {
 		initialiseInputCar();
 	})
 
+	showDateRetun()
 	$(".goReturn").on("click", function() {
-		if ($(".goReturn").is(':checked')) {
-			$(".blocDateReturn").show();
-			$(".dateReturnTrip").addClass("required");
-			$(".hoursReturnTrip").addClass("required");
-			$(".minReturnTrip").addClass("required");
-
-		} else {
-			$(".blocDateReturn").hide();
-			$(".dateReturnTrip").removeClass("required");
-			$(".hoursReturnTrip").removeClass("required");
-			$(".minReturnTrip").removeClass("required");
-
-		}
+		showDateRetun();
 	});
 
 	$(".addCity").on("click", function() {

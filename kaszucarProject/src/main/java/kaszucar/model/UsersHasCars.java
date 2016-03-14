@@ -1,5 +1,6 @@
 package kaszucar.model;
-// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
+// Generated 15 mars 2016 00:08:54 by Hibernate Tools 4.3.1.Final
+
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -19,48 +20,52 @@ import javax.persistence.Table;
 @Table(name = "users_has_cars", schema = "public")
 public class UsersHasCars implements java.io.Serializable {
 
-	private int idUsersHasCarl;
-	private Cars cars;
-	private Users users;
 
-	public UsersHasCars() {
-	}
+  private int idUsersHasCarl;
+  private Cars cars;
+  private Users users;
 
-	public UsersHasCars(int idUsersHasCarl, Cars cars, Users users) {
-		this.idUsersHasCarl = idUsersHasCarl;
-		this.cars = cars;
-		this.users = users;
-	}
+  public UsersHasCars() {}
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id_users_has_carl", unique = true, nullable = false)
-	public int getIdUsersHasCarl() {
-		return this.idUsersHasCarl;
-	}
+  public UsersHasCars(int idUsersHasCarl, Cars cars, Users users) {
+    this.idUsersHasCarl = idUsersHasCarl;
+    this.cars = cars;
+    this.users = users;
+  }
 
-	public void setIdUsersHasCarl(int idUsersHasCarl) {
-		this.idUsersHasCarl = idUsersHasCarl;
-	}
+  @Id
+  @GeneratedValue(strategy = IDENTITY)
+  @Column(name = "id_users_has_carl", unique = true, nullable = false)
+  public int getIdUsersHasCarl() {
+    return this.idUsersHasCarl;
+  }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_cars", nullable = false)
-	public Cars getCars() {
-		return this.cars;
-	}
+  public void setIdUsersHasCarl(int idUsersHasCarl) {
+    this.idUsersHasCarl = idUsersHasCarl;
+  }
 
-	public void setCars(Cars cars) {
-		this.cars = cars;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "id_cars", nullable = false)
+  public Cars getCars() {
+    return this.cars;
+  }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_users", nullable = false)
-	public Users getUsers() {
-		return this.users;
-	}
+  public void setCars(Cars cars) {
+    this.cars = cars;
+  }
 
-	public void setUsers(Users users) {
-		this.users = users;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "id_users", nullable = false)
+  public Users getUsers() {
+    return this.users;
+  }
+
+  public void setUsers(Users users) {
+    this.users = users;
+  }
+
+
 
 }
+
+

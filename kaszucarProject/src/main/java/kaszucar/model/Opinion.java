@@ -1,5 +1,6 @@
 package kaszucar.model;
-// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
+// Generated 15 mars 2016 00:08:54 by Hibernate Tools 4.3.1.Final
+
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -19,77 +20,85 @@ import javax.persistence.Table;
 @Table(name = "opinion", schema = "public")
 public class Opinion implements java.io.Serializable {
 
-	private int idOpinion;
-	private Users usersByIdUsersTo;
-	private Users usersByIdUsersFrom;
-	private String description;
-	private int score;
 
-	public Opinion() {
-	}
+  private int idOpinion;
+  private Users usersByIdUsersTo;
+  private Users usersByIdUsersFrom;
+  private String description;
+  private int score;
 
-	public Opinion(int idOpinion, Users usersByIdUsersTo, Users usersByIdUsersFrom, int score) {
-		this.idOpinion = idOpinion;
-		this.usersByIdUsersTo = usersByIdUsersTo;
-		this.usersByIdUsersFrom = usersByIdUsersFrom;
-		this.score = score;
-	}
+  public Opinion() {}
 
-	public Opinion(int idOpinion, Users usersByIdUsersTo, Users usersByIdUsersFrom, String description, int score) {
-		this.idOpinion = idOpinion;
-		this.usersByIdUsersTo = usersByIdUsersTo;
-		this.usersByIdUsersFrom = usersByIdUsersFrom;
-		this.description = description;
-		this.score = score;
-	}
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id_opinion", unique = true, nullable = false)
-	public int getIdOpinion() {
-		return this.idOpinion;
-	}
+  public Opinion(int idOpinion, Users usersByIdUsersTo, Users usersByIdUsersFrom, int score) {
+    this.idOpinion = idOpinion;
+    this.usersByIdUsersTo = usersByIdUsersTo;
+    this.usersByIdUsersFrom = usersByIdUsersFrom;
+    this.score = score;
+  }
 
-	public void setIdOpinion(int idOpinion) {
-		this.idOpinion = idOpinion;
-	}
+  public Opinion(int idOpinion, Users usersByIdUsersTo, Users usersByIdUsersFrom,
+      String description, int score) {
+    this.idOpinion = idOpinion;
+    this.usersByIdUsersTo = usersByIdUsersTo;
+    this.usersByIdUsersFrom = usersByIdUsersFrom;
+    this.description = description;
+    this.score = score;
+  }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_users_to", nullable = false)
-	public Users getUsersByIdUsersTo() {
-		return this.usersByIdUsersTo;
-	}
+  @Id
+  @GeneratedValue(strategy = IDENTITY)
+  @Column(name = "id_opinion", unique = true, nullable = false)
+  public int getIdOpinion() {
+    return this.idOpinion;
+  }
 
-	public void setUsersByIdUsersTo(Users usersByIdUsersTo) {
-		this.usersByIdUsersTo = usersByIdUsersTo;
-	}
+  public void setIdOpinion(int idOpinion) {
+    this.idOpinion = idOpinion;
+  }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_users_from", nullable = false)
-	public Users getUsersByIdUsersFrom() {
-		return this.usersByIdUsersFrom;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "id_users_to", nullable = false)
+  public Users getUsersByIdUsersTo() {
+    return this.usersByIdUsersTo;
+  }
 
-	public void setUsersByIdUsersFrom(Users usersByIdUsersFrom) {
-		this.usersByIdUsersFrom = usersByIdUsersFrom;
-	}
+  public void setUsersByIdUsersTo(Users usersByIdUsersTo) {
+    this.usersByIdUsersTo = usersByIdUsersTo;
+  }
 
-	@Column(name = "description")
-	public String getDescription() {
-		return this.description;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "id_users_from", nullable = false)
+  public Users getUsersByIdUsersFrom() {
+    return this.usersByIdUsersFrom;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public void setUsersByIdUsersFrom(Users usersByIdUsersFrom) {
+    this.usersByIdUsersFrom = usersByIdUsersFrom;
+  }
 
-	@Column(name = "score", nullable = false)
-	public int getScore() {
-		return this.score;
-	}
 
-	public void setScore(int score) {
-		this.score = score;
-	}
+  @Column(name = "description")
+  public String getDescription() {
+    return this.description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  @Column(name = "score", nullable = false)
+  public int getScore() {
+    return this.score;
+  }
+
+  public void setScore(int score) {
+    this.score = score;
+  }
+
+
 
 }
+
+

@@ -1,5 +1,6 @@
 package kaszucar.model;
-// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
+// Generated 15 mars 2016 00:08:54 by Hibernate Tools 4.3.1.Final
+
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -20,6 +21,7 @@ import javax.persistence.Table;
 @Table(name = "preference", schema = "public")
 public class Preference implements java.io.Serializable {
 
+
   private int idPreference;
   private Boolean smoking;
   private Boolean animals;
@@ -30,19 +32,10 @@ public class Preference implements java.io.Serializable {
 
   public Preference() {}
 
+
   public Preference(int idPreference) {
     this.idPreference = idPreference;
   }
-
-  public Preference(Boolean smoking, Boolean animals, Boolean musics, Boolean detour,
-      Boolean food) {
-    this.smoking = smoking;
-    this.animals = animals;
-    this.musics = musics;
-    this.detour = detour;
-    this.food = food;
-  }
-
 
   public Preference(int idPreference, Boolean smoking, Boolean animals, Boolean musics,
       Boolean detour, Boolean food, Set<Covoiturage> covoiturages) {
@@ -66,6 +59,7 @@ public class Preference implements java.io.Serializable {
     this.idPreference = idPreference;
   }
 
+
   @Column(name = "smoking")
   public Boolean getSmoking() {
     return this.smoking;
@@ -74,6 +68,7 @@ public class Preference implements java.io.Serializable {
   public void setSmoking(Boolean smoking) {
     this.smoking = smoking;
   }
+
 
   @Column(name = "animals")
   public Boolean getAnimals() {
@@ -84,6 +79,7 @@ public class Preference implements java.io.Serializable {
     this.animals = animals;
   }
 
+
   @Column(name = "musics")
   public Boolean getMusics() {
     return this.musics;
@@ -93,6 +89,7 @@ public class Preference implements java.io.Serializable {
     this.musics = musics;
   }
 
+
   @Column(name = "detour")
   public Boolean getDetour() {
     return this.detour;
@@ -101,6 +98,7 @@ public class Preference implements java.io.Serializable {
   public void setDetour(Boolean detour) {
     this.detour = detour;
   }
+
 
   @Column(name = "food")
   public Boolean getFood() {
@@ -120,4 +118,8 @@ public class Preference implements java.io.Serializable {
     this.covoiturages = covoiturages;
   }
 
+
+
 }
+
+

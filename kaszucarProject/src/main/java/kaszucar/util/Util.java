@@ -35,7 +35,7 @@ public final class Util {
   }
 
   public static boolean stringIsNull(String string) {
-    if (string == "" || string == null || string == "null") {
+    if (string == null || string.equals("") || string.equals("null")) {
       return true;
     }
     return false;
@@ -44,18 +44,18 @@ public final class Util {
   public static boolean stringIsNotNull(String string) {
     return !stringIsNull(string);
   }
-  
-	/**
-	 * Check if the price is compatible
-	 * 
-	 * @param email
-	 * @return
-	 */
-	public static boolean isPrice(String price) {
-		Pattern p = Pattern.compile("^[0-9]{1,}(,[0-9]{1,2}|[.][0-9]{1,2}){0,1}$");
-		Matcher m = p.matcher(price);
-		return m.matches();
-	}
+
+  /**
+   * Check if the price is compatible
+   * 
+   * @param email
+   * @return
+   */
+  public static boolean isPrice(String price) {
+    Pattern p = Pattern.compile("^[0-9]{1,}(,[0-9]{1,2}|[.][0-9]{1,2}){0,1}$");
+    Matcher m = p.matcher(price);
+    return m.matches();
+  }
 
   public static Date getDateByParam(String date, String hours, String min) {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
@@ -79,11 +79,18 @@ public final class Util {
     }
   }
 
-	public static ModelAndView returnMessageError(String messageString) {
-		Map<String, Object> message = new HashMap<String, Object>();
-		message.put("messageError", messageString);
-		return new ModelAndView("redirect:proposer-un-covoiturage", message);
-	}
+  public static ModelAndView returnMessageError(String messageString) {
+    Map<String, Object> message = new HashMap<String, Object>();
+    message.put("messageError", messageString);
+    return new ModelAndView("redirect:proposer-un-covoiturage", message);
+  }
+
+  public static String ConvertStringToNull(String description) {
+    if (description == null || description.equals("") || description.equals("null")) {
+      return null;
+    }
+    return description;
+  }
 
 
 }

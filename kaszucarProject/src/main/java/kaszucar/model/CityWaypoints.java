@@ -1,5 +1,6 @@
 package kaszucar.model;
-// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
+// Generated 15 mars 2016 00:08:54 by Hibernate Tools 4.3.1.Final
+
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -19,63 +20,71 @@ import javax.persistence.Table;
 @Table(name = "city_waypoints", schema = "public")
 public class CityWaypoints implements java.io.Serializable {
 
-	private int idCityStop;
-	private Covoiturage covoiturage;
-	private String cityWaypoints;
-	private Integer orderWaypoints;
 
-	public CityWaypoints() {
-	}
+  private int idCityStop;
+  private Covoiturage covoiturage;
+  private String cityWaypoints;
+  private Integer orderWaypoints;
 
-	public CityWaypoints(int idCityStop, Covoiturage covoiturage) {
-		this.idCityStop = idCityStop;
-		this.covoiturage = covoiturage;
-	}
+  public CityWaypoints() {}
 
-	public CityWaypoints(int idCityStop, Covoiturage covoiturage, String cityWaypoints, Integer orderWaypoints) {
-		this.idCityStop = idCityStop;
-		this.covoiturage = covoiturage;
-		this.cityWaypoints = cityWaypoints;
-		this.orderWaypoints = orderWaypoints;
-	}
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id_city_stop", unique = true, nullable = false)
-	public int getIdCityStop() {
-		return this.idCityStop;
-	}
+  public CityWaypoints(int idCityStop, Covoiturage covoiturage) {
+    this.idCityStop = idCityStop;
+    this.covoiturage = covoiturage;
+  }
 
-	public void setIdCityStop(int idCityStop) {
-		this.idCityStop = idCityStop;
-	}
+  public CityWaypoints(int idCityStop, Covoiturage covoiturage, String cityWaypoints,
+      Integer orderWaypoints) {
+    this.idCityStop = idCityStop;
+    this.covoiturage = covoiturage;
+    this.cityWaypoints = cityWaypoints;
+    this.orderWaypoints = orderWaypoints;
+  }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_covoiturage", nullable = false)
-	public Covoiturage getCovoiturage() {
-		return this.covoiturage;
-	}
+  @Id
+  @GeneratedValue(strategy = IDENTITY)
+  @Column(name = "id_city_stop", unique = true, nullable = false)
+  public int getIdCityStop() {
+    return this.idCityStop;
+  }
 
-	public void setCovoiturage(Covoiturage covoiturage) {
-		this.covoiturage = covoiturage;
-	}
+  public void setIdCityStop(int idCityStop) {
+    this.idCityStop = idCityStop;
+  }
 
-	@Column(name = "city_waypoints")
-	public String getCityWaypoints() {
-		return this.cityWaypoints;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "id_covoiturage", nullable = false)
+  public Covoiturage getCovoiturage() {
+    return this.covoiturage;
+  }
 
-	public void setCityWaypoints(String cityWaypoints) {
-		this.cityWaypoints = cityWaypoints;
-	}
+  public void setCovoiturage(Covoiturage covoiturage) {
+    this.covoiturage = covoiturage;
+  }
 
-	@Column(name = "order_waypoints")
-	public Integer getOrderWaypoints() {
-		return this.orderWaypoints;
-	}
 
-	public void setOrderWaypoints(Integer orderWaypoints) {
-		this.orderWaypoints = orderWaypoints;
-	}
+  @Column(name = "city_waypoints")
+  public String getCityWaypoints() {
+    return this.cityWaypoints;
+  }
+
+  public void setCityWaypoints(String cityWaypoints) {
+    this.cityWaypoints = cityWaypoints;
+  }
+
+
+  @Column(name = "order_waypoints")
+  public Integer getOrderWaypoints() {
+    return this.orderWaypoints;
+  }
+
+  public void setOrderWaypoints(Integer orderWaypoints) {
+    this.orderWaypoints = orderWaypoints;
+  }
+
+
 
 }
+
+

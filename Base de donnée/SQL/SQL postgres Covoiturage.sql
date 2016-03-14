@@ -45,7 +45,7 @@ CREATE INDEX fk_users_address1_idx ON users (id_address ASC);
 -- Table cars
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS cars (
-  id_cars INT NOT NULL,
+  id_cars SERIAL NOT NULL,
   brand VARCHAR(255) NOT NULL,
   model VARCHAR(255) NOT NULL,
   comfort VARCHAR(45) NOT NULL,
@@ -73,8 +73,8 @@ CREATE TABLE IF NOT EXISTS preference (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS covoiturage (
   id_covoiturage SERIAL NOT NULL,
-  date_first_trip DATE NOT NULL,
-  date_return_trip DATE NULL,
+  date_first_trip TIMESTAMP NOT NULL,
+  date_return_trip TIMESTAMP NULL,
   city_from TEXT NOT NULL,
   city_to TEXT NOT NULL,
   description VARCHAR(500) NULL,
@@ -194,3 +194,37 @@ CREATE TABLE IF NOT EXISTS opinion (
 CREATE INDEX fk_opinion_users1_idx ON opinion (id_users_from ASC);
 
 CREATE INDEX fk_opinion_users2_idx ON opinion (id_users_to ASC);
+
+
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,true,true,true,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,true,true,true,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,true,true,false,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,true,true,false,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,true,false,true,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,true,false,true,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,true,false,false,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,true,false,false,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,false,true,true,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,false,true,true,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,false,true,false,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,false,true,false,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,false,false,true,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,false,false,true,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,false,false,false,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (true,false,false,false,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,true,true,true,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,true,true,true,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,true,true,false,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,true,true,false,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,true,false,true,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,true,false,true,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,true,false,false,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,true,false,false,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,false,true,true,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,false,true,true,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,false,true,false,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,false,true,false,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,false,false,true,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,false,false,true,false);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,false,false,false,true);
+INSERT INTO preference (smoking, animals, musics, detour,food) VALUES (false,false,false,false,false);

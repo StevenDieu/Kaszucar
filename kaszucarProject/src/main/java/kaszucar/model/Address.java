@@ -1,5 +1,6 @@
 package kaszucar.model;
-// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
+// Generated 15 mars 2016 00:08:54 by Hibernate Tools 4.3.1.Final
+
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -20,83 +21,93 @@ import javax.persistence.Table;
 @Table(name = "address", schema = "public")
 public class Address implements java.io.Serializable {
 
-	private int idAddress;
-	private String address;
-	private String complementAddress;
-	private Integer postalCode;
-	private String country;
-	private Set<Users> userses = new HashSet<Users>(0);
 
-	public Address() {
-	}
+  private int idAddress;
+  private String address;
+  private String complementAddress;
+  private Integer postalCode;
+  private String country;
+  private Set<Users> userses = new HashSet<Users>(0);
 
-	public Address(int idAddress) {
-		this.idAddress = idAddress;
-	}
+  public Address() {}
 
-	public Address(int idAddress, String address, String complementAddress, Integer postalCode, String country, Set<Users> userses) {
-		this.idAddress = idAddress;
-		this.address = address;
-		this.complementAddress = complementAddress;
-		this.postalCode = postalCode;
-		this.country = country;
-		this.userses = userses;
-	}
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id_address", unique = true, nullable = false)
-	public int getIdAddress() {
-		return this.idAddress;
-	}
+  public Address(int idAddress) {
+    this.idAddress = idAddress;
+  }
 
-	public void setIdAddress(int idAddress) {
-		this.idAddress = idAddress;
-	}
+  public Address(int idAddress, String address, String complementAddress, Integer postalCode,
+      String country, Set<Users> userses) {
+    this.idAddress = idAddress;
+    this.address = address;
+    this.complementAddress = complementAddress;
+    this.postalCode = postalCode;
+    this.country = country;
+    this.userses = userses;
+  }
 
-	@Column(name = "address", length = 1024)
-	public String getAddress() {
-		return this.address;
-	}
+  @Id
+  @GeneratedValue(strategy = IDENTITY)
+  @Column(name = "id_address", unique = true, nullable = false)
+  public int getIdAddress() {
+    return this.idAddress;
+  }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+  public void setIdAddress(int idAddress) {
+    this.idAddress = idAddress;
+  }
 
-	@Column(name = "complement_address", length = 1024)
-	public String getComplementAddress() {
-		return this.complementAddress;
-	}
 
-	public void setComplementAddress(String complementAddress) {
-		this.complementAddress = complementAddress;
-	}
+  @Column(name = "address", length = 1024)
+  public String getAddress() {
+    return this.address;
+  }
 
-	@Column(name = "postal_code")
-	public Integer getPostalCode() {
-		return this.postalCode;
-	}
+  public void setAddress(String address) {
+    this.address = address;
+  }
 
-	public void setPostalCode(Integer postalCode) {
-		this.postalCode = postalCode;
-	}
 
-	@Column(name = "country")
-	public String getCountry() {
-		return this.country;
-	}
+  @Column(name = "complement_address", length = 1024)
+  public String getComplementAddress() {
+    return this.complementAddress;
+  }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+  public void setComplementAddress(String complementAddress) {
+    this.complementAddress = complementAddress;
+  }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
-	public Set<Users> getUserses() {
-		return this.userses;
-	}
 
-	public void setUserses(Set<Users> userses) {
-		this.userses = userses;
-	}
+  @Column(name = "postal_code")
+  public Integer getPostalCode() {
+    return this.postalCode;
+  }
+
+  public void setPostalCode(Integer postalCode) {
+    this.postalCode = postalCode;
+  }
+
+
+  @Column(name = "country")
+  public String getCountry() {
+    return this.country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
+  public Set<Users> getUserses() {
+    return this.userses;
+  }
+
+  public void setUserses(Set<Users> userses) {
+    this.userses = userses;
+  }
+
+
 
 }
+
+

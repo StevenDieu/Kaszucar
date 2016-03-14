@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import kaszucar.helper.UserHelper;
 import kaszucar.model.Cars;
+import kaszucar.model.Covoiturage;
 import kaszucar.model.Preference;
 import kaszucar.model.Users;
 import kaszucar.service.ImplCovoiturageService;
@@ -96,10 +96,9 @@ public class CtrlCovoiturage {
     if (dateFirstTrip == null) {
       return Util.returnMessageError("Le format de la date est incorrect.");
     }
-
+    Date dateReturnTrip = null;
     if (Util.stringIsNotNull(goReturn)) {
-      Date dateReturnTrip =
-          Util.getDateByParam(dateReturnTripString, hoursReturnTrip, minReturnTrip);
+      dateReturnTrip = Util.getDateByParam(dateReturnTripString, hoursReturnTrip, minReturnTrip);
       if (dateReturnTrip == null) {
         return Util.returnMessageError("Le format de la date est incorrect.");
       }
@@ -120,7 +119,7 @@ public class CtrlCovoiturage {
       return Util.returnMessageError("Le nombre de place est incorrect.");
     }
     Cars cars;
-    if (chooseCarString != null) {
+    if (chooseCarString.equals("1")) {
       if (!Util.convertToInt(chooseCarString)) {
         return Util.returnMessageError("Une erreur est survenue sur le choix de votre voiture.");
       }
@@ -134,15 +133,34 @@ public class CtrlCovoiturage {
           || Util.stringIsNull(color)) {
         return Util.returnMessageError("Une erreur est survenue sur le choix de votre voiture.");
       }
-      cars = new Cars(brand, model, comfort, color);
+      cars = new Cars();
+      cars.setColor(color);
+      cars.setComfort(comfort);
+      cars.setModel(model);
+      cars.setBrand(brand);
+      ICS.insertCars(cars, user);
     }
 
-    Preference preference =
-        new Preference(Util.stringIsNotNull(smoking), Util.stringIsNotNull(animals),
-            Util.stringIsNotNull(musics), Util.stringIsNotNull(detour), Util.stringIsNotNull(food));
-
+    Preference preference = new Preference();
+    preference.setAnimals(Util.stringIsNotNull(animals));
+    preference.setDetour(Util.stringIsNotNull(detour));
+    preference.setFood(Util.stringIsNotNull(food));
+    preference.setMusics(Util.stringIsNotNull(musics));
+    preference.setSmoking(Util.stringIsNotNull(smoking));
     ICS.getIdPreference(preference);
 
+    Covoiturage covoiturage = new Covoiturage();
+    covoiturage.setCars(cars);
+    covoiturage.setCityFrom(cityFrom);
+    covoiturage.setCityTo(cityTo);
+    covoiturage.setDateFirstTrip(dateFirstTrip);
+    covoiturage.setDateReturnTrip(dateReturnTrip);
+    covoiturage.setDescription(Util.ConvertStringToNull(description));
+    covoiturage.setPreference(preference);
+    covoiturage.setPrice(price);
+    covoiturage.setSitNumber(sitNumber);
+    covoiturage.setSizeOfLuggage(sizeOfLuggage);
+    ICS.insertCovoiturage(covoiturage, user);
 
     return new ModelAndView("covoiturage/finalizationAddCovoit");
   }

@@ -1,5 +1,6 @@
 package kaszucar.model;
-// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
+// Generated 15 mars 2016 00:08:54 by Hibernate Tools 4.3.1.Final
+
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -25,172 +26,187 @@ import javax.persistence.TemporalType;
 @Table(name = "covoiturage", schema = "public")
 public class Covoiturage implements java.io.Serializable {
 
-	private int idCovoiturage;
-	private Cars cars;
-	private Preference preference;
-	private Date dateFirstTrip;
-	private Date dateReturnTrip;
-	private String cityFrom;
-	private String cityTo;
-	private String description;
-	private int price;
-	private int sitNumber;
-	private String sizeOfLuggage;
-	private Set<UsersHasCovoiturage> usersHasCovoiturages = new HashSet<UsersHasCovoiturage>(0);
-	private Set<CityWaypoints> cityWaypointses = new HashSet<CityWaypoints>(0);
 
-	public Covoiturage() {
-	}
+  private int idCovoiturage;
+  private Cars cars;
+  private Preference preference;
+  private Date dateFirstTrip;
+  private Date dateReturnTrip;
+  private String cityFrom;
+  private String cityTo;
+  private String description;
+  private int price;
+  private int sitNumber;
+  private String sizeOfLuggage;
+  private Set<UsersHasCovoiturage> usersHasCovoiturages = new HashSet<UsersHasCovoiturage>(0);
+  private Set<CityWaypoints> cityWaypointses = new HashSet<CityWaypoints>(0);
 
-	public Covoiturage(int idCovoiturage, Cars cars, Preference preference, Date dateFirstTrip, String cityFrom, String cityTo, int price, int sitNumber, String sizeOfLuggage) {
-		this.idCovoiturage = idCovoiturage;
-		this.cars = cars;
-		this.preference = preference;
-		this.dateFirstTrip = dateFirstTrip;
-		this.cityFrom = cityFrom;
-		this.cityTo = cityTo;
-		this.price = price;
-		this.sitNumber = sitNumber;
-		this.sizeOfLuggage = sizeOfLuggage;
-	}
+  public Covoiturage() {}
 
-	public Covoiturage(int idCovoiturage, Cars cars, Preference preference, Date dateFirstTrip, Date dateReturnTrip, String cityFrom, String cityTo, String description, int price, int sitNumber, String sizeOfLuggage, Set<UsersHasCovoiturage> usersHasCovoiturages, Set<CityWaypoints> cityWaypointses) {
-		this.idCovoiturage = idCovoiturage;
-		this.cars = cars;
-		this.preference = preference;
-		this.dateFirstTrip = dateFirstTrip;
-		this.dateReturnTrip = dateReturnTrip;
-		this.cityFrom = cityFrom;
-		this.cityTo = cityTo;
-		this.description = description;
-		this.price = price;
-		this.sitNumber = sitNumber;
-		this.sizeOfLuggage = sizeOfLuggage;
-		this.usersHasCovoiturages = usersHasCovoiturages;
-		this.cityWaypointses = cityWaypointses;
-	}
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id_covoiturage", unique = true, nullable = false)
-	public int getIdCovoiturage() {
-		return this.idCovoiturage;
-	}
+  public Covoiturage(int idCovoiturage, Cars cars, Preference preference, Date dateFirstTrip,
+      String cityFrom, String cityTo, int price, int sitNumber, String sizeOfLuggage) {
+    this.idCovoiturage = idCovoiturage;
+    this.cars = cars;
+    this.preference = preference;
+    this.dateFirstTrip = dateFirstTrip;
+    this.cityFrom = cityFrom;
+    this.cityTo = cityTo;
+    this.price = price;
+    this.sitNumber = sitNumber;
+    this.sizeOfLuggage = sizeOfLuggage;
+  }
 
-	public void setIdCovoiturage(int idCovoiturage) {
-		this.idCovoiturage = idCovoiturage;
-	}
+  public Covoiturage(int idCovoiturage, Cars cars, Preference preference, Date dateFirstTrip,
+      Date dateReturnTrip, String cityFrom, String cityTo, String description, int price,
+      int sitNumber, String sizeOfLuggage, Set<UsersHasCovoiturage> usersHasCovoiturages,
+      Set<CityWaypoints> cityWaypointses) {
+    this.idCovoiturage = idCovoiturage;
+    this.cars = cars;
+    this.preference = preference;
+    this.dateFirstTrip = dateFirstTrip;
+    this.dateReturnTrip = dateReturnTrip;
+    this.cityFrom = cityFrom;
+    this.cityTo = cityTo;
+    this.description = description;
+    this.price = price;
+    this.sitNumber = sitNumber;
+    this.sizeOfLuggage = sizeOfLuggage;
+    this.usersHasCovoiturages = usersHasCovoiturages;
+    this.cityWaypointses = cityWaypointses;
+  }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_cars", nullable = false)
-	public Cars getCars() {
-		return this.cars;
-	}
+  @Id
+  @GeneratedValue(strategy = IDENTITY)
+  @Column(name = "id_covoiturage", unique = true, nullable = false)
+  public int getIdCovoiturage() {
+    return this.idCovoiturage;
+  }
 
-	public void setCars(Cars cars) {
-		this.cars = cars;
-	}
+  public void setIdCovoiturage(int idCovoiturage) {
+    this.idCovoiturage = idCovoiturage;
+  }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "preference_id_preference", nullable = false)
-	public Preference getPreference() {
-		return this.preference;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "id_cars", nullable = false)
+  public Cars getCars() {
+    return this.cars;
+  }
 
-	public void setPreference(Preference preference) {
-		this.preference = preference;
-	}
+  public void setCars(Cars cars) {
+    this.cars = cars;
+  }
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "date_first_trip", nullable = false, length = 13)
-	public Date getDateFirstTrip() {
-		return this.dateFirstTrip;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "preference_id_preference", nullable = false)
+  public Preference getPreference() {
+    return this.preference;
+  }
 
-	public void setDateFirstTrip(Date dateFirstTrip) {
-		this.dateFirstTrip = dateFirstTrip;
-	}
+  public void setPreference(Preference preference) {
+    this.preference = preference;
+  }
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "date_return_trip", length = 13)
-	public Date getDateReturnTrip() {
-		return this.dateReturnTrip;
-	}
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "date_first_trip", nullable = false, length = 29)
+  public Date getDateFirstTrip() {
+    return this.dateFirstTrip;
+  }
 
-	public void setDateReturnTrip(Date dateReturnTrip) {
-		this.dateReturnTrip = dateReturnTrip;
-	}
+  public void setDateFirstTrip(Date dateFirstTrip) {
+    this.dateFirstTrip = dateFirstTrip;
+  }
 
-	@Column(name = "city_from", nullable = false)
-	public String getCityFrom() {
-		return this.cityFrom;
-	}
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "date_return_trip", length = 29)
+  public Date getDateReturnTrip() {
+    return this.dateReturnTrip;
+  }
 
-	public void setCityFrom(String cityFrom) {
-		this.cityFrom = cityFrom;
-	}
+  public void setDateReturnTrip(Date dateReturnTrip) {
+    this.dateReturnTrip = dateReturnTrip;
+  }
 
-	@Column(name = "city_to", nullable = false)
-	public String getCityTo() {
-		return this.cityTo;
-	}
 
-	public void setCityTo(String cityTo) {
-		this.cityTo = cityTo;
-	}
+  @Column(name = "city_from", nullable = false)
+  public String getCityFrom() {
+    return this.cityFrom;
+  }
 
-	@Column(name = "description", length = 500)
-	public String getDescription() {
-		return this.description;
-	}
+  public void setCityFrom(String cityFrom) {
+    this.cityFrom = cityFrom;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
-	@Column(name = "price", nullable = false)
-	public int getPrice() {
-		return this.price;
-	}
+  @Column(name = "city_to", nullable = false)
+  public String getCityTo() {
+    return this.cityTo;
+  }
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
+  public void setCityTo(String cityTo) {
+    this.cityTo = cityTo;
+  }
 
-	@Column(name = "sit_number", nullable = false)
-	public int getSitNumber() {
-		return this.sitNumber;
-	}
 
-	public void setSitNumber(int sitNumber) {
-		this.sitNumber = sitNumber;
-	}
+  @Column(name = "description", length = 500)
+  public String getDescription() {
+    return this.description;
+  }
 
-	@Column(name = "size_of_luggage", nullable = false)
-	public String getSizeOfLuggage() {
-		return this.sizeOfLuggage;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public void setSizeOfLuggage(String sizeOfLuggage) {
-		this.sizeOfLuggage = sizeOfLuggage;
-	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "covoiturage")
-	public Set<UsersHasCovoiturage> getUsersHasCovoiturages() {
-		return this.usersHasCovoiturages;
-	}
+  @Column(name = "price", nullable = false)
+  public int getPrice() {
+    return this.price;
+  }
 
-	public void setUsersHasCovoiturages(Set<UsersHasCovoiturage> usersHasCovoiturages) {
-		this.usersHasCovoiturages = usersHasCovoiturages;
-	}
+  public void setPrice(int price) {
+    this.price = price;
+  }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "covoiturage")
-	public Set<CityWaypoints> getCityWaypointses() {
-		return this.cityWaypointses;
-	}
 
-	public void setCityWaypointses(Set<CityWaypoints> cityWaypointses) {
-		this.cityWaypointses = cityWaypointses;
-	}
+  @Column(name = "sit_number", nullable = false)
+  public int getSitNumber() {
+    return this.sitNumber;
+  }
+
+  public void setSitNumber(int sitNumber) {
+    this.sitNumber = sitNumber;
+  }
+
+
+  @Column(name = "size_of_luggage", nullable = false)
+  public String getSizeOfLuggage() {
+    return this.sizeOfLuggage;
+  }
+
+  public void setSizeOfLuggage(String sizeOfLuggage) {
+    this.sizeOfLuggage = sizeOfLuggage;
+  }
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "covoiturage")
+  public Set<UsersHasCovoiturage> getUsersHasCovoiturages() {
+    return this.usersHasCovoiturages;
+  }
+
+  public void setUsersHasCovoiturages(Set<UsersHasCovoiturage> usersHasCovoiturages) {
+    this.usersHasCovoiturages = usersHasCovoiturages;
+  }
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "covoiturage")
+  public Set<CityWaypoints> getCityWaypointses() {
+    return this.cityWaypointses;
+  }
+
+  public void setCityWaypointses(Set<CityWaypoints> cityWaypointses) {
+    this.cityWaypointses = cityWaypointses;
+  }
+
+
 
 }
+
+

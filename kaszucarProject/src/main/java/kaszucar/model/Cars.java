@@ -1,5 +1,6 @@
 package kaszucar.model;
-// Generated 26 f�vr. 2016 12:28:55 by Hibernate Tools 4.3.1.Final
+// Generated 15 mars 2016 00:08:54 by Hibernate Tools 4.3.1.Final
+
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -20,6 +21,7 @@ import javax.persistence.Table;
 @Table(name = "cars", schema = "public")
 public class Cars implements java.io.Serializable {
 
+
   private int idCars;
   private String brand;
   private String model;
@@ -30,13 +32,9 @@ public class Cars implements java.io.Serializable {
 
   public Cars() {}
 
-  public Cars(int idCars, String brand, String model) {
-    this.idCars = idCars;
-    this.brand = brand;
-    this.model = model;
-  }
 
-  public Cars(String brand, String model, String comfort, String color) {
+  public Cars(int idCars, String brand, String model, String comfort, String color) {
+    this.idCars = idCars;
     this.brand = brand;
     this.model = model;
     this.comfort = comfort;
@@ -65,6 +63,7 @@ public class Cars implements java.io.Serializable {
     this.idCars = idCars;
   }
 
+
   @Column(name = "brand", nullable = false)
   public String getBrand() {
     return this.brand;
@@ -73,6 +72,7 @@ public class Cars implements java.io.Serializable {
   public void setBrand(String brand) {
     this.brand = brand;
   }
+
 
   @Column(name = "model", nullable = false)
   public String getModel() {
@@ -83,7 +83,8 @@ public class Cars implements java.io.Serializable {
     this.model = model;
   }
 
-  @Column(name = "comfort", length = 45)
+
+  @Column(name = "comfort", nullable = false, length = 45)
   public String getComfort() {
     return this.comfort;
   }
@@ -92,7 +93,8 @@ public class Cars implements java.io.Serializable {
     this.comfort = comfort;
   }
 
-  @Column(name = "color", length = 45)
+
+  @Column(name = "color", nullable = false, length = 45)
   public String getColor() {
     return this.color;
   }
@@ -119,4 +121,8 @@ public class Cars implements java.io.Serializable {
     this.usersHasCarses = usersHasCarses;
   }
 
+
+
 }
+
+

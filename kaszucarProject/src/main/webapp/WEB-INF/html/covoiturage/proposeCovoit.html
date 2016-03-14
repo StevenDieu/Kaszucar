@@ -10,14 +10,14 @@
 						<div class="form-group">
 							<label class="control-label">Lieu de départ *</label>
 							<div class="form-label">
-								<input type="text" id="from" class="form-control required" name="cityFrom" autocomplete="off" placeholder="Lieu de départ : Lille, Paris..." value="{{from}}" />
+								<input type="text" id="from" class="form-control required" name="cityFrom" autocomplete="off" placeholder="Lieu de départ : Lille, Paris..." {{#from}}value="{{from}}" {{/from}}/>
 							</div>
 							<p class="help-block"></p>
 						</div>
 						<div class="form-group">
 							<label class="control-label">Lieu d'arrivée *</label>
 							<div class="form-label">
-								<input type="text" id="to" class="form-control required" name="cityTo" autocomplete="off" placeholder="Lieu de d'arrivé : Lille, Paris..." value="{{to}}" />
+								<input type="text" id="to" class="form-control required" name="cityTo" autocomplete="off" placeholder="Lieu de d'arrivé : Lille, Paris..." {{#to}}value="{{to}}"{{/to}} />
 							</div>
 							<p class="help-block"></p>
 						</div>

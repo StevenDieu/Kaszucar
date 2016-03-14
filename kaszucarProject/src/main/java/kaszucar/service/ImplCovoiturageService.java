@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kaszucar.model.Cars;
+import kaszucar.model.Covoiturage;
 import kaszucar.model.Preference;
+import kaszucar.model.Users;
 import kaszucar.model.UsersHasCars;
+import kaszucar.model.UsersHasCovoiturage;
 import kaszucar.repository.CovoiturageRepository;
 
 @Service
@@ -33,6 +36,19 @@ public class ImplCovoiturageService implements CovoiturageService {
 
   public void getIdPreference(Preference preference) {
      preference.setIdPreference(CR.getIdPreference(preference).get(0).getIdPreference());
+  }
+
+  public void insertCars(Cars cars, Users user) {
+    UsersHasCars UsersHasCar = new UsersHasCars();
+    UsersHasCar.setUsers(user);
+    CR.insertCars(cars,UsersHasCar);
+
+  }
+
+  public void insertCovoiturage(Covoiturage covoiturage,Users user) {
+    UsersHasCovoiturage usersHasCovoiturage = new UsersHasCovoiturage();
+    usersHasCovoiturage.setUsers(user);
+    CR.insertCovoiturage(covoiturage,usersHasCovoiturage);    
   }
 	
 }
