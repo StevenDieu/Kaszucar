@@ -4,8 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.servlet.ModelAndView;
 
 public final class Util {
 
@@ -40,6 +44,18 @@ public final class Util {
   public static boolean stringIsNotNull(String string) {
     return !stringIsNull(string);
   }
+  
+	/**
+	 * Check if the price is compatible
+	 * 
+	 * @param email
+	 * @return
+	 */
+	public static boolean isPrice(String price) {
+		Pattern p = Pattern.compile("^[0-9]{1,}(,[0-9]{1,2}|[.][0-9]{1,2}){0,1}$");
+		Matcher m = p.matcher(price);
+		return m.matches();
+	}
 
   public static Date getDateByParam(String date, String hours, String min) {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
@@ -63,6 +79,11 @@ public final class Util {
     }
   }
 
+	public static ModelAndView returnMessageError(String messageString) {
+		Map<String, Object> message = new HashMap<String, Object>();
+		message.put("messageError", messageString);
+		return new ModelAndView("redirect:proposer-un-covoiturage", message);
+	}
 
 
 }

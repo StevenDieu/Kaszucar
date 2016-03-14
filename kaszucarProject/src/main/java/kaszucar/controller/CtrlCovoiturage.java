@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kaszucar.helper.UserHelper;
+import kaszucar.model.Cars;
+import kaszucar.model.Preference;
 import kaszucar.model.Users;
 import kaszucar.service.ImplCovoiturageService;
 import kaszucar.util.Util;
@@ -68,16 +70,16 @@ public class CtrlCovoiturage {
     String hoursReturnTrip = (String) request.getParameter("hoursReturnTrip");
     String minReturnTrip = (String) request.getParameter("minReturnTrip");
 
-    String price = (String) request.getParameter("price");
+    String priceString = (String) request.getParameter("price");
     String description = (String) request.getParameter("description");
     String sizeOfLuggage = (String) request.getParameter("sizeOfLuggage");
     String smoking = (String) request.getParameter("smoking");
-    String annimals = (String) request.getParameter("annimals");
-    String muscis = (String) request.getParameter("muscis");
+    String animals = (String) request.getParameter("animals");
+    String musics = (String) request.getParameter("musics");
     String detour = (String) request.getParameter("detour");
     String food = (String) request.getParameter("food");
-    String sitNumber = (String) request.getParameter("sitNumber");
-    String chooseCar = (String) request.getParameter("chooseCar");
+    String sitNumberString = (String) request.getParameter("sitNumber");
+    String chooseCarString = (String) request.getParameter("chooseCar");
     String brand = (String) request.getParameter("brand");
     String model = (String) request.getParameter("model");
     String comfort = (String) request.getParameter("comfort");
@@ -85,32 +87,64 @@ public class CtrlCovoiturage {
 
     if (Util.stringIsNull(cityFrom) || Util.stringIsNull(cityTo)
         || Util.stringIsNull(dateFirstTripString) || Util.stringIsNull(hoursFirstTrip)
-        || Util.stringIsNull(price) || Util.stringIsNull(sizeOfLuggage)
-        || Util.stringIsNull(sitNumber) || Util.stringIsNull(brand) || Util.stringIsNull(model)
-        || Util.stringIsNull(comfort) || Util.stringIsNull(color)) {
-      Map<String, Object> message = new HashMap<String, Object>();
-      message.put("messageError", "Un problème est survenu, il manque des champs.");
-      return new ModelAndView("redirect:proposer-un-covoiturage", message);
+        || Util.stringIsNull(priceString) || Util.stringIsNull(sizeOfLuggage)
+        || Util.stringIsNull(sitNumberString)) {
+      return Util.returnMessageError("Un problème est survenu, il manque des champs.");
     }
 
-    Date dateFirstTrip = Util.getDateByParam(dateFirstTripString,hoursFirstTrip,minFirstTrip);
-    if(dateFirstTrip == null){
-      Map<String, Object> message = new HashMap<String, Object>();
-      message.put("messageError", "Le format de la date est incorrect.");
-      return new ModelAndView("redirect:proposer-un-covoiturage", message);
+    Date dateFirstTrip = Util.getDateByParam(dateFirstTripString, hoursFirstTrip, minFirstTrip);
+    if (dateFirstTrip == null) {
+      return Util.returnMessageError("Le format de la date est incorrect.");
     }
-    
+
     if (Util.stringIsNotNull(goReturn)) {
-      Date dateReturnTrip = Util.getDateByParam(dateReturnTripString,hoursReturnTrip,minReturnTrip);
-      if(dateReturnTrip == null){
-        Map<String, Object> message = new HashMap<String, Object>();
-        message.put("messageError", "Le format de la date est incorrect.");
-        return new ModelAndView("redirect:proposer-un-covoiturage", message);
+      Date dateReturnTrip =
+          Util.getDateByParam(dateReturnTripString, hoursReturnTrip, minReturnTrip);
+      if (dateReturnTrip == null) {
+        return Util.returnMessageError("Le format de la date est incorrect.");
       }
     }
-    
-    
+
+    if (!Util.isPrice(priceString) || !Util.convertToInt(priceString)) {
+      return Util.returnMessageError("Le prix est incorrect");
+
+    }
+    int price = Integer.parseInt(priceString);
+
+    if (!Util.convertToInt(sitNumberString)) {
+      return Util.returnMessageError("Le nombre de place est incorrect.");
+    }
+
+    int sitNumber = Integer.parseInt(sitNumberString);
+    if (sitNumber < 1 && sitNumber > 5) {
+      return Util.returnMessageError("Le nombre de place est incorrect.");
+    }
+    Cars cars;
+    if (chooseCarString != null) {
+      if (!Util.convertToInt(chooseCarString)) {
+        return Util.returnMessageError("Une erreur est survenue sur le choix de votre voiture.");
+      }
+      int idCars = Integer.parseInt(chooseCarString);
+      cars = ICS.getCarsByIdAndUser(idCars, user.getIdUsers());
+      if (cars == null) {
+        return Util.returnMessageError("Une erreur est survenue sur le choix de votre voiture.");
+      }
+    } else {
+      if (Util.stringIsNull(brand) || Util.stringIsNull(model) || Util.stringIsNull(comfort)
+          || Util.stringIsNull(color)) {
+        return Util.returnMessageError("Une erreur est survenue sur le choix de votre voiture.");
+      }
+      cars = new Cars(brand, model, comfort, color);
+    }
+
+    Preference preference =
+        new Preference(Util.stringIsNotNull(smoking), Util.stringIsNotNull(animals),
+            Util.stringIsNotNull(musics), Util.stringIsNotNull(detour), Util.stringIsNotNull(food));
+
+    ICS.getIdPreference(preference);
+
 
     return new ModelAndView("covoiturage/finalizationAddCovoit");
   }
+
 }

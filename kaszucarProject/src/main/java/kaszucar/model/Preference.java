@@ -20,94 +20,104 @@ import javax.persistence.Table;
 @Table(name = "preference", schema = "public")
 public class Preference implements java.io.Serializable {
 
-	private int idPreference;
-	private Boolean smoking;
-	private Boolean animals;
-	private Boolean musics;
-	private Boolean detour;
-	private Boolean food;
-	private Set<Covoiturage> covoiturages = new HashSet<Covoiturage>(0);
+  private int idPreference;
+  private Boolean smoking;
+  private Boolean animals;
+  private Boolean musics;
+  private Boolean detour;
+  private Boolean food;
+  private Set<Covoiturage> covoiturages = new HashSet<Covoiturage>(0);
 
-	public Preference() {
-	}
+  public Preference() {}
 
-	public Preference(int idPreference) {
-		this.idPreference = idPreference;
-	}
+  public Preference(int idPreference) {
+    this.idPreference = idPreference;
+  }
 
-	public Preference(int idPreference, Boolean smoking, Boolean animals, Boolean musics, Boolean detour, Boolean food, Set<Covoiturage> covoiturages) {
-		this.idPreference = idPreference;
-		this.smoking = smoking;
-		this.animals = animals;
-		this.musics = musics;
-		this.detour = detour;
-		this.food = food;
-		this.covoiturages = covoiturages;
-	}
+  public Preference(Boolean smoking, Boolean animals, Boolean musics, Boolean detour,
+      Boolean food) {
+    this.smoking = smoking;
+    this.animals = animals;
+    this.musics = musics;
+    this.detour = detour;
+    this.food = food;
+  }
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id_preference", unique = true, nullable = false)
-	public int getIdPreference() {
-		return this.idPreference;
-	}
 
-	public void setIdPreference(int idPreference) {
-		this.idPreference = idPreference;
-	}
+  public Preference(int idPreference, Boolean smoking, Boolean animals, Boolean musics,
+      Boolean detour, Boolean food, Set<Covoiturage> covoiturages) {
+    this.idPreference = idPreference;
+    this.smoking = smoking;
+    this.animals = animals;
+    this.musics = musics;
+    this.detour = detour;
+    this.food = food;
+    this.covoiturages = covoiturages;
+  }
 
-	@Column(name = "smoking")
-	public Boolean getSmoking() {
-		return this.smoking;
-	}
+  @Id
+  @GeneratedValue(strategy = IDENTITY)
+  @Column(name = "id_preference", unique = true, nullable = false)
+  public int getIdPreference() {
+    return this.idPreference;
+  }
 
-	public void setSmoking(Boolean smoking) {
-		this.smoking = smoking;
-	}
+  public void setIdPreference(int idPreference) {
+    this.idPreference = idPreference;
+  }
 
-	@Column(name = "animals")
-	public Boolean getAnimals() {
-		return this.animals;
-	}
+  @Column(name = "smoking")
+  public Boolean getSmoking() {
+    return this.smoking;
+  }
 
-	public void setAnimals(Boolean animals) {
-		this.animals = animals;
-	}
+  public void setSmoking(Boolean smoking) {
+    this.smoking = smoking;
+  }
 
-	@Column(name = "musics")
-	public Boolean getMusics() {
-		return this.musics;
-	}
+  @Column(name = "animals")
+  public Boolean getAnimals() {
+    return this.animals;
+  }
 
-	public void setMusics(Boolean musics) {
-		this.musics = musics;
-	}
+  public void setAnimals(Boolean animals) {
+    this.animals = animals;
+  }
 
-	@Column(name = "detour")
-	public Boolean getDetour() {
-		return this.detour;
-	}
+  @Column(name = "musics")
+  public Boolean getMusics() {
+    return this.musics;
+  }
 
-	public void setDetour(Boolean detour) {
-		this.detour = detour;
-	}
+  public void setMusics(Boolean musics) {
+    this.musics = musics;
+  }
 
-	@Column(name = "food")
-	public Boolean getFood() {
-		return this.food;
-	}
+  @Column(name = "detour")
+  public Boolean getDetour() {
+    return this.detour;
+  }
 
-	public void setFood(Boolean food) {
-		this.food = food;
-	}
+  public void setDetour(Boolean detour) {
+    this.detour = detour;
+  }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "preference")
-	public Set<Covoiturage> getCovoiturages() {
-		return this.covoiturages;
-	}
+  @Column(name = "food")
+  public Boolean getFood() {
+    return this.food;
+  }
 
-	public void setCovoiturages(Set<Covoiturage> covoiturages) {
-		this.covoiturages = covoiturages;
-	}
+  public void setFood(Boolean food) {
+    this.food = food;
+  }
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "preference")
+  public Set<Covoiturage> getCovoiturages() {
+    return this.covoiturages;
+  }
+
+  public void setCovoiturages(Set<Covoiturage> covoiturages) {
+    this.covoiturages = covoiturages;
+  }
 
 }

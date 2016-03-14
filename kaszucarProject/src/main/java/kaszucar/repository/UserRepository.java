@@ -31,7 +31,6 @@ public class UserRepository {
 	}
 
 	public void insertUser(Users users) {
-		openSession.save(users);
 		Transaction tx = openSession.beginTransaction();
 
 		openSession.save(users);
