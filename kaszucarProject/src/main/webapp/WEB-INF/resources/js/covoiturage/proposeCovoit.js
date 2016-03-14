@@ -86,8 +86,16 @@ $(document).ready(function() {
 	$(".goReturn").on("click", function() {
 		if ($(".goReturn").is(':checked')) {
 			$(".blocDateReturn").show();
+			$(".dateReturnTrip").addClass("required");
+			$(".hoursReturnTrip").addClass("required");
+			$(".minReturnTrip").addClass("required");
+
 		} else {
 			$(".blocDateReturn").hide();
+			$(".dateReturnTrip").removeClass("required");
+			$(".hoursReturnTrip").removeClass("required");
+			$(".minReturnTrip").removeClass("required");
+
 		}
 	});
 

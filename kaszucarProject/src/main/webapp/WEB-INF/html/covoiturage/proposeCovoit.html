@@ -50,22 +50,135 @@
 				<div class="panel-body">
 					<div class="form-group">
 						<label class="control-label">Date aller *</label>
-						<div class="form-label">
-							<input type="date" class="form-control required" name="dateFirstTrip" value="{{date}}" />
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-label">
+									<input type="date" class="form-control required" name="dateFirstTrip" value="{{date}}" />
+								</div>
+								<p class="help-block"></p>
+
+							</div>
+							<div class="col-sm-3">
+								<div class="form-label">
+									<select class="form-control required" name="hoursFirstTrip">
+										<option value="" selected="selected">Heure</option>
+										<option value="00">00</option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+										<option value="05">05</option>
+										<option value="06">06</option>
+										<option value="07">07</option>
+										<option value="08">08</option>
+										<option value="09">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+									</select>
+								</div>
+								<p class="help-block"></p>
+
+							</div>
+							<div class="col-sm-3">
+								<div class="form-label">
+									<select class="form-control required" name="minFirstTrip">
+										<option value="" selected="selected">Minute</option>
+										<option value="00">00</option>
+										<option value="10">10</option>
+										<option value="20">20</option>
+										<option value="30">30</option>
+										<option value="40">40</option>
+										<option value="50">50</option>
+									</select>
+								</div>
+								<p class="help-block"></p>
+
+							</div>
+
 						</div>
-						<p class="help-block"></p>
+
+
+
 					</div>
 
 					<div class="checkbox">
 						<label class="control-label">
-							<input type="checkbox" class="goReturn" name="goReturn">
-							Aller-retour ?
+							<input type="checkbox" class="goReturn" name="goReturn"> Aller-retour ?
 						</label>
 					</div>
 
 					<div class="form-group hide blocDateReturn">
-						<label class="control-label">Date retour</label>
-						<input type="date" class="form-control" name="dateReturnTrip" />
+						<label class="control-label">Date retour *</label>
+						<div class="row">
+
+							<div class="col-sm-6">
+								<div class="form-label">
+									<input type="date" class="form-control dateReturnTrip" name="dateReturnTrip" />
+								</div>
+								<p class="help-block"></p>
+
+							</div>
+							<div class="col-sm-3">
+								<div class="form-label">
+									<select class="form-control hoursReturnTrip" name="hoursReturnTrip">
+										<option value="" selected="selected">Heure</option>
+										<option value="00">00</option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+										<option value="05">05</option>
+										<option value="06">06</option>
+										<option value="07">07</option>
+										<option value="08">08</option>
+										<option value="09">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+									</select>
+								</div>
+								<p class="help-block"></p>
+
+							</div>
+							<div class="col-sm-3">
+								<div class="form-label">
+									<select class="form-control minReturnTrip" name="minReturnTrip">
+										<option value="" selected="selected">Minute</option>
+										<option value="00">00</option>
+										<option value="10">10</option>
+										<option value="20">20</option>
+										<option value="30">30</option>
+										<option value="40">40</option>
+										<option value="50">50</option>
+									</select>
+								</div>
+								<p class="help-block"></p>
+
+							</div>
+						</div>
 					</div>
 
 				</div>
@@ -96,43 +209,35 @@
 						<textarea placeholder="Petite description du voyage ? " class="textarea-100 form-control" name="description" rows="7"></textarea>
 					</div>
 					<div class="form-group">
-						<label class="control-label">Bagage *</label>
+						<label class="control-label">Bagage * : </label>
 						<label class="form-group radio-inline ">
-							<input type="radio" name="sizeOfLuggage" value="little" checked>
-							Petit
+							<input type="radio" name="sizeOfLuggage" value="little" checked> Petit
 						</label>
 						<label class="form-group radio-inline">
-							<input type="radio" name="sizeOfLuggage" value="medium">
-							Moyen
+							<input type="radio" name="sizeOfLuggage" value="medium"> Moyen
 						</label>
 						<label class="form-group radio-inline">
-							<input type="radio" name="sizeOfLuggage" value="large">
-							Gros
+							<input type="radio" name="sizeOfLuggage" value="large"> Gros
 						</label>
 						<p class="help-block"></p>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label">Option</label>
+						<label class="control-label">Option : </label>
 						<label class="form-group checkbox-inline">
-							<input type="checkbox" name="smoking" value="smoking">
-							Fumeur
+							<input type="checkbox" name="smoking" value="smoking"> Fumeur
 						</label>
 						<label class="form-group checkbox-inline">
-							<input type="checkbox" name="annimals" value="annimals">
-							Annimaux
+							<input type="checkbox" name="annimals" value="annimals"> Annimaux
 						</label>
 						<label class="form-group checkbox-inline">
-							<input type="checkbox" name="muscis" value="muscis">
-							Musique
+							<input type="checkbox" name="muscis" value="muscis"> Musique
 						</label>
 						<label class="form-group checkbox-inline">
-							<input type="checkbox" name="detour" value="detour">
-							Detour
+							<input type="checkbox" name="detour" value="detour"> Detour
 						</label>
 						<label class="form-group checkbox-inline">
-							<input type="checkbox" name="food" value="food">
-							Food
+							<input type="checkbox" name="food" value="food"> Food
 						</label>
 					</div>
 
@@ -242,8 +347,7 @@
 				<div class="panel-body">
 					<div class="checkbox">
 						<label class="control-label">
-							<input type="checkbox" name="cgv" class="required" value="cgv">
-							J'ai lu et accepté les
+							<input type="checkbox" name="cgv" class="required" value="cgv"> J'ai lu et accepté les
 							<a href="#">CGU</a>
 							et je certifie être en possession d'un permis de conduire et d'une assurance en cours de validité. *
 						</label>

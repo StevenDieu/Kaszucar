@@ -46,7 +46,7 @@ $(document).ready(function() {
 		var mess_required = "Ce champ est obligatoire.";
 		var mess_prix = "Ce champ doit être un prix et supérieur à 4 €.";
 
-		$('.form-control').html();
+		$('.help-block').html("");
 		$('.has-error').removeClass("has-error");
 
 		var submit = true;
