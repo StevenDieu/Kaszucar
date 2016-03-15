@@ -1,3 +1,139 @@
 {{> templates/header}}
 
+<div class="clearBoth"></div>
+<div class="container container-margin">
+	<br />
+	<div class="form-inline center">
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon">
+					<i class="glyph icon-radio-checked" aria-hidden="true"></i>
+				</div>
+				<input class="form-control from required" id="from" name="from" type="text" placeholder="De" value="{{from}}" autocomplete="off" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon">
+					<i class="glyph icon-radio-unchecked" aria-hidden="true"></i>
+				</div>
+				<input class="form-control to required" id="to" name="to" type="text" placeholder="A" value="{{to}}" autocomplete="off" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon">
+					<i class="glyph icon-calendar" aria-hidden="true"></i>
+				</div>
+				<input class="form-control" name="date" type="date" placeholder="Date" value="{{date}}" autocomplete="off" />
+			</div>
+		</div>
+		<div class="form-group">
+			<input type="submit" class="btn btn-success submitSearch" value="Rechercher" />
+		</div>
+	</div>
+
+	<br />
+	<br />
+	<div class="row">
+		<div class="col-md-3">
+			<div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-primary">
+					<div class="panel-heading" role="tab">
+						<h3 class="panel-title">Filtre</h3>
+					</div>
+					<div class="panel-body">
+						<form>
+							<div class="form-group">
+								<span>A partir de :</span>
+								<select class="form-control">
+									<option value="">Toutes les Heures</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<span>Prix :</span>
+								<select class="form-control">
+									<option value="">Tous les prix</option>
+									<option value="">0 ~ 10 €</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<span>Bagage </span>
+								<select class="form-control">
+									<option value="">Tous les bagages</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<span>Options </span>
+								<div class="checkbox">
+									<label class="control-label">
+										<input type="checkbox">Fumeur
+									</label>
+								</div>
+								<div class="checkbox">
+									<label class="control-label">
+										<input type="checkbox">Annimaux
+									</label>
+								</div>
+								<div class="checkbox">
+									<label class="control-label">
+										<input type="checkbox">Musique
+									</label>
+								</div>
+								<div class="checkbox">
+									<label class="control-label">
+										<input type="checkbox">Detour
+									</label>
+								</div>
+								<div class="checkbox">
+									<label class="control-label">
+										<input type="checkbox">Nourriture
+									</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<span>Nombre de places</span>
+								<select class="form-control">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<span>Confort </span>
+								<select class="form-control">
+									<option value="">Tous les conforts</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<span>Photo </span>
+								<div class="checkbox">
+									<label class="control-label">
+										<input type="checkbox">Avec photo
+									</label>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="center">
+						<span>Text</span>
+						<img>
+						<span>Text</span>
+					</div>
+				</div>
+				<div class="col-md-12"></div>
+			</div>
+		</div>
+	</div>
+</div>
 {{> templates/footer}}

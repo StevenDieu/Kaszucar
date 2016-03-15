@@ -47,8 +47,13 @@ public class CtrlCovoiturage {
   }
 
   @RequestMapping(value = "/rechercher-un-covoiturage")
-  public String searchCovoit(HttpServletRequest request) {
-    return "covoiturage/searchCovoit";
+  public ModelAndView searchCovoit(HttpServletRequest request) {
+    Map<String, Object> infoCovoit = new HashMap<String, Object>();
+    infoCovoit.put("from", request.getParameter("from"));
+    infoCovoit.put("to", request.getParameter("to"));
+    infoCovoit.put("date", request.getParameter("date"));
+    
+    return new ModelAndView("covoiturage/searchCovoit", infoCovoit);
   }
 
   @RequestMapping(value = "/ajouter-un-covoiturage", method = RequestMethod.POST)

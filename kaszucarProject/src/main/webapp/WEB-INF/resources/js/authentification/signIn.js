@@ -17,8 +17,7 @@ function signIn() {
 							t = JSON.parse(t);
 							if (t.statut == "ok") {
 								if ($(".redirect").val() != "") {
-									window.location.replace($(".redirect")
-											.val());
+									document.location.href= $(".redirect") .val();
 									return;
 								}
 								window.location.replace(t.redirect);
