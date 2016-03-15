@@ -16,7 +16,7 @@ function addCity() {
 			return false;
 		}
 
-		$(".blocWaypoitsCity").append('<div class="newWaypoints"><div class="cityWaypoints">' + newWaypoints + '</span><input type="hidden" name="waypoints[]" value="' + newWaypoints + '" /> <button type="button" class="btn btn-danger btn-xs removeNewWaypoints">Supprimer</button></div></div>')
+		$(".blocWaypoitsCity").append('<div class="newWaypoints"><span class="cityWaypoints">' + newWaypoints + '</span><input type="hidden" name="waypoints[]" value="' + newWaypoints + '" /> <button type="button" class="btn btn-danger btn-xs removeNewWaypoints">Supprimer</button></div>')
 		chooseMethod();
 		$("#waypoints").val("");
 		$(".removeNewWaypoints").off("click");

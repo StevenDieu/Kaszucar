@@ -79,13 +79,15 @@ function geocodeAddress(address) {
 function chooseMethod() {
 	var start = $("#from").val();
 	var end = $("#to").val();
-	
+
 	error = false;
 	$("#from").parent().parent().find(".help-block").html("");
 	$("#from").parent().parent().removeClass("has-error");
 	$("#to").parent().parent().find(".help-block").html("");
 	$("#to").parent().parent().removeClass("has-error");
 
+	deleteIfExistWaypoints(start, end);
+	
 	if (start !== "" && end === "") {
 		geocodeAddress($("#from"));
 	} else if (start === "" && end !== "") {
@@ -93,6 +95,25 @@ function chooseMethod() {
 	} else if (start !== "" && end !== "") {
 		calculateAndDisplayRoute()
 	}
+
+	if (error == false && start !== "" && start == end) {
+		error = true
+		$("#from").parent().parent().find(".help-block").html(
+				"Les deux adresses sont identiques");
+		$("#from").parent().parent().addClass("has-error");
+		$("#to").parent().parent().find(".help-block").html(
+				"Les deux adresses sont identiques");
+		$("#to").parent().parent().addClass("has-error");
+	}
+	
+}
+
+function deleteIfExistWaypoints(start, end){
+	$('.cityWaypoints').each(function() {
+		if(start === $(this).text() || end ===  $(this).text() ){
+			$(this).parent().remove();
+		}
+	});
 }
 
 function dontSubmitFormWithGoogle(idInput) {

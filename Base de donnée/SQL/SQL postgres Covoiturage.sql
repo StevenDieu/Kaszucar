@@ -131,7 +131,6 @@ CREATE INDEX fk_users_has_covoiturage_users1_idx ON users_has_covoiturage (id_us
 CREATE TABLE IF NOT EXISTS city_waypoints (
   id_city_stop SERIAL NOT NULL,
   city_waypoints TEXT NULL,
-  order_waypoints INT NULL,
   id_covoiturage INT NOT NULL,
   PRIMARY KEY (id_city_stop),
   CONSTRAINT fk_city_waypoints_covoiturage1

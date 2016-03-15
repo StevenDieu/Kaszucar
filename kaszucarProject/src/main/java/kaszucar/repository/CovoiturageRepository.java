@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import kaszucar.model.Cars;
+import kaszucar.model.CityWaypoints;
 import kaszucar.model.Covoiturage;
 import kaszucar.model.Preference;
 import kaszucar.model.UsersHasCars;
@@ -84,6 +85,19 @@ public class CovoiturageRepository {
     }
 
 
+  }
+
+  public void insertWaypoint(CityWaypoints cityWaypoints) {
+    Transaction tx = openSession.beginTransaction();
+
+    try {
+      openSession.save(cityWaypoints);
+
+      tx.commit();
+    } catch (RuntimeException e) {
+      tx.rollback();
+      throw e;
+    }
   }
 
 

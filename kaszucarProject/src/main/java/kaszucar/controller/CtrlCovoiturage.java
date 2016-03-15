@@ -27,7 +27,7 @@ public class CtrlCovoiturage {
   @Autowired
   private ImplCovoiturageService ICS;
 
-  @RequestMapping(value = "/proposer-un-covoiturage")
+  @RequestMapping(value = "/proposer-un-covoiturage", method = RequestMethod.POST)
   public ModelAndView proposeCovoit(HttpServletRequest request) {
     Users user = (Users) request.getSession().getAttribute("User");
 
@@ -64,7 +64,7 @@ public class CtrlCovoiturage {
 
     String cityFrom = (String) request.getParameter("cityFrom");
     String cityTo = (String) request.getParameter("cityTo");
-    String[] waypointsString = request.getParameterValues("waypoints[]");
+    String[] waypoints = request.getParameterValues("waypoints[]");
     String dateFirstTripString = (String) request.getParameter("dateFirstTrip");
     String hoursFirstTrip = (String) request.getParameter("hoursFirstTrip");
     String minFirstTrip = (String) request.getParameter("minFirstTrip");
@@ -104,6 +104,9 @@ public class CtrlCovoiturage {
       dateReturnTrip = Util.getDateByParam(dateReturnTripString, hoursReturnTrip, minReturnTrip);
       if (dateReturnTrip == null) {
         return Util.returnMessageError("Le format de la date est incorrect.");
+      }
+      if(dateReturnTrip.getTime() <= dateFirstTrip.getTime()){
+        return Util.returnMessageError("La date de retour doit être supérieur à la date d'aller.");
       }
     }
 
@@ -164,6 +167,8 @@ public class CtrlCovoiturage {
     covoiturage.setSitNumber(sitNumber);
     covoiturage.setSizeOfLuggage(sizeOfLuggage);
     ICS.insertCovoiturage(covoiturage, user);
+    
+    ICS.insertWaypoints(waypoints, covoiturage);
 
     return new ModelAndView("covoiturage/finalizationAddCovoit");
   }

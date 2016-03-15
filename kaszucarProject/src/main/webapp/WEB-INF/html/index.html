@@ -1,25 +1,41 @@
 {{> templates/header}}
 <div class="img-background">
-	<form action="rechercher-un-covoiturage" class="form-search-home" method="post">
-		<select class="proposition formulaire">
-			<option class="chercher" value="search">Je cherche</option>
-			<option class="proposer" value="propose">Je propose</option>
-		</select>
-		<div class="blockInput">
-			<i class="glyph icon-radio-checked" aria-hidden="true"></i>
-			<input class="input-formulaire formulaire" id="from" name="from" type="text" placeholder="De" autocomplete="off" />
+	<form action="rechercher-un-covoiturage" class="form-search-home form-inline" method="post">
+		<div class="form-group">
+			<select class="proposition form-control">
+				<option class="chercher" value="search">Je cherche</option>
+				<option class="proposer" value="propose">Je propose</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon">
+					<i class="glyph icon-radio-checked" aria-hidden="true"></i>
+				</div>
+				<input class="form-control from required" id="from" name="from" type="text" placeholder="De" autocomplete="off" />
+			</div>
 		</div>
 
-		<div class="blockInput">
-			<i class="glyph icon-radio-unchecked" aria-hidden="true"></i>
-			<input class="input-formulaire formulaire" id="to" name="to" type="text" placeholder="A" autocomplete="off" />
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon">
+					<i class="glyph icon-radio-unchecked" aria-hidden="true"></i>
+				</div>
+				<input class="form-control to required" id="to" name="to" type="text" placeholder="A" autocomplete="off" />
+			</div>
 		</div>
 
-		<div class="blockInput">
-			<i class="glyph icon-calendar" aria-hidden="true"></i>
-			<input class="input-formulaire formulaire" name="date" type="date" placeholder="Date" autocomplete="off" />
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon">
+					<i class="glyph icon-calendar" aria-hidden="true"></i>
+				</div>
+				<input class="form-control" name="date" type="date" placeholder="Date" autocomplete="off" />
+			</div>
 		</div>
-		<input type="submit" class="submitSearch" value="Rechercher" />
+		<div class="form-group">
+			<input type="submit" class="btn btn-success submitSearch" value="Rechercher" />
+		</div>
 	</form>
 </div>
 
