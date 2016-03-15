@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -90,6 +91,16 @@ public final class Util {
       return null;
     }
     return description;
+  }
+
+  public static String getParametersString(Optional<String> supportUrl, String stringDefault) {
+    String stringParameters;
+    if (supportUrl.isPresent()) {
+      stringParameters = supportUrl.get();
+    } else {
+      stringParameters = stringDefault;
+    }
+    return stringParameters;
   }
 
 
