@@ -126,7 +126,6 @@ html, body {
 	min-height: 395px;
 	height: 100%;
 	-webkit-background-size: cover;
-	background-size: 100% 100%, cover;
 }
 
 .background-singin, .background-singup {
@@ -330,6 +329,11 @@ html, body {
 	position: absolute;
 }
 
+.center{
+	margin: 0 auto;
+	text-align: center;
+}
+
 @media only screen and (min-device-width : 768px) and (max-device-width
 	: 1024px) {
 	.connexion {
@@ -387,8 +391,8 @@ html, body {
 	}
 }
 
-@media only screen and (max-width : 723px) {
+@media only screen and (max-width : 767px) {
 	.form-search-home {
-		top: 145px;
+		top: 35%;
 	}
 }

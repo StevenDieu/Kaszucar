@@ -5,11 +5,13 @@ import java.text.Normalizer;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,9 +48,23 @@ public class CtrlCovoiturage {
     return new ModelAndView("covoiturage/proposeCovoit", infoCovoit);
   }
 
-  @RequestMapping(value = "/rechercher-un-covoiturage")
-  public String searchCovoit(HttpServletRequest request) {
-    return "covoiturage/searchCovoit";
+  @RequestMapping(value = "/rechercher-un-covoiturage/{from}/{to}")
+  public ModelAndView searchCovoit(HttpServletRequest request,
+      @PathVariable("from") Optional<String> fromUrl, @PathVariable("to") Optional<String> toUrl) {
+    Map<String, Object> infoCovoit = new HashMap<String, Object>();
+
+    String from = Util.getParametersString(fromUrl, null);
+    String to = Util.getParametersString(fromUrl, null);
+    
+    if(Util.stringIsNull(from)||Util.stringIsNull(to) ){
+      
+    }
+
+    infoCovoit.put("from", request.getParameter("from"));
+    infoCovoit.put("to", request.getParameter("to"));
+    infoCovoit.put("date", request.getParameter("date"));
+
+    return new ModelAndView("covoiturage/searchCovoit", infoCovoit);
   }
 
   @RequestMapping(value = "/ajouter-un-covoiturage", method = RequestMethod.POST)
@@ -105,7 +121,7 @@ public class CtrlCovoiturage {
       if (dateReturnTrip == null) {
         return Util.returnMessageError("Le format de la date est incorrect.");
       }
-      if(dateReturnTrip.getTime() <= dateFirstTrip.getTime()){
+      if (dateReturnTrip.getTime() <= dateFirstTrip.getTime()) {
         return Util.returnMessageError("La date de retour doit être supérieur à la date d'aller.");
       }
     }
@@ -167,7 +183,7 @@ public class CtrlCovoiturage {
     covoiturage.setSitNumber(sitNumber);
     covoiturage.setSizeOfLuggage(sizeOfLuggage);
     ICS.insertCovoiturage(covoiturage, user);
-    
+
     ICS.insertWaypoints(waypoints, covoiturage);
 
     return new ModelAndView("covoiturage/finalizationAddCovoit");
