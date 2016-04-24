@@ -41,7 +41,7 @@ $(document).ready(function() {
 			$(".to").removeClass("required");
 			$(".form-group").removeClass("has-error");
 		}
-	})
+	});
 
 	$("form").on("submit", function() {
 
@@ -104,7 +104,7 @@ $(document).ready(function() {
 
 		if (submit) {
 			$('.price').each(function() {
-				if (!regexp_prix.test($(this).val()) && $(this).val() > 4) {
+				if (!regexp_prix.test($(this).val()) || $(this).val() < 4) {
 					form = $(this).parent().parent();
 					form.addClass("has-error");
 					form.find(".help-block").html(mess_prix);

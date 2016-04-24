@@ -53,12 +53,15 @@ public class ImplCovoiturageService implements CovoiturageService {
   }
 
   public void insertWaypoints(String[] waypoints, Covoiturage covoiturage) {
-    for (String waypoint : waypoints) {
-      CityWaypoints cityWaypoints = new CityWaypoints();
-      cityWaypoints.setCityWaypoints(waypoint);
-      cityWaypoints.setCovoiturage(covoiturage);
-      CR.insertWaypoint(cityWaypoints);
+    if(waypoints != null){
+      for (String waypoint : waypoints) {
+        CityWaypoints cityWaypoints = new CityWaypoints();
+        cityWaypoints.setCityWaypoints(waypoint);
+        cityWaypoints.setCovoiturage(covoiturage);
+        CR.insertWaypoint(cityWaypoints);
+      }
     }
+
   }
 
 }
