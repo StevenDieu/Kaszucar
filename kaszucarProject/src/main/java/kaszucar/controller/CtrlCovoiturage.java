@@ -193,7 +193,9 @@ public class CtrlCovoiturage {
     covoiturage.setSizeOfLuggage(sizeOfLuggage);
     ICS.insertCovoiturage(covoiturage, user);
 
-    ICS.insertWaypoints(waypoints, covoiturage);
+    if(waypoints!= null){
+        ICS.insertWaypoints(waypoints, covoiturage);
+    }
 
     return Util.ModelAndView("covoiturage/finalizationAddCovoit",request);
   }
