@@ -34,7 +34,13 @@
 			</a>
 		</div>
 		<div class="conn-insc col-md-4">
-			<a href="/connexion" class="menu connexion">Connexion</a>
-			<a href="/inscription" class="menu inscription">Inscription</a>
+			{{#user}}
+				<a href="/seDeconnecter" class="menu inscription">Se deconnecter</a>
+			{{/user}}
+			{{#notUser}}
+				<a href="/connexion" class="menu connexion">Connexion</a>
+				<a href="/inscription" class="menu inscription">Inscription</a>
+			{{/notUser}}
+
 		</div>
 	</header>

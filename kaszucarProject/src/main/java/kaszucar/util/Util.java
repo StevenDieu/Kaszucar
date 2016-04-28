@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import kaszucar.model.Users;
+
 public final class Util {
 
   public static boolean convertToInt(String text) {
@@ -36,7 +38,7 @@ public final class Util {
   }
 
   public static boolean stringIsNull(String string) {
-    if (string == null || string.equals("") || string.equals("null")) {
+    if (string == null || string.equals("") || string.equals("null") || string.equals("undefined")) {
       return true;
     }
     return false;
@@ -53,6 +55,9 @@ public final class Util {
    * @return
    */
   public static boolean isPrice(String price) {
+    if(price == null){
+      return false;
+    }
     Pattern p = Pattern.compile("^[0-9]{1,}(,[0-9]{1,2}|[.][0-9]{1,2}){0,1}$");
     Matcher m = p.matcher(price);
     return m.matches();
@@ -68,7 +73,7 @@ public final class Util {
       if (t.compareTo(stringDate) == 0)
         return d;
     } catch (Exception e) {
-      return null;
+      
     }
     return null;
   }
@@ -103,5 +108,18 @@ public final class Util {
     return stringParameters;
   }
 
+  public static ModelAndView ModelAndView(String string,HttpServletRequest request) {
+    return ModelAndView(string, new HashMap<String, Object>(),request);
+  }
+
+  public static ModelAndView ModelAndView(String string, Map<String, Object> data,HttpServletRequest request) {
+    Users user = (Users) request.getSession().getAttribute("User");
+    if(user != null){
+      data.put("user", user);
+    }else{
+      data.put("notUser", true);
+    }
+    return new ModelAndView(string, data);
+  }
 
 }

@@ -6,11 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import kaszucar.util.Util;
+
 @Controller
 public class CtrlHome {
 
 	@RequestMapping(value = "/")
 	public ModelAndView index(HttpServletRequest request) {
-		return new ModelAndView("index");
+	    return Util.ModelAndView("index",request);
 	}
 }

@@ -19,98 +19,100 @@ import kaszucar.util.Util;
 @Controller
 public class CtrlUser {
 
-	@Autowired
-	private UserService US;
+  @Autowired
+  private UserService US;
 
-	@RequestMapping(value = "/inscription")
-	public String signUp(HttpServletRequest request) {
-		if (request.getSession().getAttribute("User") != null) {
-			return "redirect:/";
-		}
-		return "authentication/signUp";
-	}
+  @RequestMapping(value = "/inscription")
+  public ModelAndView signUp(HttpServletRequest request) {
+    if (request.getSession().getAttribute("User") != null) {
+      return new ModelAndView("redirect:/");
+    }
+    return Util.ModelAndView("authentication/signUp", request);
+  }
 
-	@RequestMapping(value = "/connexion")
-	public ModelAndView signIn(HttpServletRequest request) {
-		Map<String, Object> infoCovoit = new HashMap<String, Object>();
-		infoCovoit.put("redirect", request.getParameter("redirect"));
+  @RequestMapping(value = "/connexion")
+  public ModelAndView signIn(HttpServletRequest request) {
+    Map<String, Object> infoCovoit = new HashMap<String, Object>();
+    infoCovoit.put("redirect", request.getParameter("redirect"));
 
-		if (request.getSession().getAttribute("User") != null) {
-			return new ModelAndView("redirect:/");
-		}
+    if (request.getSession().getAttribute("User") != null) {
+      return new ModelAndView("redirect:/");
+    }
+    return Util.ModelAndView("authentication/signIn",infoCovoit, request);
+  }
 
-		return new ModelAndView("authentication/signIn", infoCovoit);
-	}
+  @RequestMapping(value = "/ajaxConnexion", method = RequestMethod.POST)
+  @ResponseBody
+  public String ajaxSignIn(HttpServletRequest request) {
 
-	@RequestMapping(value = "/ajaxConnexion", method = RequestMethod.POST)
-	@ResponseBody
-	public String ajaxSignIn(HttpServletRequest request) {
+    String email = request.getParameter("email");
+    String password = request.getParameter("pwd");
 
-		String email = request.getParameter("email");
-		String password = request.getParameter("pwd");
+    if (request.getSession().getAttribute("User") != null) {
+      return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
+    } else if (!US.isEmailAdress(email)) {
+      return "{\"statut\": \"nok\",\"message\":  \"L'adresse email n'est pas valide.\"}";
+    } else if (email == "" || password == "") {
+      return "{\"statut\": \"nok\",\"message\":  \"Tout les champs sont obligatoires.\"}";
+    } else if (!US.checkEmail(email)) {
+      return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email n'existe pas.\"}";
+    }
 
-		if (request.getSession().getAttribute("User") != null) {
-			return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
-		} else if (!US.isEmailAdress(email)) {
-			return "{\"statut\": \"nok\",\"message\":  \"L'adresse email n'est pas valide.\"}";
-		} else if (email == "" || password == "") {
-			return "{\"statut\": \"nok\",\"message\":  \"Tout les champs sont obligatoires.\"}";
-		} else if (!US.checkEmail(email)) {
-			return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email n'existe pas.\"}";
-		}
-		
-		Users user = US.connexion(email, password);
-		
-		if (user == null) {
-			return "{\"statut\": \"nok\",\"message\":  \"Le mot de passe est incorrect.\"}";
-		}
+    Users user = US.connexion(email, password);
 
-		request.getSession().setAttribute("User", user);
+    if (user == null) {
+      return "{\"statut\": \"nok\",\"message\":  \"Le mot de passe est incorrect.\"}";
+    }
 
-		return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
+    request.getSession().setAttribute("User", user);
 
-	}
+    return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
 
-	@RequestMapping(value = "/ajaxInscription", method = RequestMethod.POST)
-	@ResponseBody
-	public String ajaxSignUp(HttpServletRequest request) {
+  }
 
-		String gender = request.getParameter("gender");
-		String name = request.getParameter("name");
-		String lastName = request.getParameter("lastName");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String sYearBirth = request.getParameter("yearBirth");
-		String cgv = request.getParameter("cgv");
+  @RequestMapping(value = "/ajaxInscription", method = RequestMethod.POST)
+  @ResponseBody
+  public String ajaxSignUp(HttpServletRequest request) {
 
-		if (!Util.convertToShort(sYearBirth)) {
-			return "{\"statut\": \"nok\",\"message\":  \"L'année doit être un chiffre.\"}";
-		}
+    String gender = request.getParameter("gender");
+    String name = request.getParameter("name");
+    String lastName = request.getParameter("lastName");
+    String email = request.getParameter("email");
+    String password = request.getParameter("password");
+    String sYearBirth = request.getParameter("yearBirth");
+    String cgv = request.getParameter("cgv");
 
-		short yearBirth = Short.parseShort(sYearBirth);
+    if (!Util.convertToShort(sYearBirth)) {
+      return "{\"statut\": \"nok\",\"message\":  \"L'année doit être un chiffre.\"}";
+    }
 
-		if (request.getSession().getAttribute("User") != null) {
-			return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
-		} else if (password.length() < 6 || password.length() > 54) {
-			return "{\"statut\": \"nok\",\"message\":  \"Votre mot de passe doit contenir entre 6 et 54 charactères.\"}";
-		} else if (US.checkYear18(yearBirth)) {
-			return "{\"statut\": \"nok\",\"message\":  \"Vous devez avoir au moins de 18 ans.\"}";
-		} else if (gender == "" || name == "" || lastName == "" || email == "" || password == "" || sYearBirth == "" || cgv == "") {
-			return "{\"statut\": \"nok\",\"message\":  \"Tout les champs sont obligatoires.\"}";
-		} else if (!US.isEmailAdress(email)) {
-			return "{\"statut\": \"nok\",\"message\":  \"L'adresse email n'est pas valide.\"}";
-		} else if (US.checkEmail(email)) {
-			return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email est déja utilisé.\"}";
-		}
+    short yearBirth = Short.parseShort(sYearBirth);
 
-		Users user = US.register(gender, name, lastName, email, password, yearBirth, US.getIpAdresse(request));
-		request.getSession().setAttribute("User", user);
+    if (request.getSession().getAttribute("User") != null) {
+      return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
+    } else if (password.length() < 6 || password.length() > 54) {
+      return "{\"statut\": \"nok\",\"message\":  \"Votre mot de passe doit contenir entre 6 et 54 charactères.\"}";
+    } else if (US.checkYear18(yearBirth)) {
+      return "{\"statut\": \"nok\",\"message\":  \"Vous devez avoir au moins de 18 ans.\"}";
+    } else if (gender == "" || name == "" || lastName == "" || email == "" || password == ""
+        || sYearBirth == "" || cgv == "") {
+      return "{\"statut\": \"nok\",\"message\":  \"Tout les champs sont obligatoires.\"}";
+    } else if (!US.isEmailAdress(email)) {
+      return "{\"statut\": \"nok\",\"message\":  \"L'adresse email n'est pas valide.\"}";
+    } else if (US.checkEmail(email)) {
+      return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email est déja utilisé.\"}";
+    }
 
-		return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
-	}
+    Users user =
+        US.register(gender, name, lastName, email, password, yearBirth, US.getIpAdresse(request));
+    request.getSession().setAttribute("User", user);
 
-	@RequestMapping(value = "/ajaxDisconnect", method = RequestMethod.POST)
-	public void ajaxDisconnect(HttpServletRequest request) {
-		request.getSession().setAttribute("User", null);
-	}
+    return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
+  }
+
+  @RequestMapping(value = "/seDeconnecter")
+  public String ajaxDisconnect(HttpServletRequest request) {
+    request.getSession().setAttribute("User", null);
+    return "redirect:/";
+  }
 }

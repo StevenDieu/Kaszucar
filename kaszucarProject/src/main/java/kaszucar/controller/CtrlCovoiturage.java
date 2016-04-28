@@ -1,7 +1,6 @@
 package kaszucar.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.text.Normalizer;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +28,7 @@ public class CtrlCovoiturage {
   @Autowired
   private ImplCovoiturageService ICS;
 
-  @RequestMapping(value = "/proposer-un-covoiturage", method = RequestMethod.POST)
+  @RequestMapping(value = "/proposer-un-covoiturage")
   public ModelAndView proposeCovoit(HttpServletRequest request) {
     Users user = (Users) request.getSession().getAttribute("User");
 
@@ -45,7 +44,7 @@ public class CtrlCovoiturage {
     infoCovoit.put("date", request.getParameter("date"));
     infoCovoit.put("cars", ICS.getAllCarsByUser(user.getIdUsers()));
 
-    return new ModelAndView("covoiturage/proposeCovoit", infoCovoit);
+    return Util.ModelAndView("covoiturage/proposeCovoit",infoCovoit,request);
   }
 
   @RequestMapping(value = "/rechercher-un-covoiturage/{from}/{to}")
@@ -64,10 +63,11 @@ public class CtrlCovoiturage {
     infoCovoit.put("to", request.getParameter("to"));
     infoCovoit.put("date", request.getParameter("date"));
 
-    return new ModelAndView("covoiturage/searchCovoit", infoCovoit);
+    return Util.ModelAndView("covoiturage/searchCovoit",infoCovoit,request);
+
   }
 
-  @RequestMapping(value = "/ajouter-un-covoiturage", method = RequestMethod.POST)
+  @RequestMapping(value = "/ajouter-un-covoiturage")
   public ModelAndView addCovoit(HttpServletRequest request) throws UnsupportedEncodingException {
     Users user = (Users) request.getSession().getAttribute("User");
 
@@ -141,7 +141,7 @@ public class CtrlCovoiturage {
       return Util.returnMessageError("Le nombre de place est incorrect.");
     }
     Cars cars;
-    if (chooseCarString.equals("1")) {
+    if (!chooseCarString.equals("-1")) {
       if (!Util.convertToInt(chooseCarString)) {
         return Util.returnMessageError("Une erreur est survenue sur le choix de votre voiture.");
       }
@@ -186,7 +186,7 @@ public class CtrlCovoiturage {
 
     ICS.insertWaypoints(waypoints, covoiturage);
 
-    return new ModelAndView("covoiturage/finalizationAddCovoit");
+    return Util.ModelAndView("covoiturage/finalizationAddCovoit",request);
   }
 
 }
