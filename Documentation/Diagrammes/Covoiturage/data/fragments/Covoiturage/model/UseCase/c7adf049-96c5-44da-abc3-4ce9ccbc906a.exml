@@ -34,7 +34,8 @@
         <OBJECT>
           <ID name="" mc="Standard.Note" uid="5b063ec6-bdc0-43f6-b859-1466902113a0"/>
           <ATTRIBUTES>
-            <ATT name="Content"><![CDATA[...]]></ATT>
+            <ATT name="Content"><![CDATA[<p>...</p>
+]]></ATT>
             <ATT name="MimeType"></ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
