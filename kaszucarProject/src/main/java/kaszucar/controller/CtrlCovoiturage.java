@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kaszucar.model.Cars;
@@ -55,15 +54,23 @@ public class CtrlCovoiturage {
 
     String from = Util.getParametersString(fromUrl, null);
     String to = Util.getParametersString(toUrl, null);
-    String date = Util.getParametersString(dateUrl, null);
+    String dateString = Util.getParametersString(dateUrl, null);
 
     if(Util.stringIsNull(from)||Util.stringIsNull(to) ){
-      
+      return new ModelAndView("redirect:/");
     }
-
+    
+    Date date = null;
+    
+    if(dateString != null){
+      date = Util.getDateByParam(dateString);
+    }
+    
+    
+    infoCovoit.put("covoiturages", ICS.getAllCovoitByDestination(from,to,date));
     infoCovoit.put("from", from);
     infoCovoit.put("to", to);
-    infoCovoit.put("date", date);
+    infoCovoit.put("date", dateString);
 
     return Util.ModelAndView("covoiturage/searchCovoit",infoCovoit,request);
 
@@ -143,7 +150,7 @@ public class CtrlCovoiturage {
       return Util.returnMessageError("Le nombre de place est incorrect.");
     }
     Cars cars;
-    if (!chooseCarString.equals("-1")) {
+    if (!chooseCarString.contains("-1")) {
       if (!Util.convertToInt(chooseCarString)) {
         return Util.returnMessageError("Une erreur est survenue sur le choix de votre voiture.");
       }

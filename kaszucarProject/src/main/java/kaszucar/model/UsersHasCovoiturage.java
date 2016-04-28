@@ -1,5 +1,5 @@
 package kaszucar.model;
-// Generated 15 mars 2016 00:08:54 by Hibernate Tools 4.3.1.Final
+// Generated 28 avr. 2016 10:22:28 by Hibernate Tools 4.3.1.Final
 
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -24,8 +24,10 @@ public class UsersHasCovoiturage implements java.io.Serializable {
   private int idUsersHasCovoiturage;
   private Covoiturage covoiturage;
   private Users users;
+  private Boolean passagers;
 
   public UsersHasCovoiturage() {}
+
 
   public UsersHasCovoiturage(int idUsersHasCovoiturage, Covoiturage covoiturage, Users users) {
     this.idUsersHasCovoiturage = idUsersHasCovoiturage;
@@ -33,7 +35,16 @@ public class UsersHasCovoiturage implements java.io.Serializable {
     this.users = users;
   }
 
+  public UsersHasCovoiturage(int idUsersHasCovoiturage, Covoiturage covoiturage, Users users,
+      Boolean passagers) {
+    this.idUsersHasCovoiturage = idUsersHasCovoiturage;
+    this.covoiturage = covoiturage;
+    this.users = users;
+    this.passagers = passagers;
+  }
+
   @Id
+
   @GeneratedValue(strategy = IDENTITY)
   @Column(name = "id_users_has_covoiturage", unique = true, nullable = false)
   public int getIdUsersHasCovoiturage() {
@@ -55,13 +66,23 @@ public class UsersHasCovoiturage implements java.io.Serializable {
   }
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "id_users", nullable = false)
+  @JoinColumn(name = "id_users")
   public Users getUsers() {
     return this.users;
   }
 
   public void setUsers(Users users) {
     this.users = users;
+  }
+
+
+  @Column(name = "passagers")
+  public Boolean getPassagers() {
+    return this.passagers;
+  }
+
+  public void setPassagers(Boolean passagers) {
+    this.passagers = passagers;
   }
 
 

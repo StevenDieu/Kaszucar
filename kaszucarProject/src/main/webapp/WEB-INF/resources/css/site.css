@@ -329,9 +329,66 @@ html, body {
 	position: absolute;
 }
 
-.center{
+.center {
 	margin: 0 auto;
 	text-align: center;
+}
+
+.conn-insc a {
+	color: white
+}
+
+.conn-insc a:hover, .conn-insc a:focus {
+	color: white;
+	text-decoration: none;
+}
+
+.name {
+	font-size: 18px
+}
+
+.dateSearch {
+	font-size: 20px
+}
+
+.priceSearch {
+	position: absolute;
+	top: -68px;
+	right: 12px;
+	font-size: 30px;
+	font-weight: 700;
+	color: #5CB85C;
+	text-align: right;
+	line-height: 21px;
+}
+
+.perPersonn {
+	font-size: 14px;
+}
+
+.btn-search-detail {
+	position: absolute;
+	bottom: 0;
+	right: 7px;
+}
+
+.blocHeaderSearch {
+	border-bottom: 1px solid #337AB7;
+	padding-bottom: 15px;
+	padding-top: 2px;
+	margin-bottom: 20px;
+}
+
+.destination {
+	font-size: 23px;
+	margin-top: -2px;
+}
+
+.placeRestant {
+	position: absolute;
+	top: -61px;
+	font-size: 18px;
+	color: #8a6d3b;
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width
@@ -388,6 +445,9 @@ html, body {
 	.container {
 		padding-right: 0px !important;
 		padding-left: 0px !important;
+	}
+	.btn-search-detail {
+		position: relative;
 	}
 }
 

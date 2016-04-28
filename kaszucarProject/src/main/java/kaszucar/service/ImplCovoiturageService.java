@@ -1,7 +1,11 @@
 package kaszucar.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +53,7 @@ public class ImplCovoiturageService implements CovoiturageService {
   public void insertCovoiturage(Covoiturage covoiturage, Users user) {
     UsersHasCovoiturage usersHasCovoiturage = new UsersHasCovoiturage();
     usersHasCovoiturage.setUsers(user);
+    usersHasCovoiturage.setPassagers(false);
     CR.insertCovoiturage(covoiturage, usersHasCovoiturage);
   }
 
@@ -62,6 +67,56 @@ public class ImplCovoiturageService implements CovoiturageService {
       }
     }
 
+  }
+
+  public List<Map<String, Object>> getAllCovoitByDestination(String from, String to, Date date) {
+     List<Covoiturage> listCovoiturage = CR.getAllCovoitByDestination(from,to,date);
+     List<Map<String,Object>> listCovoiturageWithUser = new ArrayList<Map<String,Object>>();
+
+     for(Covoiturage covoiturage : listCovoiturage){
+       SimpleDateFormat formaterDate = new SimpleDateFormat("EEEE, d MMMMM yyyy");
+       SimpleDateFormat formaterHours = new SimpleDateFormat("HH:mm");
+
+       Users user = null;
+       int reserve = -1;
+       for(UsersHasCovoiturage usersHasCovoit : covoiturage.getUsersHasCovoiturages()){
+         user = CR.getUserByIdUsersHasCovoiturage(usersHasCovoit.getIdUsersHasCovoiturage()).getUsers();
+         reserve++;
+       }
+       Map<String,Object> mapCovoit = new HashMap<String,Object>();
+       
+       mapCovoit.put("sitNumber", covoiturage.getSitNumber() - reserve);
+       mapCovoit.put("place", convertSitNumber(covoiturage.getSitNumber() - reserve));
+       mapCovoit.put("sizeOfLuggage", convertSizeOfLugage(covoiturage.getSizeOfLuggage()));
+       mapCovoit.put("hours", formaterHours.format(covoiturage.getDateFirstTrip()));
+       mapCovoit.put("date", formaterDate.format(covoiturage.getDateFirstTrip()));
+       mapCovoit.put("covoiturage", covoiturage);
+       mapCovoit.put("user", user);
+
+       listCovoiturageWithUser.add(mapCovoit);
+     }
+
+     return listCovoiturageWithUser;
+  }
+
+  private String convertSitNumber(int sitNumber) {
+    if(sitNumber == 0){
+      return "Complet";
+    }else if(sitNumber == 1){
+      return "1 place restante";
+    }else{
+      return sitNumber + " places restantes";
+    }
+  }
+
+  private String convertSizeOfLugage(String sizeOfLuggage) {
+    if(sizeOfLuggage.equals("little")){
+      return "Petit";
+    }else if(sizeOfLuggage.equals("medium")) {
+      return "Moyen";
+    }else{
+      return "Gros";
+    }
   }
 
 }

@@ -88,7 +88,7 @@ public class Covoiturage implements java.io.Serializable {
   }
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "id_cars", nullable = false)
+  @JoinColumn(name = "id_cars")
   public Cars getCars() {
     return this.cars;
   }

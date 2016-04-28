@@ -62,6 +62,21 @@ public final class Util {
     Matcher m = p.matcher(price);
     return m.matches();
   }
+  
+  public static Date getDateByParam(String date) {
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+    String stringDate = date.replace("-", "/");
+    Date d = new Date();
+    try {
+      d = sdf.parse(stringDate);
+      String t = sdf.format(d);
+      if (t.compareTo(stringDate) == 0)
+        return d;
+    } catch (Exception e) {
+      
+    }
+    return null;
+  }
 
   public static Date getDateByParam(String date, String hours, String min) {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
@@ -107,6 +122,7 @@ public final class Util {
     }
     return stringParameters;
   }
+ 
 
   public static ModelAndView ModelAndView(String string,HttpServletRequest request) {
     return ModelAndView(string, new HashMap<String, Object>(),request);

@@ -4,35 +4,41 @@
 <div class="container container-margin">
 	<br />
 	<div class="form-inline center">
-		<div class="form-group">
-			<div class="input-group">
-				<div class="input-group-addon">
-					<i class="glyph icon-radio-checked" aria-hidden="true"></i>
+		<form action="/" class="rechercher-un-covoiturage">
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="glyph icon-radio-checked" aria-hidden="true"></i>
+					</div>
+					<input class="form-control from required" id="from" name="from" type="text" placeholder="De"
+						value="{{from}}" autocomplete="off" />
 				</div>
-				<input class="form-control from required" id="from" name="from" type="text" placeholder="De" value="{{from}}" autocomplete="off" />
 			</div>
-		</div>
 
-		<div class="form-group">
-			<div class="input-group">
-				<div class="input-group-addon">
-					<i class="glyph icon-radio-unchecked" aria-hidden="true"></i>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="glyph icon-radio-unchecked" aria-hidden="true"></i>
+					</div>
+					<input class="form-control to required" id="to" name="to" type="text" placeholder="A"
+						value="{{to}}" autocomplete="off" />
 				</div>
-				<input class="form-control to required" id="to" name="to" type="text" placeholder="A" value="{{to}}" autocomplete="off" />
 			</div>
-		</div>
 
-		<div class="form-group">
-			<div class="input-group">
-				<div class="input-group-addon">
-					<i class="glyph icon-calendar" aria-hidden="true"></i>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="glyph icon-calendar" aria-hidden="true"></i>
+					</div>
+					<input class="form-control" id="date" name="date" type="date" placeholder="Date"
+						value="{{date}}" autocomplete="off" />
 				</div>
-				<input class="form-control" name="date" type="date" placeholder="Date" value="{{date}}" autocomplete="off" />
 			</div>
-		</div>
-		<div class="form-group">
-			<input type="submit" class="btn btn-success submitSearch" value="Rechercher" />
-		</div>
+			<div class="form-group">
+				<input type="submit" class="btn btn-success submitSearch" value="Rechercher" />
+			</div>
+
+		</form>
 	</div>
 
 	<br />
@@ -48,7 +54,7 @@
 						<form>
 							<div class="form-group">
 								<span>A partir de :</span>
-								<select class="form-control">
+								<select class="hoursFilter filterSearch form-control">
 									<option value="toutesLesHeures">Toutes les Heures</option>
 									<option value="5">0h - 5h</option>
 									<option value="10">5h - 10h</option>
@@ -59,7 +65,7 @@
 							</div>
 							<div class="form-group">
 								<span>Prix :</span>
-								<select class="form-control">
+								<select class="prixFilter filterSearch form-control">
 									<option value="tousLesPrix">Tous les prix</option>
 									<option value="10">0 ~ 10 €</option>
 									<option value="20">10 ~ 20 €</option>
@@ -70,42 +76,50 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<span>Bagage </span>
-								<select class="form-control">
-									<option value="">Tous les bagages</option>
+								<span>Bagage : </span>
+								<select class="legFilter filterSearch form-control">
+									<option value="tousLesBagages">Tous les bagages</option>
+									<option value="little">Petit</option>
+									<option value="medium">Moyen</option>
+									<option value="large">Gros</option>
 								</select>
 							</div>
 							<div class="form-group">
-								<span>Options </span>
+								<span>Options : </span>
 								<div class="checkbox">
 									<label class="control-label">
-										<input type="checkbox">Fumeur
+										<input data-type="smoking" class="optionFilter filterSearch" type="checkbox">
+										Fumeur
 									</label>
 								</div>
 								<div class="checkbox">
 									<label class="control-label">
-										<input type="checkbox">Annimaux
+										<input data-type="animals" class="optionFilter filterSearch" type="checkbox">
+										Annimaux
 									</label>
 								</div>
 								<div class="checkbox">
 									<label class="control-label">
-										<input type="checkbox">Musique
+										<input data-type="musics" class="optionFilter filterSearch" type="checkbox">
+										Musique
 									</label>
 								</div>
 								<div class="checkbox">
 									<label class="control-label">
-										<input type="checkbox">Detour
+										<input data-type="detour" class="optionFilter filterSearch" type="checkbox">
+										Detour
 									</label>
 								</div>
 								<div class="checkbox">
 									<label class="control-label">
-										<input type="checkbox">Nourriture
+										<input data-type="food" class="optionFilter filterSearch" type="checkbox">
+										Nourriture
 									</label>
 								</div>
 							</div>
 							<div class="form-group">
-								<span>Nombre de places</span>
-								<select class="form-control">
+								<span>Nombre de places restantes : </span>
+								<select class="placeFilter form-control filterSearch">
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -114,16 +128,21 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<span>Confort </span>
-								<select class="form-control">
-									<option value="">Tous les conforts</option>
+								<span>Confort : </span>
+								<select class="confortFilter form-control filterSearch">
+									<option value="tousLesConforts">Tous les conforts</option>
+									<option value="BASIC">Basique</option>
+									<option value="NORMAL">Normal</option>
+									<option value="COMFORT">Confort</option>
+									<option value="LUXE">Luxe</option>
 								</select>
 							</div>
 							<div class="form-group">
-								<span>Photo </span>
-								<div class="checkbox">
+								<span>Photo : </span>
+								<div class="checkbox filterSearch">
 									<label class="control-label">
-										<input type="checkbox">Avec photo
+										<input class="photoFilter" type="checkbox">
+										Avec photo
 									</label>
 								</div>
 							</div>
@@ -132,18 +151,86 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-9">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="center">
-						<span>Text</span>
-						<img>
-						<span>Text</span>
+
+
+		<div class="col-md-9 ">
+			{{#covoiturages}}
+			<div id="{{idCovoiturage}}" data-sizeofluggage="{{covoiturage.sizeOfLuggage}}" data-hours="{{hours}}"
+				data-price="{{covoiturage.price}}" data-sitnumber="{{sitNumber}}" data-confort="{{covoiturage.cars.comfort}}"
+				{{#covoiturage.preference.smoking}} data-smoking="true" {{/covoiturage.preference.smoking}} 
+				{{#covoiturage.preference.animals}} data-animals="true" {{/covoiturage.preference.animals}} 
+				{{#covoiturage.preference.musics}} data-musics="true" {{/covoiturage.preference.musics}} 
+				{{#covoiturage.preference.detour}} data-detour="true" {{/covoiturage.preference.detour}} 
+				{{#covoiturage.preference.food}} data-food="true" {{/covoiturage.preference.food}}
+				{{#user.urlPicture}} data-photo="true" {{/user.urlPicture}}
+				
+				
+				
+				
+				class="panel panel-primary allCovoit">
+				<div class="panel-heading dateSearch">{{date}}</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12 blocHeaderSearch">
+							<div class="center">
+								<span class="name">{{user.name}}</span>
+								{{#user.urlPicture}}
+								<img src="/{{user.urlPicture}}">
+								{{/user.urlPicture}}
+								<span class="name">{{user.lastName}}</span>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="priceSearch">
+								{{covoiturage.price}} €
+								<br />
+								<span class="perPersonn">Par personne</span>
+							</div>
+							<div class="placeRestant">{{place}}</div>
+							<div class="row">
+								<div class="col-md-4 destination">
+									<i class="glyph icon-radio-checked" aria-hidden="true"></i> {{covoiturage.cityFrom}}
+									<br />
+									<i class="glyph icon-radio-unchecked" aria-hidden="true"></i> {{covoiturage.cityTo}}
+									<br />
+								</div>
+								<div class="col-md-4">
+
+									<b>Heure de départ : </b>{{hours}}
+									<br />
+									<b>Véhicule : </b>{{covoiturage.cars.brand}} {{covoiturage.cars.model}}
+									<br />
+									<b>Confort : </b> {{covoiturage.cars.comfort}}
+									<br />
+									<b>Taille bagage : </b> {{sizeOfLuggage}}
+									<br />
+								</div>
+								<div class="col-md-3">
+									{{#covoiturage.preference.smoking}} Fumeur
+									<br />
+									{{/covoiturage.preference.smoking}} {{#covoiturage.preference.animals}} Annimaux
+									<br />
+									{{/covoiturage.preference.animals}} {{#covoiturage.preference.musics}} Musique
+									<br />
+									{{/covoiturage.preference.musics}} {{#covoiturage.preference.detour}} Detour
+									<br />
+									{{/covoiturage.preference.detour}} {{#covoiturage.preference.food}} Nourriture
+									<br />
+									{{/covoiturage.preference.food}}
+									<br />
+								</div>
+							</div>
+							<button class="btn btn-success btn-search-detail" data-id="{{idCovoiturage}}">Plus
+								de détail</button>
+						</div>
 					</div>
 				</div>
-				<div class="col-md-12"></div>
 			</div>
+			{{/covoiturages}}
 		</div>
+
 	</div>
 </div>
+
+<script src="/resources/js/covoiturage/searchCovoit.js"></script>
 {{> templates/footer}}

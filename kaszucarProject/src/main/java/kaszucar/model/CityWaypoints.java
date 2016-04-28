@@ -1,5 +1,5 @@
 package kaszucar.model;
-// Generated 15 mars 2016 00:08:54 by Hibernate Tools 4.3.1.Final
+// Generated 28 avr. 2016 10:22:28 by Hibernate Tools 4.3.1.Final
 
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -24,7 +24,6 @@ public class CityWaypoints implements java.io.Serializable {
   private int idCityStop;
   private Covoiturage covoiturage;
   private String cityWaypoints;
-  private Integer orderWaypoints;
 
   public CityWaypoints() {}
 
@@ -34,16 +33,16 @@ public class CityWaypoints implements java.io.Serializable {
     this.covoiturage = covoiturage;
   }
 
-  public CityWaypoints(int idCityStop, Covoiturage covoiturage, String cityWaypoints,
-      Integer orderWaypoints) {
+  public CityWaypoints(int idCityStop, Covoiturage covoiturage, String cityWaypoints) {
     this.idCityStop = idCityStop;
     this.covoiturage = covoiturage;
     this.cityWaypoints = cityWaypoints;
-    this.orderWaypoints = orderWaypoints;
   }
 
   @Id
+
   @GeneratedValue(strategy = IDENTITY)
+
   @Column(name = "id_city_stop", unique = true, nullable = false)
   public int getIdCityStop() {
     return this.idCityStop;
@@ -71,16 +70,6 @@ public class CityWaypoints implements java.io.Serializable {
 
   public void setCityWaypoints(String cityWaypoints) {
     this.cityWaypoints = cityWaypoints;
-  }
-
-
-  @Column(name = "order_waypoints")
-  public Integer getOrderWaypoints() {
-    return this.orderWaypoints;
-  }
-
-  public void setOrderWaypoints(Integer orderWaypoints) {
-    this.orderWaypoints = orderWaypoints;
   }
 
 

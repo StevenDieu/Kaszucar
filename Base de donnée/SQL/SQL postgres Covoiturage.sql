@@ -108,6 +108,7 @@ CREATE TABLE IF NOT EXISTS users_has_covoiturage (
   id_users_has_covoiturage SERIAL NOT NULL,
   id_covoiturage INT NOT NULL,
   id_users INT NOT NULL,
+  passagers boolean NULL,
   PRIMARY KEY (id_users_has_covoiturage),
   CONSTRAINT fk_users_has_covoiturage_covoiturage1
     FOREIGN KEY (id_covoiturage)
