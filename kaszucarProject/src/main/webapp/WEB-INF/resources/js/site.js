@@ -24,26 +24,44 @@ function isNotInt(n) {
 	return n % 1 != 0;
 }
 
-$(document).ready(function() {
+function searchCovoiturage(){
+  $(".rechercher-un-covoiturage").on("submit",function(){
+    if($(".rechercher-un-covoiturage").length == 1){
+      if($("#from").val() !== "" && $("#to").val() !== ""){
+        if($("#date").val() !== ""){
+          document.location.href="/rechercher-un-covoiturage/" + $("#from").val() + "/" + $("#to").val() + "/" + $("#date").val() ;
+          return false;
+        }
+        document.location.href="/rechercher-un-covoiturage/" + $("#from").val() + "/" + $("#to").val() ;
+      }
+      return false;
+    }
+    return true;
+  });
+}
 
+$(document).ready(function() {
+  searchCovoiturage();
 
 	$(".proposition").on("change", function() {
 		if ($(".proposition").val() == "search") {
 			$(".submitSearch").val("Rechercher");
 			$(".form-search-home").attr("action", "rechercher-un-covoiturage");
+	    $(".form-search-home").addClass("rechercher-un-covoiturage");
 			$(".from").addClass("required");
 			$(".to").addClass("required");
-
 		} else {
 			$(".submitSearch").val("Proposer");
 			$(".form-search-home").attr("action", "proposer-un-covoiturage");
+	    $(".form-search-home").removeClass("rechercher-un-covoiturage");
 			$(".from").removeClass("required");
 			$(".to").removeClass("required");
 			$(".form-group").removeClass("has-error");
 		}
-	})
+	});
 
 	$("form").on("submit", function() {
+	  
 
 		if(error){
 			return false;
@@ -104,7 +122,7 @@ $(document).ready(function() {
 
 		if (submit) {
 			$('.price').each(function() {
-				if (!regexp_prix.test($(this).val()) && $(this).val() > 4) {
+				if (!regexp_prix.test($(this).val()) || $(this).val() < 4) {
 					form = $(this).parent().parent();
 					form.addClass("has-error");
 					form.find(".help-block").html(mess_prix);

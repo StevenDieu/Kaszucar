@@ -1,7 +1,6 @@
 package kaszucar.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.text.Normalizer;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +28,7 @@ public class CtrlCovoiturage {
   @Autowired
   private ImplCovoiturageService ICS;
 
-  @RequestMapping(value = "/proposer-un-covoiturage", method = RequestMethod.POST)
+  @RequestMapping(value = "/proposer-un-covoiturage")
   public ModelAndView proposeCovoit(HttpServletRequest request) {
     Users user = (Users) request.getSession().getAttribute("User");
 
@@ -45,29 +44,32 @@ public class CtrlCovoiturage {
     infoCovoit.put("date", request.getParameter("date"));
     infoCovoit.put("cars", ICS.getAllCarsByUser(user.getIdUsers()));
 
-    return new ModelAndView("covoiturage/proposeCovoit", infoCovoit);
+    return Util.ModelAndView("covoiturage/proposeCovoit",infoCovoit,request);
   }
-
-  @RequestMapping(value = "/rechercher-un-covoiturage/{from}/{to}")
+  
+  @RequestMapping(
+      value = {"/rechercher-un-covoiturage/{from}/{to}", "/rechercher-un-covoiturage/{from}/{to}/{date}"})
   public ModelAndView searchCovoit(HttpServletRequest request,
-      @PathVariable("from") Optional<String> fromUrl, @PathVariable("to") Optional<String> toUrl) {
+      @PathVariable("from") Optional<String> fromUrl, @PathVariable("to") Optional<String> toUrl, @PathVariable("date") Optional<String> dateUrl) {
     Map<String, Object> infoCovoit = new HashMap<String, Object>();
 
     String from = Util.getParametersString(fromUrl, null);
-    String to = Util.getParametersString(fromUrl, null);
-    
+    String to = Util.getParametersString(toUrl, null);
+    String date = Util.getParametersString(dateUrl, null);
+
     if(Util.stringIsNull(from)||Util.stringIsNull(to) ){
       
     }
 
-    infoCovoit.put("from", request.getParameter("from"));
-    infoCovoit.put("to", request.getParameter("to"));
-    infoCovoit.put("date", request.getParameter("date"));
+    infoCovoit.put("from", from);
+    infoCovoit.put("to", to);
+    infoCovoit.put("date", date);
 
-    return new ModelAndView("covoiturage/searchCovoit", infoCovoit);
+    return Util.ModelAndView("covoiturage/searchCovoit",infoCovoit,request);
+
   }
 
-  @RequestMapping(value = "/ajouter-un-covoiturage", method = RequestMethod.POST)
+  @RequestMapping(value = "/ajouter-un-covoiturage")
   public ModelAndView addCovoit(HttpServletRequest request) throws UnsupportedEncodingException {
     Users user = (Users) request.getSession().getAttribute("User");
 
@@ -141,7 +143,7 @@ public class CtrlCovoiturage {
       return Util.returnMessageError("Le nombre de place est incorrect.");
     }
     Cars cars;
-    if (chooseCarString.equals("1")) {
+    if (!chooseCarString.equals("-1")) {
       if (!Util.convertToInt(chooseCarString)) {
         return Util.returnMessageError("Une erreur est survenue sur le choix de votre voiture.");
       }
@@ -188,7 +190,7 @@ public class CtrlCovoiturage {
         ICS.insertWaypoints(waypoints, covoiturage);
     }
 
-    return new ModelAndView("covoiturage/finalizationAddCovoit");
+    return Util.ModelAndView("covoiturage/finalizationAddCovoit",request);
   }
 
 }
