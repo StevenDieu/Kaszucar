@@ -46,22 +46,24 @@ public class CtrlCovoiturage {
 
     return Util.ModelAndView("covoiturage/proposeCovoit",infoCovoit,request);
   }
-
-  @RequestMapping(value = "/rechercher-un-covoiturage/{from}/{to}")
+  
+  @RequestMapping(
+      value = {"/rechercher-un-covoiturage/{from}/{to}", "/rechercher-un-covoiturage/{from}/{to}/{date}"})
   public ModelAndView searchCovoit(HttpServletRequest request,
-      @PathVariable("from") Optional<String> fromUrl, @PathVariable("to") Optional<String> toUrl) {
+      @PathVariable("from") Optional<String> fromUrl, @PathVariable("to") Optional<String> toUrl, @PathVariable("date") Optional<String> dateUrl) {
     Map<String, Object> infoCovoit = new HashMap<String, Object>();
 
     String from = Util.getParametersString(fromUrl, null);
-    String to = Util.getParametersString(fromUrl, null);
-    
+    String to = Util.getParametersString(toUrl, null);
+    String date = Util.getParametersString(dateUrl, null);
+
     if(Util.stringIsNull(from)||Util.stringIsNull(to) ){
       
     }
 
-    infoCovoit.put("from", request.getParameter("from"));
-    infoCovoit.put("to", request.getParameter("to"));
-    infoCovoit.put("date", request.getParameter("date"));
+    infoCovoit.put("from", from);
+    infoCovoit.put("to", to);
+    infoCovoit.put("date", date);
 
     return Util.ModelAndView("covoiturage/searchCovoit",infoCovoit,request);
 
