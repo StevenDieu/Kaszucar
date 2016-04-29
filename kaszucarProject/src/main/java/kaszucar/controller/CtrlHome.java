@@ -11,6 +11,12 @@ import kaszucar.util.Util;
 @Controller
 public class CtrlHome {
 
+    /**
+     * Controller qui permet d'afficher la home page
+     * 
+     * @param request
+     * @return
+     */
 	@RequestMapping(value = "/")
 	public ModelAndView index(HttpServletRequest request) {
 	    return Util.ModelAndView("index",request);

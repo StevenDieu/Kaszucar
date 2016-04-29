@@ -22,6 +22,12 @@ public class CtrlUser {
   @Autowired
   private ImplUserService US;
 
+  /**
+   * Controller qui permet d'afficher la vue d'inscription
+   * 
+   * @param request
+   * @return
+   */
   @RequestMapping(value = "/inscription")
   public ModelAndView signUp(HttpServletRequest request) {
     if (request.getSession().getAttribute("User") != null) {
@@ -30,6 +36,12 @@ public class CtrlUser {
     return Util.ModelAndView("authentication/signUp", request);
   }
 
+  /**
+   * Controller qui permet d'afficher la vue de connexion
+   * 
+   * @param request
+   * @return
+   */
   @RequestMapping(value = "/connexion")
   public ModelAndView signIn(HttpServletRequest request) {
     Map<String, Object> infoCovoit = new HashMap<String, Object>();
@@ -41,6 +53,12 @@ public class CtrlUser {
     return Util.ModelAndView("authentication/signIn",infoCovoit, request);
   }
 
+  /**
+   * Controller permettant de se connecter 
+   * 
+   * @param request
+   * @return
+   */
   @RequestMapping(value = "/ajaxConnexion", method = RequestMethod.POST)
   @ResponseBody
   public String ajaxSignIn(HttpServletRequest request) {
@@ -70,6 +88,12 @@ public class CtrlUser {
 
   }
 
+  /**
+   * Controller permettant de s'incrire
+   * 
+   * @param request
+   * @return
+   */
   @RequestMapping(value = "/ajaxInscription", method = RequestMethod.POST)
   @ResponseBody
   public String ajaxSignUp(HttpServletRequest request) {
@@ -110,6 +134,12 @@ public class CtrlUser {
     return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
   }
 
+  /**
+   * Controller permettant de se deconnecter
+   * 
+   * @param request
+   * @return
+   */
   @RequestMapping(value = "/seDeconnecter")
   public String ajaxDisconnect(HttpServletRequest request) {
     request.getSession().setAttribute("User", null);

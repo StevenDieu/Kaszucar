@@ -27,6 +27,12 @@ public class CtrlCovoiturage {
   @Autowired
   private ImplCovoiturageService ICS;
 
+  /**
+   * C'est le controller permettant l'affichage de la vue qui crée un covoiturage
+   * 
+   * @param request
+   * @return
+   */
   @RequestMapping(value = "/proposer-un-covoiturage")
   public ModelAndView proposeCovoit(HttpServletRequest request) {
     Users user = (Users) request.getSession().getAttribute("User");
@@ -46,6 +52,15 @@ public class CtrlCovoiturage {
     return Util.ModelAndView("covoiturage/proposeCovoit",infoCovoit,request);
   }
   
+  /**
+   * C'est le controller permettant l'affichage de la vue qui recherche un covoiturage
+   * 
+   * @param request
+   * @param fromUrl
+   * @param toUrl
+   * @param dateUrl
+   * @return
+   */
   @RequestMapping(
       value = {"/rechercher-un-covoiturage/{from}/{to}", "/rechercher-un-covoiturage/{from}/{to}/{date}"})
   public ModelAndView searchCovoit(HttpServletRequest request,
@@ -76,6 +91,13 @@ public class CtrlCovoiturage {
 
   }
 
+  /**
+   * Le controller qui crée le covoiturage
+   * 
+   * @param request
+   * @return
+   * @throws UnsupportedEncodingException
+   */
   @RequestMapping(value = "/ajouter-un-covoiturage")
   public ModelAndView addCovoit(HttpServletRequest request) throws UnsupportedEncodingException {
     Users user = (Users) request.getSession().getAttribute("User");

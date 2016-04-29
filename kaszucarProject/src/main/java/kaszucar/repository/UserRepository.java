@@ -17,6 +17,13 @@ public class UserRepository {
 
 	Session openSession = HibernateUtil.getSessionFactory().openSession();
 
+	/**
+	 * Permet de récupérer le user par email et le mot de passe
+	 * 
+	 * @param email
+	 * @param password
+	 * @return
+	 */
 	public List<Users> getUserByEmailAndPwd(String email, String password) {
 		Criteria cr = openSession.createCriteria(Users.class);
 		cr.add(Restrictions.eq("emailAdress", email));
@@ -24,12 +31,23 @@ public class UserRepository {
 		return cr.list();
 	}
 
+	/**
+     * Permet de récupérer le user par email
+	 * 
+	 * @param email
+	 * @return
+	 */
 	public List<Users> getUserByEmail(String email) {
 		Criteria cr = openSession.createCriteria(Users.class);
 		cr.add(Restrictions.eq("emailAdress", email));
 		return cr.list();
 	}
 
+	/**
+	 * Permet d'ajouter un utilisateur
+	 * 
+	 * @param users
+	 */
 	public void insertUser(Users users) {
 		Transaction tx = openSession.beginTransaction();
 

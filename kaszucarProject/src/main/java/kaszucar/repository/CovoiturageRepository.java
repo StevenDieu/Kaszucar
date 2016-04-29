@@ -23,6 +23,12 @@ import kaszucar.util.HibernateUtil;
 @Repository
 public class CovoiturageRepository {
 
+  /**
+   * Requête permettant de récupérer toutes les voitures en fonction d'un utilisateur
+   * 
+   * @param idUser
+   * @return
+   */
   public List<UsersHasCars> getAllCarsByUser(int idUser) {
     Session openSession = HibernateUtil.getSessionFactory().openSession();
 
@@ -39,6 +45,13 @@ public class CovoiturageRepository {
     return listUsersHasCars;
   }
 
+  /**
+   * Requête permettant de récupérer une voitures en fonction d'un utilisateur
+   * 
+   * @param idCars
+   * @param idUser
+   * @return
+   */
   public List<UsersHasCars> getCarsByIdAndUser(int idCars, int idUser) {
     Session openSession = HibernateUtil.getSessionFactory().openSession();
 
@@ -56,6 +69,17 @@ public class CovoiturageRepository {
     return listUsersHasCars;
   }
 
+  /**
+   * Requête permettant de récupérer l'id préférence en fonction de :
+   * animals
+   * food
+   * detour
+   * musics
+   * smoking
+   * 
+   * @param preference
+   * @return
+   */
   public List<Preference> getIdPreference(Preference preference) {
     Session openSession = HibernateUtil.getSessionFactory().openSession();
 
@@ -72,6 +96,12 @@ public class CovoiturageRepository {
     return listPreference;
   }
 
+  /**
+   * Requête permettant d'insérer une voiture
+   * 
+   * @param cars
+   * @param userHasCar
+   */
   public void insertCars(Cars cars, UsersHasCars userHasCar) {
     Session openSession = HibernateUtil.getSessionFactory().openSession();
 
@@ -91,6 +121,12 @@ public class CovoiturageRepository {
     HibernateUtil.shutdown();
   }
 
+  /**
+   * Requête permettant d'insérer un covoiturage
+   * 
+   * @param covoiturage
+   * @param usersHasCovoiturage
+   */
   public void insertCovoiturage(Covoiturage covoiturage, UsersHasCovoiturage usersHasCovoiturage) {
     Session openSession = HibernateUtil.getSessionFactory().openSession();
 
@@ -111,6 +147,11 @@ public class CovoiturageRepository {
 
   }
 
+  /**
+   * Requête permettant d'insérer un Waypoints
+   * 
+   * @param cityWaypoints
+   */
   public void insertWaypoint(CityWaypoints cityWaypoints) {
     Session openSession = HibernateUtil.getSessionFactory().openSession();
 
@@ -128,6 +169,14 @@ public class CovoiturageRepository {
     HibernateUtil.shutdown();
   }
 
+  /**
+   * Requete permettant de récupérer tous les covoiturage par destination (cityFrom et cityTo)
+   * 
+   * @param from
+   * @param to
+   * @param date
+   * @return
+   */
   public List<Covoiturage> getAllCovoitByDestination(String from, String to, Date date) {
     Session openSession = HibernateUtil.getSessionFactory().openSession();
 
@@ -159,6 +208,12 @@ public class CovoiturageRepository {
     return listCovoiturage;
   }
 
+  /**
+   * Repère l'utilisateur avec l'id UsersHasCovoiturage
+   * 
+   * @param idUsersHasCovoiturage
+   * @return
+   */
   public UsersHasCovoiturage getUserByIdUsersHasCovoiturage(int idUsersHasCovoiturage) {
     Session openSession = HibernateUtil.getSessionFactory().openSession();
 
