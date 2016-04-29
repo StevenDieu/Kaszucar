@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name = "users_has_covoiturage", schema = "public")
 public class UsersHasCovoiturage implements java.io.Serializable {
 
-
+  private static final long serialVersionUID = 1L;
   private int idUsersHasCovoiturage;
   private Covoiturage covoiturage;
   private Users users;

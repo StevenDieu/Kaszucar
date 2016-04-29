@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name = "opinion", schema = "public")
 public class Opinion implements java.io.Serializable {
 
-
+  private static final long serialVersionUID = 1L;
   private int idOpinion;
   private Users usersByIdUsersTo;
   private Users usersByIdUsersFrom;

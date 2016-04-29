@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kaszucar.model.Users;
-import kaszucar.service.UserService;
+import kaszucar.service.ImplUserService;
 import kaszucar.util.Util;
 
 @Controller
 public class CtrlUser {
 
   @Autowired
-  private UserService US;
+  private ImplUserService US;
 
   @RequestMapping(value = "/inscription")
   public ModelAndView signUp(HttpServletRequest request) {
