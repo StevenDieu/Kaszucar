@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Rechercher un covoiturage" version="4">
+  <OBJECT>
+    <ID name="Rechercher un covoiturage" mc="Standard.SequenceDiagram" uid="4c771081-4fa8-4b45-98ff-8a0984c73639"/>
+    <PID name="Interaction2" mc="Standard.Interaction" uid="89a44b31-6e63-4dd6-ba0e-170cf6e66579"/>
+    <ATTRIBUTES>
+      <ATT name="UiDataVersion">5</ATT>
+      <ATT name="UiData"><![CDATA[eJztWFtv2jAU/itR3hMuDRAkSlWg6qrSUtFt0p6QiQ/g1rE7xynk388hhEHamnDdHnhACsf2dy75vmM7jauZT413EAHh7NIs2UXTuGo2esMX8KRBsDKZhoze4NLkYmz7HAMl3MYEjQXybcBEcmEH8DsE5oENFHxgMlha0om3/vPC0kkspuGjFy4GS9dFs9l4EvwNhIwMhnzlkaKIh7KDJFJjPxENYREKCyk1C81GIV3wYemzjCiYa4mUdYkE8fzA9rgAO1mbI742CjyEAafObmayD6OcXh4VxGKlATPZGd6pGOeP8QOGEQqpzCRZSNLRJS6AIglYxZGp2UNsMt5jiyrP+sswHK9WKxXdkuWMkGs5Q6di1d3RyHJRse6qwYvqRV1fcIoCec/4lHXREGjG97MUhI3NZh+8CYj4Z4TM8Pg7JzIUaAyNwny6NjFO4Y61uf/GAyLVK/nCRw6o9oRQLCBG6JJArrHkYie6UzJSExkonncXj1sTfCUIZ78g0hCeKPLmY23OAikQYTJPVLNMZe+YhDGIJXncip4K0Yb1JaeqB5gSLCcbQMolPcYEyHgiN4BYG0DSiuqklBbbgBou1avVogWO61gOrnkWKlfKVm3oeWXVJupuEW+v508aWeXojSzuYknLPFL/2adouzSe/6e/VPeT9gRUUcRKm/k2NyiBSyXvmNp7bKsfhL71HlvLS00FNYv25me2EZ35aTYThuzJUvcoLD39ma9+Wj7WznzcBSqY8OmAeB8gWlz5QGxZhRGiAeizm0O9QjTlAh8ATSLvdRBIEMA3oEkR5gmNflL0HFBLIq1ezIpakaai9Ljvc2bPHSezFkNKnp3klvEQW28Sa8KKkwu1pL1mnpV6VurBlJo3tn2lWkh21U0q1n6W2LzVDjmOVjbalvp70DNg9gqQQ8raK/T5EHgKKces2OUIqOHsVkMZP13CXgONk8z01rgj0FQl0kWRouI6u/TfRlJ94ARACSWGiLe6VcTTbG/brfpXH+5ItvumHOrc2t3rXzf9Qeu6fX/b7/147ByaUl+irL6tv8RZpYH2I8iZBkegwffe08layh/0QZZw]]></ATT>
+      <ATT name="PdeProperties"></ATT>
+      <ATT name="Name"><![CDATA[Rechercher un covoiturage]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <LINK relation="Represented">
+        <REFOBJ>
+          <ID name="" mc="Standard.Lifeline" uid="e7d19660-e484-4d7c-a252-7bcc2ade980d"/>
+        </REFOBJ>
+      </LINK>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Standard.Note" uid="5a7c466d-288f-4f5b-bb71-4d9e6b1d08e7"/>
+          <ATTRIBUTES>
+            <ATT name="Content"></ATT>
+            <ATT name="MimeType"></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Standard.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

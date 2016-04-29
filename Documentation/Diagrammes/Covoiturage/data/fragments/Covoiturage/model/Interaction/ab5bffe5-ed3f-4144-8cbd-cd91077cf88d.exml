@@ -143,12 +143,12 @@
           <DEPENDENCIES>
             <COMP relation="SentMessage">
               <OBJECT>
-                <ID name="renseigner ses filtres de recherches" mc="Standard.Message" uid="36a7a4a7-08d6-4562-83ee-244bba46d6dd"/>
+                <ID name="renseigner les filtres de recherches" mc="Standard.Message" uid="36a7a4a7-08d6-4562-83ee-244bba46d6dd"/>
                 <ATTRIBUTES>
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">SyncCall</ATT>
-                  <ATT name="Name"><![CDATA[renseigner ses filtres de recherches]]></ATT>
+                  <ATT name="Name"><![CDATA[renseigner les filtres de recherches]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES>
@@ -197,12 +197,12 @@
           <DEPENDENCIES>
             <COMP relation="SentMessage">
               <OBJECT>
-                <ID name="liste des covoiturages disponibles" mc="Standard.Message" uid="0b1a14f5-5e4c-4854-a27d-304d5120ba6a"/>
+                <ID name="liste de covoiturages disponibles" mc="Standard.Message" uid="0b1a14f5-5e4c-4854-a27d-304d5120ba6a"/>
                 <ATTRIBUTES>
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ReturnMessage</ATT>
-                  <ATT name="Name"><![CDATA[liste des covoiturages disponibles]]></ATT>
+                  <ATT name="Name"><![CDATA[liste de covoiturages disponibles]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES>
@@ -257,27 +257,27 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="98144b94-e8eb-4f69-b234-3c95a3a73587"/>
+          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="26faf13e-5e8b-41b9-9352-82464bf9ab9f"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">299</ATT>
+            <ATT name="LineNumber">307</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <COMP relation="SentMessage">
               <OBJECT>
-                <ID name="choisit son covoiturage" mc="Standard.Message" uid="1bbfc6d6-72c0-4f0c-888a-2911bc0eb60a"/>
+                <ID name="choisir son covoiturage" mc="Standard.Message" uid="3fce5d35-24c9-44bd-b1d3-896b9b142bd9"/>
                 <ATTRIBUTES>
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">SyncCall</ATT>
-                  <ATT name="Name"><![CDATA[choisit son covoiturage]]></ATT>
+                  <ATT name="Name"><![CDATA[choisir son covoiturage]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES>
                   <LINK relation="ReceiveEvent">
                     <REFOBJ>
-                      <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="15924597-493d-45c8-80d1-aadda154eba3"/>
+                      <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="565ab426-da19-4ea8-8f5b-52e5eff7151a"/>
                     </REFOBJ>
                   </LINK>
                 </DEPENDENCIES>
@@ -291,16 +291,16 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="15924597-493d-45c8-80d1-aadda154eba3"/>
+          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="565ab426-da19-4ea8-8f5b-52e5eff7151a"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">299</ATT>
+            <ATT name="LineNumber">307</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Started">
               <REFOBJ>
-                <ID name="" mc="Standard.ExecutionSpecification" uid="ad66c8d1-3f99-4f69-b60e-8e9f99711e80"/>
+                <ID name="" mc="Standard.ExecutionSpecification" uid="56fa4ad4-2a4b-4bd7-b9d8-7a691f80907c"/>
               </REFOBJ>
             </LINK>
             <LINK relation="Covered">
@@ -311,27 +311,27 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="b2e20c23-4ca3-4a4c-8760-d970fa27ea7a"/>
+          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="cfa31bbf-8f92-480d-a0ea-69f57255e29c"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">336</ATT>
+            <ATT name="LineNumber">343</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <COMP relation="SentMessage">
               <OBJECT>
-                <ID name="confirmation de réservation" mc="Standard.Message" uid="6f689a73-14bb-467c-a302-0783588c188c"/>
+                <ID name="place réservée" mc="Standard.Message" uid="bb3ebf2c-cf2f-46dc-bcca-5c53731db64e"/>
                 <ATTRIBUTES>
                   <ATT name="Argument"></ATT>
                   <ATT name="KindOfMessage">CompleteKind</ATT>
                   <ATT name="SortOfMessage">ReturnMessage</ATT>
-                  <ATT name="Name"><![CDATA[confirmation de réservation]]></ATT>
+                  <ATT name="Name"><![CDATA[place réservée]]></ATT>
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES>
                   <LINK relation="ReceiveEvent">
                     <REFOBJ>
-                      <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="533337eb-a47f-4cf2-a9de-55d3361f5db1"/>
+                      <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="4c3144e4-415b-4ef0-9015-195b172e2010"/>
                     </REFOBJ>
                   </LINK>
                 </DEPENDENCIES>
@@ -345,16 +345,16 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.ExecutionSpecification" uid="ad66c8d1-3f99-4f69-b60e-8e9f99711e80"/>
+          <ID name="" mc="Standard.ExecutionSpecification" uid="56fa4ad4-2a4b-4bd7-b9d8-7a691f80907c"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">299</ATT>
+            <ATT name="LineNumber">307</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Finish">
               <REFOBJ>
-                <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="b2e20c23-4ca3-4a4c-8760-d970fa27ea7a"/>
+                <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="cfa31bbf-8f92-480d-a0ea-69f57255e29c"/>
               </REFOBJ>
             </LINK>
             <LINK relation="Covered">
@@ -365,9 +365,9 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="533337eb-a47f-4cf2-a9de-55d3361f5db1"/>
+          <ID name="" mc="Standard.ExecutionOccurenceSpecification" uid="4c3144e4-415b-4ef0-9015-195b172e2010"/>
           <ATTRIBUTES>
-            <ATT name="LineNumber">336</ATT>
+            <ATT name="LineNumber">343</ATT>
             <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
@@ -491,7 +491,6 @@
       </COMP>
       <COMP relation="Product">
         <COMPID name="Création d'un covoiturage" mc="Standard.SequenceDiagram" uid="898fd527-2c0b-47e4-a9d3-95d823a90862"/>
-        <COMPID name="Rechercher un covoiturage" mc="Standard.SequenceDiagram" uid="20b81ece-374a-4770-970a-acb074c75e57"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

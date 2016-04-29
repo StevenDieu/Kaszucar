@@ -15,9 +15,14 @@
     <DEPENDENCIES>
       <COMP relation="OwnedBehavior">
         <COMPID name="Interaction" mc="Standard.Interaction" uid="ab5bffe5-ed3f-4144-8cbd-cd91077cf88d"/>
+        <COMPID name="Interaction1" mc="Standard.Interaction" uid="24f2f4c3-8e17-4777-bb8a-38ee324a5874"/>
+        <COMPID name="Interaction2" mc="Standard.Interaction" uid="89a44b31-6e63-4dd6-ba0e-170cf6e66579"/>
       </COMP>
       <COMP relation="OwnedElement">
         <COMPID name="Actor" mc="Standard.Actor" uid="7380d9a9-b69b-47a0-8af2-c55f68d53b36"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Sequence Class diagram" mc="Standard.ClassDiagram" uid="a1723167-9f26-425e-acab-c11d297f693f"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>
