@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name = "city_waypoints", schema = "public")
 public class CityWaypoints implements java.io.Serializable {
 
-
+  private static final long serialVersionUID = 1L;
   private int idCityStop;
   private Covoiturage covoiturage;
   private String cityWaypoints;
