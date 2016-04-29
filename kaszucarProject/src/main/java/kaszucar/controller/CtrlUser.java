@@ -20,7 +20,7 @@ import kaszucar.util.Util;
 public class CtrlUser {
 
   @Autowired
-  private ImplUserService US;
+  private ImplUserService us;
 
   /**
    * Controller qui permet d'afficher la vue d'inscription
@@ -68,15 +68,15 @@ public class CtrlUser {
 
     if (request.getSession().getAttribute("User") != null) {
       return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
-    } else if (!US.isEmailAdress(email)) {
+    } else if (!us.isEmailAdress(email)) {
       return "{\"statut\": \"nok\",\"message\":  \"L'adresse email n'est pas valide.\"}";
-    } else if (email == "" || password == "") {
+    } else if (email.equals("") || password.equals("")) {
       return "{\"statut\": \"nok\",\"message\":  \"Tout les champs sont obligatoires.\"}";
-    } else if (!US.checkEmail(email)) {
+    } else if (!us.checkEmail(email)) {
       return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email n'existe pas.\"}";
     }
 
-    Users user = US.connexion(email, password);
+    Users user = us.connexion(email, password);
 
     if (user == null) {
       return "{\"statut\": \"nok\",\"message\":  \"Le mot de passe est incorrect.\"}";
@@ -104,7 +104,6 @@ public class CtrlUser {
     String email = request.getParameter("email");
     String password = request.getParameter("password");
     String sYearBirth = request.getParameter("yearBirth");
-    String cgv = request.getParameter("cgv");
 
     if (!Util.convertToShort(sYearBirth)) {
       return "{\"statut\": \"nok\",\"message\":  \"L'année doit être un chiffre.\"}";
@@ -116,19 +115,19 @@ public class CtrlUser {
       return "{\"statut\": \"ok\",\"redirect\": \"/\"}";
     } else if (password.length() < 6 || password.length() > 54) {
       return "{\"statut\": \"nok\",\"message\":  \"Votre mot de passe doit contenir entre 6 et 54 charactères.\"}";
-    } else if (US.checkYear18(yearBirth)) {
+    } else if (us.checkYear18(yearBirth)) {
       return "{\"statut\": \"nok\",\"message\":  \"Vous devez avoir au moins de 18 ans.\"}";
-    } else if (gender == "" || name == "" || lastName == "" || email == "" || password == ""
-        || sYearBirth == "" || cgv == "") {
+    } else if (gender.equals("") || name.equals("") || lastName.equals("")|| email.equals("") || password.equals("")
+        || sYearBirth.equals("")) {
       return "{\"statut\": \"nok\",\"message\":  \"Tout les champs sont obligatoires.\"}";
-    } else if (!US.isEmailAdress(email)) {
+    } else if (!us.isEmailAdress(email)) {
       return "{\"statut\": \"nok\",\"message\":  \"L'adresse email n'est pas valide.\"}";
-    } else if (US.checkEmail(email)) {
+    } else if (us.checkEmail(email)) {
       return "{\"statut\": \"nok\",\"message\":  \"Cette adresse email est déja utilisé.\"}";
     }
 
     Users user =
-        US.register(gender, name, lastName, email, password, yearBirth, US.getIpAdresse(request));
+        us.register(gender, name, lastName, email, password, yearBirth, us.getIpAdresse(request));
     request.getSession().setAttribute("User", user);
 
     return "{\"statut\": \"ok\",\"redirect\": \"/\"}";

@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.springframework.stereotype.Repository;
@@ -191,6 +192,7 @@ public class CovoiturageRepository {
     
     cr.add(Restrictions.eq("cityFrom", from));
     cr.add(Restrictions.eq("cityTo", to));
+    cr.addOrder( Order.asc("dateFirstTrip") );
 
      if (date != null) {
        Calendar cal = Calendar.getInstance();

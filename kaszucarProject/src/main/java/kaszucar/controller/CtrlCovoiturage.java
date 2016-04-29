@@ -168,7 +168,7 @@ public class CtrlCovoiturage {
     }
 
     int sitNumber = Integer.parseInt(sitNumberString);
-    if (sitNumber < 1 && sitNumber > 5) {
+    if (sitNumber <= 0 || sitNumber >= 6) {
       return Util.returnMessageError("Le nombre de place est incorrect.");
     }
     Cars cars;
