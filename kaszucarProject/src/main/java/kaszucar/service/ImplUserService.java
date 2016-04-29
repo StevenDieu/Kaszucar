@@ -20,6 +20,13 @@ public class ImplUserService implements UserService {
 	@Autowired
 	private UserRepository UR;
 
+	/**
+	 * Permet de se connecter avec un email et un mot de passe
+	 * 
+	 * @param email
+	 * @param password
+	 * @return
+	 */
 	public Users connexion(String email, String password) {
 		List<Users> users = UR.getUserByEmailAndPwd(email, sha256(password));
 		if (users.size() == 1) {
@@ -29,6 +36,18 @@ public class ImplUserService implements UserService {
 		}
 	}
 
+	/**
+	 * Methode permettant de s'incrire
+	 * 
+	 * @param gender
+	 * @param name
+	 * @param lastName
+	 * @param emailAdress
+	 * @param password
+	 * @param yearOfBirth
+	 * @param ipAdress
+	 * @return
+	 */
 	public Users register(String gender, String name, String lastName, String emailAdress, String password, short yearOfBirth, String ipAdress) {
 		Users user = new Users();
 		user.setGenre(gender);
@@ -43,6 +62,12 @@ public class ImplUserService implements UserService {
 		return user;
 	}
 
+	/**
+	 * Methode qui renvoie un boolean si oui ou non l'email existe
+	 * 
+	 * @param email
+	 * @return
+	 */
 	public boolean checkEmail(String email) {
 		List<Users> users = UR.getUserByEmail(email);
 		if (users.size() == 1) {
@@ -103,6 +128,12 @@ public class ImplUserService implements UserService {
 		return ipAddress;
 	}
 
+	/**
+	 * Methode renvoie un boolean si il a plus de 18 ans
+	 * 
+	 * @param yearBirth
+	 * @return
+	 */
 	public boolean checkYear18(int yearBirth) {
 		Calendar calendar = Calendar.getInstance();
 		if (yearBirth <= (calendar.get(Calendar.YEAR) - 18)) {

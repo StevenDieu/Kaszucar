@@ -1,4 +1,5 @@
 package kaszucar.util;
+
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -7,23 +8,23 @@ import org.hibernate.service.ServiceRegistryBuilder;
 
 @SuppressWarnings("deprecation")
 public class HibernateUtil {
-	private static SessionFactory sessionFactory;
-	private static ServiceRegistry serviceRegistry;
+  private static SessionFactory sessionFactory;
+  private static ServiceRegistry serviceRegistry;
 
-	private static SessionFactory configureSessionFactory() throws HibernateException {
-		Configuration configuration = new Configuration();
-		configuration.configure();
-		serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties())
-				.buildServiceRegistry();
-		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-		return sessionFactory;
-	}
+  private static SessionFactory configureSessionFactory() throws HibernateException {
+    Configuration configuration = new Configuration();
+    configuration.configure();
+    serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties())
+        .buildServiceRegistry();
+    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+    return sessionFactory;
+  }
 
-	public static SessionFactory getSessionFactory()  {
-		return configureSessionFactory();
-	}
-	
-    public static void shutdown() {
-        getSessionFactory().close();
-    }
+  public static SessionFactory getSessionFactory() {
+    return configureSessionFactory();
+  }
+
+  public static void shutdown() {
+    getSessionFactory().close();
+  }
 }
